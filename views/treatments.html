@@ -175,7 +175,7 @@
                        <button
                          type="button"
                          class="btn btn-primary btn-icon-text"
-                         title="Thêm đơn thuốc"
+                         title="Thêm LSĐT"
                          onclick="showForm('add', this)"
                        >
                          <i class="mdi mdi-plus btn-icon-prepend"></i>
@@ -236,7 +236,7 @@
                                </div>
                                <div class="form-group col-md-4">
                                  <label for="inputSupplyName">Tên vật tư</label>
-                                 <input type="text" class="form-control" id="inputSupplyName" placeholder="Tên thuốc" value="Nhựa composite" />
+                                 <input type="text" class="form-control" id="inputSupplyName" placeholder="Tên vật tư" value="Nhựa composite" />
                                </div>
                                <div class="form-group col-md-4">
                                    <label for="inputSupplyAmount">Số lượng </label>
@@ -732,10 +732,10 @@
 
          if (type === "edit") {
            formTitle.innerText = "Chỉnh sửa";
-           formDescription.innerText = "Chỉnh sửa thông tin đơn thuốc";
+           formDescription.innerText = "Chỉnh sửa thông tin LSĐT";
          } else if (type === "view") {
            formTitle.innerText = "Chi tiết";
-           formDescription.innerText = "Xem chi tiết thông tin đơn thuốc";
+           formDescription.innerText = "Xem chi tiết thông tin LSĐT";
          }
        } else if (type === "add") {
          formTitle.innerText = "Thêm";
