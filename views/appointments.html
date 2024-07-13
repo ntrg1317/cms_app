@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>Spica Admin</title>
+   <!-- base:css -->
+   <link rel="stylesheet" href="/vendors/mdi/css/materialdesignicons.min.css">
+   <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
+   <!-- endinject -->
+   <!-- inject:css -->
+   <link rel="stylesheet" href="/css/style.css">
+   <!-- endinject -->
+   <link rel="shortcut icon" href="/images/favicon.png" />
+   <!-- jQuery -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+ 
+
+
+   <style>
+       /* CSS để làm mờ nền và hiển thị form */
+       .overlay {
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           background: rgba(0, 0, 0, 0.5);
+           display: none;
+           justify-content: center;
+           align-items: center;
+       }
+
+
+       .form-container {
+           background: white;
+           padding: 20px;
+           border-radius: 10px;
+           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+           max-width: 500px;
+           min-width: 450px;
+           width: 100%;
+       }
+
+       /*css add appointment form */
+        .tilte-form {
+        text-align: center;
+       }
+
+        .form-container input[type=text],
+        .form-container input[type=email],
+        .form-container input[type=tel],
+        .form-container input[type=number],
+        .form-container input[type=date],
+        .form-container input[type=time] {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-container input[type=radio] {
+            margin-right: 5px;
+        }
+
+        .form-container .btn-form {
+            background-color: #6640b2;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn-form {
+            min-width: 140px;
+        }
+        .form-container .btn-form:hover {
+            background-color: #5630a3;
+        }
+
+        .form-container .cancel {
+            background-color: #b1a7a6;
+        }
+
+        .form-container .cancel:hover {
+            background-color: #8d8684;
+        }
+
+        .form-container .gender-group,
+        .form-container .appointment-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .form-container .gender-group input,
+        .form-container .appointment-group input {
+            margin-left: 10px;
+        }
+
+        .form-container .gender-group label,
+        .form-container .appointment-group label {
+            margin-right: 10px;
+        }
+
+        .group-2-form{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .small-input-form{
+            width: 185px;
+        }
+
+        .gender-group{
+            display: flex;
+            align-items: center;
+            gap: 10px; /* khoảng cách giữa các radio button */
+        }
+        
+        .gender-group input[type="radio"]{
+            margin-top:0;
+            transform: scale(1.2); /* để radio button lớn hơn nếu cần */
+        }
+        
+        .gender-group label{
+            margin: 0;
+            font-weight: normal;
+            color: #2d6a4f;
+        }
+
+        .btn-group{
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .gender-label{
+            margin-bottom: 15px;
+        }
+
+        .time-form{
+            min-width: 185px;
+            max-height: 42px;
+        }
+
+        .icon-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+        }
+
+        .icon-button:hover {
+            color: #007bff; /* Optional: Change color on hover */
+        }
+
+        /*css des appointment form */
+
+      .form-section {
+          margin-top: 20px;
+      }
+      
+      .form-subtitle{
+          margin-bottom: 5px;
+          color: #353535;
+          border-bottom: 1px solid #ddd;
+          padding-bottom: 5px;
+      }
+      
+      .form-group2 {
+          display: flex;
+          justify-content: space-between;
+      }
+      
+      .form-group2 label {
+          flex: 1;
+          color: black;
+      }
+      
+      .form-group2 input {
+          flex: 2;
+          padding: 5px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+      }
+      
+      .label{
+        align-content: center;
+      }
+   </style>
+
+
+</head>
+<body>
+ <div class="container-scroller d-flex">
+   <!-- partial:./partials/_sidebar.html -->
+   <nav class="sidebar sidebar-offcanvas" id="sidebar">
+     <ul class="nav">
+       <li class="nav-item sidebar-category">
+         <p>Navigation</p>
+         <span></span>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="index.html">
+           <i class="mdi mdi-view-quilt menu-icon"></i>
+           <span class="menu-title">Dashboard</span>
+         </a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="views/billings.html">
+           <i class="mdi mdi-calculator menu-icon"></i>
+           <span class="menu-title">Hoá đơn</span>
+         </a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="views/patients.html">
+           <i class="mdi mdi-hotel menu-icon"></i>
+           <span class="menu-title">Bệnh nhân</span>
+         </a>
+       </li>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" data-bs-toggle="collapse" href="#human-resources" aria-expanded="false" aria-controls="human-resources">
+           <i class="mdi mdi-account-multiple menu-icon"></i>
+           <span class="menu-title">Nhân sự</span>
+           <i class="menu-arrow"></i>
+         </a>
+         <div class="collapse" id="human-resources">
+           <ul class="nav flex-column sub-menu">
+             <li class="nav-item"> <a class="nav-link" href="views/human-resources/doctor.html">Bác sĩ</a></li>
+             <li class="nav-item"> <a class="nav-link" href="views/human-resources/staff.html">Nhân viên</a></li>
+           </ul>
+         </div>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="/views/appointments.html">
+           <i class="mdi mdi-calendar menu-icon"></i>
+           <span class="menu-title">Lịch hẹn</span>
+         </a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="/views/prescriptions.html">
+           <i class="mdi mdi-pill menu-icon"></i>
+           <span class="menu-title">Đơn thuốc</span>
+         </a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="/views/treatments.html">
+           <i class="mdi mdi-history menu-icon"></i>
+           <span class="menu-title">Lịch sử điều trị</span>
+         </a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="views/branches.html">
+           <i class="mdi mdi-hospital-building menu-icon"></i>
+           <span class="menu-title">Chi nhánh</span>
+         </a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="/views/services.html">
+           <i class="mdi mdi-hospital menu-icon"></i>
+           <span class="menu-title">Dịch vụ</span>
+         </a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" data-bs-toggle="collapse" href="#inventory" aria-expanded="false" aria-controls="inventory">
+           <i class="mdi mdi-store menu-icon"></i>
+           <span class="menu-title">Kho vật tư</span>
+           <i class="menu-arrow"></i>
+         </a>
+         <div class="collapse" id="inventory">
+           <ul class="nav flex-column sub-menu">
+             <li class="nav-item"> <a class="nav-link" href="/views/inventory/medicines.html">Thuốc</a></li>
+             <li class="nav-item"> <a class="nav-link" href="/views/inventory/equipments.html">Thiết bị y tế</a></li>
+           </ul>
+         </div>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" data-bs-toggle="collapse" href="#role-permissions" aria-expanded="false" aria-controls="role-permissions">
+           <i class="mdi mdi-lock menu-icon"></i>
+           <span class="menu-title">Phân Quyền</span>
+           <i class="menu-arrow"></i>
+         </a>
+         <div class="collapse" id="role-permissions">
+           <ul class="nav flex-column sub-menu">
+             <li class="nav-item"> <a class="nav-link" href="views/role-permissions/">Tài khoản</a></li>
+             <li class="nav-item"> <a class="nav-link" href="views/role-permissions/">Quyền</a></li>
+           </ul>
+         </div>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" data-bs-toggle="collapse" href="#settings" aria-expanded="false" aria-controls="settings">
+           <i class="mdi mdi-settings menu-icon"></i>
+           <span class="menu-title">Cài đặt</span>
+           <i class="menu-arrow"></i>
+         </a>
+         <div class="collapse" id="settings">
+           <ul class="nav flex-column sub-menu">
+             <li class="nav-item"> <a class="nav-link" href="views/settings/public-info.html">Thông tin cá nhân</a></li>
+             <li class="nav-item"> <a class="nav-link" href="views/settings/notifications.html">Cài đặt thông báo</a></li>
+             <li class="nav-item"> <a class="nav-link" href="views/settings/change-password.html">Bảo mật</a></li>
+           </ul>
+         </div>
+       </li>
+       <li class="nav-item sidebar-category">
+         <p>Components</p>
+         <span></span>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+           <i class="mdi mdi-palette menu-icon"></i>
+           <span class="menu-title">UI Elements</span>
+           <i class="menu-arrow"></i>
+         </a>
+         <div class="collapse" id="ui-basic">
+           <ul class="nav flex-column sub-menu">
+             <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
+             <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+           </ul>
+         </div>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="pages/forms/basic_elements.html">
+           <i class="mdi mdi-view-headline menu-icon"></i>
+           <span class="menu-title">Form elements</span>
+         </a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="pages/charts/chartjs.html">
+           <i class="mdi mdi-chart-pie menu-icon"></i>
+           <span class="menu-title">Charts</span>
+         </a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="pages/tables/basic-table.html">
+           <i class="mdi mdi-grid-large menu-icon"></i>
+           <span class="menu-title">Tables</span>
+         </a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="pages/icons/mdi.html">
+           <i class="mdi mdi-emoticon menu-icon"></i>
+           <span class="menu-title">Icons</span>
+         </a>
+       </li>
+       <li class="nav-item sidebar-category">
+         <p>Pages</p>
+         <span></span>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+           <i class="mdi mdi-account menu-icon"></i>
+           <span class="menu-title">User Pages</span>
+           <i class="menu-arrow"></i>
+         </a>
+         <div class="collapse" id="auth">
+           <ul class="nav flex-column sub-menu">
+             <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+             <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> Login 2 </a></li>
+             <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+             <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html"> Register 2 </a></li>
+             <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html"> Lockscreen </a></li>
+           </ul>
+         </div>
+       </li>
+     </ul>
+   </nav>
+   <div class="container-fluid page-body-wrapper">
+       <!-- partial:./partials/_navbar.html -->
+       <nav class="navbar col-lg-12 col-12 px-0 py-0 py-lg-4 d-flex flex-row">
+         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+             <span class="mdi mdi-menu"></span>
+           </button>
+           <div class="navbar-brand-wrapper">
+             <a class="navbar-brand brand-logo" href="index.html"><img src="/images/logo.svg" alt="logo"/></a>
+             <a class="navbar-brand brand-logo-mini" href="index.html"><img src="/images/logo-mini.svg" alt="logo"/></a>
+           </div>
+           <h4 class="font-weight-bold mb-0 d-none d-md-block mt-1">Welcome back, Brandon Haynes</h4>
+           <ul class="navbar-nav navbar-nav-right">
+             <li class="nav-item">
+               <h4 class="mb-0 font-weight-bold d-none d-xl-block">Mar 12, 2019 - Apr 10, 2019</h4>
+             </li>
+             <li class="nav-item dropdown me-1">
+               <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-bs-toggle="dropdown">
+                 <i class="mdi mdi-calendar mx-0"></i>
+                 <span class="count bg-info">2</span>
+               </a>
+               <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+                 <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
+                 <a class="dropdown-item preview-item">
+                   <div class="preview-thumbnail">
+                       <img src="/images/faces/face4.jpg" alt="image" class="profile-pic">
+                   </div>
+                   <div class="preview-item-content flex-grow">
+                     <h6 class="preview-subject ellipsis font-weight-normal">David Grey
+                     </h6>
+                     <p class="font-weight-light small-text text-muted mb-0">
+                       The meeting is cancelled
+                     </p>
+                   </div>
+                 </a>
+                 <a class="dropdown-item preview-item">
+                   <div class="preview-thumbnail">
+                       <img src="/images/faces/face2.jpg" alt="image" class="profile-pic">
+                   </div>
+                   <div class="preview-item-content flex-grow">
+                     <h6 class="preview-subject ellipsis font-weight-normal">Tim Cook
+                     </h6>
+                     <p class="font-weight-light small-text text-muted mb-0">
+                       New product launch
+                     </p>
+                   </div>
+                 </a>
+                 <a class="dropdown-item preview-item">
+                   <div class="preview-thumbnail">
+                       <img src="/images/faces/face3.jpg" alt="image" class="profile-pic">
+                   </div>
+                   <div class="preview-item-content flex-grow">
+                     <h6 class="preview-subject ellipsis font-weight-normal"> Johnson
+                     </h6>
+                     <p class="font-weight-light small-text text-muted mb-0">
+                       Upcoming board meeting
+                     </p>
+                   </div>
+                 </a>
+               </div>
+             </li>
+             <li class="nav-item dropdown me-2">
+               <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
+                 <i class="mdi mdi-email-open mx-0"></i>
+                 <span class="count bg-danger">1</span>
+               </a>
+               <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                 <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+                 <a class="dropdown-item preview-item">
+                   <div class="preview-thumbnail">
+                     <div class="preview-icon bg-success">
+                       <i class="mdi mdi-information mx-0"></i>
+                     </div>
+                   </div>
+                   <div class="preview-item-content">
+                     <h6 class="preview-subject font-weight-normal">Application Error</h6>
+                     <p class="font-weight-light small-text mb-0 text-muted">
+                       Just now
+                     </p>
+                   </div>
+                 </a>
+                 <a class="dropdown-item preview-item">
+                   <div class="preview-thumbnail">
+                     <div class="preview-icon bg-warning">
+                       <i class="mdi mdi-settings mx-0"></i>
+                     </div>
+                   </div>
+                   <div class="preview-item-content">
+                     <h6 class="preview-subject font-weight-normal">Settings</h6>
+                     <p class="font-weight-light small-text mb-0 text-muted">
+                       Private message
+                     </p>
+                   </div>
+                 </a>
+                 <a class="dropdown-item preview-item">
+                   <div class="preview-thumbnail">
+                     <div class="preview-icon bg-info">
+                       <i class="mdi mdi-account-box mx-0"></i>
+                     </div>
+                   </div>
+                   <div class="preview-item-content">
+                     <h6 class="preview-subject font-weight-normal">New user registration</h6>
+                     <p class="font-weight-light small-text mb-0 text-muted">
+                       2 days ago
+                     </p>
+                   </div>
+                 </a>
+               </div>
+             </li>
+           </ul>
+           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+             <span class="mdi mdi-menu"></span>
+           </button>
+         </div>
+         <div class="navbar-menu-wrapper navbar-search-wrapper d-none d-lg-flex align-items-center">
+           <ul class="navbar-nav mr-lg-2">
+             <li class="nav-item nav-search d-none d-lg-block">
+               <div class="input-group">
+                 <input type="text" class="form-control" placeholder="Search Here..." aria-label="search" aria-describedby="search">
+               </div>
+             </li>
+           </ul>
+           <ul class="navbar-nav navbar-nav-right">
+             <li class="nav-item nav-profile dropdown">
+               <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
+                 <img src="/images/faces/face5.jpg" alt="profile"/>
+                 <span class="nav-profile-name">Eleanor Richardson</span>
+               </a>
+               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                 <a class="dropdown-item">
+                   <i class="mdi mdi-settings text-primary"></i>
+                   Settings
+                 </a>
+                 <a class="dropdown-item">
+                   <i class="mdi mdi-logout text-primary"></i>
+                   Logout
+                 </a>
+               </div>
+             </li>
+             <li class="nav-item">
+               <a href="#" class="nav-link icon-link">
+                 <i class="mdi mdi-plus-circle-outline"></i>
+               </a>
+             </li>
+             <li class="nav-item">
+               <a href="#" class="nav-link icon-link">
+                 <i class="mdi mdi-web"></i>
+               </a>
+             </li>
+             <li class="nav-item">
+               <a href="#" class="nav-link icon-link">
+                 <i class="mdi mdi-clock-outline"></i>
+               </a>
+             </li>
+           </ul>
+         </div>
+       </nav>
+     <!-- partial -->
+     <div class="main-panel">
+       <div class="content-wrapper">
+           <div class="row">
+               <div class="col-lg-12 grid-margin stretch-card">
+                   <nav aria-label="breadcrumb">
+                       <ol class="breadcrumb">
+                         <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                         <li class="breadcrumb-item active" aria-current="page">Lịch hẹn</li>
+                       </ol>
+                   </nav>
+               </div>
+               <div class="col-lg-12 grid-margin stretch-card">
+               <div class="card">
+                   <div class="card-body">
+                       <div class="d-flex flex-direction-row justify-content-between">
+                           <div class="col-lg-8 grid-margin stretch-card">
+                               <div class="input-group">
+                                   <input type="text" class="form-control border rounded-pill" placeholder="Search Here..." aria-label="search" aria-describedby="search">
+                                   </div>
+                           </div>
+                           <div class="col-lg-2 grid-margin stretch-card justify-content-center">
+                               <button type="button" class="btn btn-light btn-icon-text">
+                                   <i class="mdi mdi-printer btn-icon-prepend"></i>
+                                   In tất cả
+                               </button>
+                           </div>
+                           <div class="col-lg-2 grid-margin stretch-card justify-content-center">
+                               <button type="button" class="btn btn-primary btn-icon-text" id="showFormButton1">
+                                   <i class="mdi mdi-plus btn-icon-prepend"></i>
+                                   Thêm lịch hẹn
+                               </button>
+                               <div class="overlay" id="overlay1">
+                                <div class="form-popup" id="appointmentForm">
+                                    <form class="form-container">
+                                        <h4 class="tilte-form">Thêm lịch hẹn</h4>
+                                        <label for="name">Họ và tên</label>
+                                        <input type="text" placeholder="Nhập tên" name="name" required>
+                        
+                                        <label for="phone">SĐT</label>
+                                        <input type="tel" placeholder="Nhập số điện thoại" name="phone" required>
+                                        
+                                        <label for="email">Lí do hẹn khám</label>
+                                        <input type="email" placeholder="Nhập lí do" name="email" required>
+
+                                        <div class="group-2-form">
+                                            <div class="group-form">
+                                                <label class="gender-label">Giới tính</label><br>
+                                                <div class="gender-group">
+                                                    <input class="gender" type="radio" name="gender" value="male"> Nam
+                                                    <input class="gender" type="radio" name="gender" value="female"> Nữ
+                                                    <input class="gender" type="radio" name="gender" value="other"> Khác
+                                                </div>
+                                            </div>
+
+                                            <div class="group-form small-input-form">
+                                                <label for="age">Tuổi</label>
+                                                <input type="number" placeholder="Nhập tuổi" name="age" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="group-2-form">
+                                            <div class="group-form small-input-form">
+                                                <label for="date">Ngày</label>
+                                                <input type="date" name="date" required>
+                                            </div>
+                                            
+                                            <div class="group-form time-form">
+                                                <label for="time">Giờ</label>
+                                                <input type="time" name="time" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="btn-group">
+                                            <button type="submit" class="btn-form">Đặt</button>
+                                            <button type="button" class="btn-form cancel" id="cancelButton1">Hủy</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                </div>
+                           </div>
+                       </div>
+                      
+                       <div class="filter-container">
+                           <h4 class="mb-0">FILTER</h4>
+                           <div class="filter-item">
+                               <p class="filter-label m-0">Date:</p>
+                               <input class="form-control rangedatepicker" type="text" name="dates" value="" />
+                           </div>
+                           <div class="filter-item">
+                               <p class="filter-label m-0">Trạng thái:</p>
+                               <select class="form-control" name="status">
+                                   <option value="all">Tất cả</option>
+                                   <option value="pending">Sắp tới</option>
+                                   <option value="completed">Hoàn thành</option>
+                                   <option value="cancelled">Đã huỷ</option>
+                               </select>
+                           </div>
+                           <div class="filter-item">
+                               <p class="filter-label">Sắp xếp theo:</p>
+                               <select class="form-control" name="sort">
+                                   <option value="default">ID</option>
+                                   <option value="date">Ngày</option>
+                               </select>
+                           </div>
+                           </div>
+                           <div class="table-responsive">
+                            <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Họ và tên
+                                </th>
+                                <th>
+                                    SĐT
+                                </th>
+                                <th>
+                                    Lí do hẹn khám
+                                </th>
+                                <th>
+                                    Ngày
+                                </th>
+                                <th>
+                                    Giờ
+                                </th>
+                                <th>
+                                    Trạng thái
+                                </th>
+                                <th>
+                                    Hoạt động
+                                </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <td class="py-1">
+                                    BN1
+                                </td>
+                                <td>
+                                    Phạm Huê
+                                </td>
+                                <td>
+                                    0167577891
+                                </td>
+                                <td>
+                                    Nhổ răng khôn
+                                </td>
+                                <td>
+                                    15/5/2024
+                                </td>
+                                <td>
+                                    10:00 AM
+                                </td>
+                                <td>
+                                    <label class="badge badge-danger">Đã hủy</label>
+                                </td>
+                                <td class="action-icons">
+                                    <button class=" icon-button">
+                                      <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
+                                    </button>
+                                    
+                                    <button class=" icon-button">
+                                      <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                    </button>
+                                    
+                                    
+                                        <button class="des-btn icon-button" id="showFormButton2">
+                                            <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết" ></i> 
+                                        </button>
+                                        
+                                        <div class="overlay" id="overlay2">
+                                         <div class="form-popup" id="desForm">
+                                             <form class="form-container">
+                                                <div class="profile">
+                                                <h4 class="tilte-form">Chi tiết lịch hẹn</h4>
+                                                
+                                                </div>
+                                                <div class="form-section">
+                                                    <h6 class="form-subtitle">Thông tin cá nhân</h6>
+                                                    
+                                                        <div class="form-group2">
+                                                          <label>Id</label>
+                                                          <input type="text" value="BN1">
+                                                        </div>
+                                                        <div class="form-group2">
+                                                            <label>Họ và tên</label>
+                                                            <input type="text" value="Phạm Huê">
+                                                        </div>
+                                                        <div class="form-group2">
+                                                            <label>SĐT</label>
+                                                            <input type="text" value="0167577891">
+                                                        </div>
+                                                        <div class="form-group2">
+                                                            <label>Lí do hẹn khám</label>
+                                                            <input type="text" value="Nhổ răng khôn">
+                                                        </div>
+                                                        
+                                                          <div class="form-group2">
+                                                            <label>Giới tính</label>
+                                                            <input type="text" value="Nữ">
+                                                          </div>
+                                                          <div class="form-group2">
+                                                              <label>Tuổi</label>
+                                                              <input type="text" value="22 tuổi">
+                                                          </div>
+                                                        
+                                                    
+                                                </div>
+                                                <div class="form-section">
+                                                    <h6 class="form-subtitle">Thông tin lịch hẹn</h6>
+                                                    
+                                                        <div class="form-group2">
+                                                            <label>Ngày</label>
+                                                            <input type="text" value="15/5/2024">
+                                                        </div>
+                                                        <div class="form-group2">
+                                                            <label>Giờ</label>
+                                                            <input type="text" value="10:00 AM">
+                                                        </div>
+                                                        <div class="form-group2">
+                                                            <label>Trạng thái</label>
+                                                            <input type="text" value="Đã hủy">
+                                                        </div>
+                                                    
+                                                </div>
+                                                 
+                                                <div class="btn-group">
+                                                     <button type="button" class="btn-form cancel" id="cancelButton2">Đóng</button>
+                                                </div>
+                                             </form>
+                                         </div>
+                                        </div>
+                                </td>
+                                </tr>
+                                <tr>
+                                <td class="py-1">
+                                    BN2
+                                </td>
+                                <td>
+                                    Nguyễn Trang
+                                </td>
+                                <td>
+                                    0167577891
+                                </td>
+                                <td>
+                                    Nhổ răng hàm
+                                </td>
+                                <td>
+                                    15/5/2024
+                                </td>
+                                <td>
+                                    8:30 AM
+                                </td>
+                                <td>
+                                    <label class="badge badge-success">Hoàn thành</label>
+                                </td>
+                                <td class="action-icons">
+                                        
+                                    <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
+                                    <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                    <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i> 
+                                      
+                                </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-1">
+                                        BN3
+                                    </td>
+                                    <td>
+                                        Lê Hà
+                                    </td>
+                                    <td>
+                                        0167577891
+                                    </td>
+                                    <td>
+                                        Bọc răng sứ
+                                    </td>
+                                    <td>
+                                        15/7/2024
+                                    </td>
+                                    <td>
+                                        7:30 AM
+                                    </td>
+                                    <td>
+                                        <label class="badge badge-warning">Sắp tới</label>
+                                    </td>
+                                    <td class="action-icons">
+                                        
+                                        <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
+                                        <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                        <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i> 
+                                          
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-1">
+                                        BN4
+                                    </td>
+                                    <td>
+                                        Nguyễn Hiền
+                                    </td>
+                                    <td>
+                                        0167577891
+                                    </td>
+                                    <td>
+                                        Niềng răng
+                                    </td>
+                                    <td>
+                                        15/5/2024
+                                    </td>
+                                    <td>
+                                        10:30 AM
+                                    </td>
+                                    <td>
+                                        <label class="badge badge-success">Hoàn thành</label>
+                                    </td>
+                                    <td class="action-icons">
+                                        
+                                        <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
+                                        <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                        <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i> 
+                                          
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-1">
+                                        BN5
+                                    </td>
+                                    <td>
+                                        Nguyễn Vang
+                                    </td>
+                                    <td>
+                                        0867577891
+                                    </td>
+                                    <td>
+                                        Trồng implant
+                                    </td>
+                                    <td>
+                                        10/5/2024
+                                    </td>
+                                    <td>
+                                        9:30 AM
+                                    </td>
+                                    <td>
+                                        <label class="badge badge-success">Hoàn thành</label>
+                                    </td>
+                                    <td class="action-icons">
+                                        
+                                        <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
+                                        <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                        <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i> 
+                                          
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-1">
+                                        BN6
+                                    </td>
+                                    <td>
+                                        Lương Thu
+                                    </td>
+                                    <td>
+                                        0167577891
+                                    </td>
+                                    <td>
+                                        Nhổ răng khôn
+                                    </td>
+                                    <td>
+                                        15/5/2024
+                                    </td>
+                                    <td>
+                                        10:30 AM
+                                    </td>
+                                    <td>
+                                        <label class="badge badge-success">Hoàn thành</label>
+                                    </td>
+                                    <td class="action-icons">
+                                        
+                                        <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
+                                        <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                        <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i> 
+                                          
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-1">
+                                        BN7
+                                    </td>
+                                    <td>
+                                        Nguyễn Trang
+                                    </td>
+                                    <td>
+                                        0167577891
+                                    </td>
+                                    <td>
+                                        Nhổ răng sữa
+                                    </td>
+                                    <td>
+                                        15/5/2024
+                                    </td>
+                                    <td>
+                                        10:30 AM
+                                    </td>
+                                    <td>
+                                        <label class="badge badge-danger">Đã hủy</label>
+                                    </td>
+                                    <td class="action-icons">
+                                        
+                                        <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
+                                        <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                        <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
+                                          
+                                    </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                   </div>
+               </div>
+               </div>
+           </div>
+       </div>
+   </div>
+     <!-- main-panel ends -->
+   </div>
+   <!-- page-body-wrapper ends -->
+ </div>
+ <!-- container-scroller -->
+ <!-- base:js -->
+
+
+ <script type="text/javascript">
+   $('.rangedatepicker').daterangepicker({
+       alwaysShowCalendars: true,
+       locale: {
+           format: 'YYYY/MM/DD',
+       },
+       ranges: {
+           'Today'       : [moment(), moment()],
+           'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+           'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+           'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+           'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+       },
+       startDate: moment().startOf('month'),
+       endDate  : moment().endOf('month'),
+   });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      // Form 1
+      document.getElementById("showFormButton1").addEventListener("click", function() {
+          document.getElementById("overlay1").style.display = "flex";
+      });
+
+      document.getElementById("cancelButton1").addEventListener("click", function() {
+          document.getElementById("overlay1").style.display = "none";
+      });
+
+      // Form 2
+      document.getElementById("showFormButton2").addEventListener("click", function() {
+          document.getElementById("overlay2").style.display = "flex";
+      });
+
+      document.getElementById("cancelButton2").addEventListener("click", function() {
+          document.getElementById("overlay2").style.display = "none";
+      });
+  });
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    /*$('.des-btn').on('click', function() {
+        $('#overlay').css('display', 'flex');
+    });
+
+    $('#cancelButton').on('click', function() {
+        $('#overlay').css('display', 'none');
+    });*/
+</script>
+
+<script src="/vendors/js/vendor.bundle.base.js"></script>
+ <!-- endinject -->
+ <script src="/js/jquery.cookie.js" type="text/javascript"></script>
+ <!-- inject:js -->
+ <script src="/js/off-canvas.js"></script>
+ <script src="/js/hoverable-collapse.js"></script>
+ <script src="/js/template.js"></script>
+ <script src="/js/snippet.js"></script>
+ <!-- endinject -->
+</body>
+
+
+</html>
