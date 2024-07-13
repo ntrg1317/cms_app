@@ -22306,4 +22306,105 @@ dl li {
   margin-bottom: 0;
   margin-right: 15px;
 }
+
+/* Patient Profile */
+.time-line {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  list-style: none;
+  font-family: 'Lato', sans-serif;
+}
+
+.timeline-item:not(:last-child) {
+  padding-bottom: 3.75rem;
+}
+
+.timeline .timeline-item {
+  position: relative;
+  margin: 0;
+  padding-bottom: 20px;
+  font-size: 14px;
+  list-style: none;
+}
+
+.timeline-item .timeline-item-tail {
+  border-color: #e4e4e4;
+  width: 2px;
+}
+
+.timeline .timeline-item-tail {
+  position: absolute;
+  inset-block-start: 10px;
+  inset-inline-start: 4px;
+  height: calc(100% - 10px);
+  border-inline-start: 2px solid rgba(5, 5, 5, 0.06);
+}
+
+.timeline .timeline-item-head {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff;
+  border: 3px solid transparent;
+  border-radius: 50%;
+}
+
+
+.timeline-item .timeline-item-content {
+  margin-left: 3.21429rem;
+}
+
+.timeline .timeline-item-content {
+  position: relative;
+  inset-block-start: -7px;
+  margin-inline-start: 26px;
+  margin-inline-end: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  word-break: break-word;
+}
+
+/* Avatar profile */
+.profile-img-edit {
+  position: relative;
+  display: inline-block;
+  height: 150px;
+  width: 150px;
+}
+
+.profile-pic {
+  width: 150px;
+  display: block;
+  border-radius: 50%;
+}
+
+.p-image {
+  position: absolute;
+  top: auto;
+  right: 8px;
+  bottom: 10px;
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+  background: #6610f2;
+  color: #fff;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  line-height: 28px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.file-upload {
+  display: none;
+}
+
+.edit-profile.nav-pills .nav-link.active, .edit-profile.nav-pills .show>.nav-link {
+  color: #fff;
+  background-color: #6610f2;
+}
 /*# sourceMappingURL=maps/style.css.map */

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<div data-include="_header"></div>
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+<body>
+<div class="container-scroller d-flex">
+    <!-- partial:./partials/_sidebar.html -->
+    <div data-include="_sidebar"></div>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:./partials/_navbar.html -->
+        <div data-include="_navbar"></div>
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-lg-12 grid-margin stretch-card">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                              <li class="breadcrumb-item">Bệnh nhân</li>
+                              <li class="breadcrumb-item active" aria-current="page">Hồ sơ bệnh nhân</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row mb-4">
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="info-title">
+                                            <h4>Thông tin cá nhân</h4>
+                                        </div>
+                                        <hr>
+                                        <div class="info stack">
+                                            <form class="forms-sample">
+                                                <div class="form-group row">
+                                                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Họ và tên</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" readonly class="form-control" id="exampleInputUsername2" value="Phạm Huê">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Số điện thoại</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="email" readonly class="form-control" id="exampleInputEmail2" value="0167577891">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="exampleInputMobile" class="col-sm-3 col-form-label">Tuổi</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" readonly class="form-control" id="exampleInputMobile" value="22">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Địa chỉ</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" readonly class="form-control" id="exampleInputPassword2" value="3 Phương Mai, Đống Đa, việt Nam">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Lần khám cuối</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="date" readonly class="form-control" id="exampleInputConfirmPassword2" value="2024-05-15">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <button type="button" class="btn btn-primary w-100">
+                                                <span>Lưu thay đổi</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-sm-12">
+                                        <ul class="timeline">
+                                            <li class="timeline-item">
+                                                <div class="timeline-item-tail"></div>
+                                                <div class="timeline-item-head" style="border-color: red; color: red;"></div>
+                                                <div class="timeline-item-content">
+                                                    <div class="d-flex flex-column">
+                                                        <h4 class="m-0">Kiểm tra định kỳ</h4>
+                                                        <span class="text-base text-color-100">15/07/2024</span>
+                                                        <span class="text-base">Điều chỉnh dây cung và kiểm tra tiến độ.</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="timeline-item">
+                                                <div class="timeline-item-tail"></div>
+                                                <div class="timeline-item-head" style="border-color: blue; color: blue;"></div>
+                                                <div class="timeline-item-content">
+                                                    <div class="d-flex flex-column">
+                                                        <h4 class="m-0">Kiểm tra định kỳ</h4>
+                                                        <span class="text-base text-color-100">15/06/2024</span>
+                                                        <span class="text-base">Kiểm tra định kỳ và điều chỉnh lực niềng răng.</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="timeline-item">
+                                                <div class="timeline-item-tail"></div>
+                                                <div class="timeline-item-head" style="border-color: pink; color: pink;"></div>
+                                                <div class="timeline-item-content">
+                                                    <div class="d-flex flex-column">
+                                                        <h4 class="m-0">Niềng răng</h4>
+                                                        <span class="text-base text-color-100">19/05/2024</span>
+                                                        <span class="text-base">Bắt đầu quá trình niềng răng.</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="timeline-item">
+                                                <div class="timeline-item-tail"></div>
+                                                <div class="timeline-item-head" style="border-color: pink; color: pink;"></div>
+                                                <div class="timeline-item-content">
+                                                    <div class="d-flex flex-column">
+                                                        <h4 class="m-0">Nhổ răng</h4>
+                                                        <span class="text-base text-color-100">16/05/2024</span>
+                                                        <span class="text-base">Nhổ răng 4 để thêm khoảng trống kéo răng.</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="timeline-item">
+                                                <div class="timeline-item-tail"></div>
+                                                <div class="timeline-item-head" style="border-color: yellow; color: yellow;"></div>
+                                                <div class="timeline-item-content">
+                                                    <div class="d-flex flex-column">
+                                                        <h4 class="m-0">Lấy dấu răng</h4>
+                                                        <span class="text-base text-color-100">15/05/2024</span>
+                                                        <span class="text-base">Lấy dấu răng để làm mẫu và thiết kế kế hoạch điều trị.</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="timeline-item">
+                                                <div class="timeline-item-tail"></div>
+                                                <div class="timeline-item-head" style="border-color: blue; color: blue;"></div>
+                                                <div class="timeline-item-content">
+                                                    <div class="d-flex flex-column">
+                                                        <h4 class="m-0">Chụp X-quang</h4>
+                                                        <span class="text-base text-color-100">15/05/2024</span>
+                                                        <span class="text-base">Chụp X-quang để lập kế hoạch điều trị.</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="timeline-item timeline-item-last">
+                                                <div class="timeline-item-tail"></div>
+                                                <div class="timeline-item-head" style="border-color: red; color: red;"></div>
+                                                <div class="timeline-item-content">
+                                                    <div class="d-flex flex-column">
+                                                        <h4 class="m-0">Khám tư vấn</h4>
+                                                        <span class="text-base text-color-100">15/05/2024</span>
+                                                        <span class="text-base">Khám tư vấn về niềng răng, bác sĩ đánh giá tình trạng răng miệng.</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-header" style="background-color: white;">
+                                <h2 class="card-title mt-2">Hoá đơn</h2>
+                            </div>
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Ngày</th>
+                                            <th>Mô Tả</th>
+                                            <th>Số Tiền (VND)</th>
+                                            <th>Trạng Thái</th>
+                                            <th>Dư Nợ (VND)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>15/05/2024</td>
+                                            <td>Khám tư vấn</td>
+                                            <td>200,000</td>
+                                            <td>
+                                                <button class="btn btn-outline-success btn-sm">Đã thanh toán</button>
+                                            </td>
+                                            <td>0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>15/05/2024</td>
+                                            <td>Lấy dấu răng & Chụp X-quang</td>
+                                            <td>300,000</td>
+                                            <td>
+                                                <button class="btn btn-outline-success btn-sm">Đã thanh toán</button>
+                                            </td>
+                                            <td>0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>16/05/2024</td>
+                                            <td>Niềng răng</td>
+                                            <td>15,000,000</td>
+                                            <td>
+                                                <button class="btn btn-outline-danger btn-sm">Trả góp</button>
+                                            </td>
+                                            <td>12,000,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>15/06/2024</td>
+                                            <td>Kiểm tra định kỳ</td>
+                                            <td>1,000,000</td>
+                                            <td>
+                                                <button class="btn btn-outline-danger btn-sm">Trả góp</button>
+                                            </td>
+                                            <td>11,000,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>15/07/2024</td>
+                                            <td>Kiểm tra định kỳ</td>
+                                            <td>1,000,000</td>
+                                            <td>
+                                                <button class="btn btn-outline-danger btn-sm">Trả góp</button>
+                                            </td>
+                                            <td>10,000,000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- main-panel ends -->
+<div data-include="_script"></div>
+<script>
+$(function () {
+    var includes = $('[data-include]');
+    $.each(includes, function () {
+        var container = $(this);
+        var file = '/partials/' + container.data('include') + '.html';
+        
+        $.get(file, function(data) {
+            container.replaceWith(data);
+        });
+    });
+});
+</script>
+</body>
+</html>
