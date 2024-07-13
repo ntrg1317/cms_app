@@ -22296,4 +22296,14 @@ dl li {
   }
 }
 
+.filter-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-label p {
+  margin-bottom: 0;
+  margin-right: 15px;
+}
 /*# sourceMappingURL=maps/style.css.map */

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<div data-include="_header"></div>
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+<body>
+<div class="container-scroller d-flex">
+    <!-- partial:./partials/_sidebar.html -->
+    <div data-include="_sidebar"></div>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:./partials/_navbar.html -->
+        <div data-include="_navbar"></div>
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-lg-12 grid-margin stretch-card">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                              <li class="breadcrumb-item">Bệnh nhân</li>
+                              <li class="breadcrumb-item active" aria-current="page">Danh sách bệnh nhân</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-direction-row justify-content-between">
+                                <div class="col-lg-8 grid-margin stretch-card">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control border rounded-pill" placeholder="Search Here..." aria-label="search" aria-describedby="search">
+                                        </div>
+                                </div>
+                                <div class="col-lg-2 grid-margin stretch-card justify-content-center">
+                                    <button type="button" class="btn btn-light btn-icon-text">
+                                        <i class="mdi mdi-printer btn-icon-prepend"></i>
+                                        In tất cả
+                                    </button>
+                                </div>
+                                <div class="col-lg-2 grid-margin stretch-card justify-content-center">
+                                    <button type="button" class="btn btn-primary btn-icon-text">
+                                        <i class="mdi mdi-plus btn-icon-prepend"></i>
+                                        Thêm bệnh nhân
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="filter-container">
+                                <h4 class="mb-0">FILTER</h4>
+                                <div class="filter-item">
+                                    <p class="filter-label m-0">Trạng thái:</p>
+                                    <select class="form-control" name="status">
+                                        <option value="all">Tất cả</option>
+                                        <option value="pending">Sắp tới</option>
+                                        <option value="completed">Hoàn thành</option>
+                                        <option value="cancelled">Đã huỷ</option>
+                                    </select>
+                                </div>
+                                <div class="filter-item">
+                                    <p class="filter-label">Sắp xếp theo:</p>
+                                    <select class="form-control" name="sort">
+                                        <option value="default">ID</option>
+                                        <option value="date">Ngày</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                    <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                        <th>
+                                            ID
+                                        </th>
+                                        <th>
+                                            Họ và tên
+                                        </th>
+                                        <th>
+                                            SĐT
+                                        </th>
+                                        <th>
+                                            Tuổi
+                                        </th>
+                                        <th>
+                                            Địa chỉ
+                                        </th>
+                                        <th>
+                                            Lần khám cuối
+                                        </th>
+                                        <th>
+                                            Trạng thái
+                                        </th>
+                                        <th>
+                                            Hành động
+                                        </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                        <td class="py-1">
+                                            BN1
+                                        </td>
+                                        <td>
+                                            Phạm Huê
+                                        </td>
+                                        <td>
+                                            0167577891
+                                        </td>
+                                        <td>
+                                            22
+                                        </td>
+                                        <td>
+                                            3 Phương Mai, Đống Đa, việt Nam
+                                        </td>
+                                        <td>
+                                            15/5/2024
+                                        </td>
+                                        <td>
+                                            <label class="badge badge-danger">Đã hủy</label>
+                                        </td>
+                                        <td class="d-flex" style="gap: 5px;">
+                                            <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-del-patient">
+                                                <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon" data-bs-toggle="modal" data-bs-target="#add-patient">
+                                                <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                                <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
+                                            </button>
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                        <td class="py-1">
+                                            BN2
+                                        </td>
+                                        <td>
+                                            Nguyễn Trang
+                                        </td>
+                                        <td>
+                                            0167577891
+                                        </td>
+                                        <td>
+                                            22
+                                        </td>
+                                        <td>
+                                            19 Nguyễn Ngọc Doãn, Đống Đa, Việt Nam
+                                        </td>
+                                        <td>
+                                            15/5/2024
+                                        </td>
+                                        <td>
+                                            <label class="badge badge-success">Hoàn thành</label>
+                                        </td>
+                                        <td class="d-flex" style="gap: 5px;">
+                                            <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                                <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon">
+                                                <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                                <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
+                                            </button>
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-1">
+                                                BN3
+                                            </td>
+                                            <td>
+                                                Lê Hà
+                                            </td>
+                                            <td>
+                                                0167577891
+                                            </td>
+                                            <td>
+                                                22
+                                            </td>
+                                            <td>
+                                                19 Nguyễn Ngọc Doãn, Đống Đa, Việt Nam
+                                            </td>
+                                            <td>
+                                                15/5/2024
+                                            </td>
+                                            <td>
+                                                <label class="badge badge-warning">Sắp tới</label>
+                                            </td>
+                                            <td class="d-flex" style="gap: 5px;">
+                                                <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                                    <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon">
+                                                    <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                                    <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-1">
+                                                BN4
+                                            </td>
+                                            <td>
+                                                Nguyễn Hiền
+                                            </td>
+                                            <td>
+                                                0167577891
+                                            </td>
+                                            <td>
+                                                22
+                                            </td>
+                                            <td>
+                                                19 Nguyễn Ngọc Doãn, Đống Đa, Việt Nam
+                                            </td>
+                                            <td>
+                                                15/5/2024
+                                            </td>
+                                            <td>
+                                                <label class="badge badge-success">Hoàn thành</label>
+                                            </td>
+                                            <td class="d-flex" style="gap: 5px;">
+                                                <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                                    <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon">
+                                                    <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                                    <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-1">
+                                                BN5
+                                            </td>
+                                            <td>
+                                                Nguyễn Vang
+                                            </td>
+                                            <td>
+                                                0867577891
+                                            </td>
+                                            <td>
+                                                22
+                                            </td>
+                                            <td>
+                                                19 Nguyễn Ngọc Doãn, Đống Đa, Việt Nam
+                                            </td>
+                                            <td>
+                                                15/5/2024
+                                            </td>
+                                            <td>
+                                                <label class="badge badge-success">Hoàn thành</label>
+                                            </td>
+                                            <td class="d-flex" style="gap: 5px;">
+                                                <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                                    <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon">
+                                                    <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                                    <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-1">
+                                                BN6
+                                            </td>
+                                            <td>
+                                                Lương Thu
+                                            </td>
+                                            <td>
+                                                0167577891
+                                            </td>
+                                            <td>
+                                                22
+                                            </td>
+                                            <td>
+                                                19 Nguyễn Ngọc Doãn, Đống Đa, Việt Nam
+                                            </td>
+                                            <td>
+                                                15/5/2024
+                                            </td>
+                                            <td>
+                                                <label class="badge badge-success">Hoàn thành</label>
+                                            </td>
+                                            <td class="d-flex" style="gap: 5px;">
+                                                <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                                    <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon">
+                                                    <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                                    <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-1">
+                                                BN7
+                                            </td>
+                                            <td>
+                                                Nguyễn Trang
+                                            </td>
+                                            <td>
+                                                0167577891
+                                            </td>
+                                            <td>
+                                                22
+                                            </td>
+                                            <td>
+                                                19 Nguyễn Ngọc Doãn, Đống Đa, Việt Nam
+                                            </td>
+                                            <td>
+                                                15/5/2024
+                                            </td>
+                                            <td>
+                                                <label class="badge badge-danger">Đã hủy</label>
+                                            </td>
+                                            <td class="d-flex" style="gap: 5px;">
+                                                <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                                    <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon">
+                                                    <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                                    <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- Modal confirm delete -->
+                                <div class="modal fade" id="confirm-del-patient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content border-0">   
+                                            <div class="modal-body p-0">
+                                                <div class="card border-0 p-sm-3 p-2 justify-content-center">
+                                                    <div class="card-header pb-0 bg-white border-0 d-flex flex-column justify-content-center align-items-center">
+                                                        <button type="button" class="btn btn-inverse-dark btn-icon mb-3">
+                                                            <i class="mdi mdi-alert text-center"></i>
+                                                        </button>
+                                                        <h4 class="font-weight-bold mb-2 text-center">Bạc có chắc chắn muốn xoá bệnh nhân này?</h4>
+                                                    </div>
+                                                    <div class="card-body px-sm-4 mb-2 pt-1 pb-0">
+                                                        <div class="content">
+                                                            <form class="infos">
+                                                                <div class="info row">
+                                                                    <span class="col-sm-3 col-form-label">Bệnh nhân:</span>
+                                                                    <span class="col-sm-9 col-form-label">Phạm Huê</span>
+                                                                </div>
+                                                                <div class="info row">
+                                                                    <span class="col-sm-3 col-form-label">SĐT:</span>
+                                                                    <span class="col-sm-9 col-form-label">0167577891</span>
+                                                                </div>
+                                                                <div class="info row">
+                                                                    <span class="col-sm-3 col-form-label">Tuổi:</span>
+                                                                    <span class="col-sm-9 col-form-label">22</span>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="row justify-content-end no-gutters">
+                                                            <div class="col-auto">
+                                                                <button type="button" class="btn close btn-light text-muted" data-bs-dismiss="modal">Cancel</button>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <button type="button" class="btn btn-danger px-4" data-dismiss="modal">Delete</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>  
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal add -->
+                                <div class="modal fade" id="add-patient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Sửa thông tin bệnh nhân</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="forms-sample">
+                                                <div class="form-group row">
+                                                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Họ và tên</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="exampleInputUsername2" value="Phạm Huê">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Số điện thoại</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="email" class="form-control" id="exampleInputEmail2" value="0167577891">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="exampleInputMobile" class="col-sm-3 col-form-label">Tuổi</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="exampleInputMobile" value="22">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Địa chỉ</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="exampleInputPassword2" value="3 Phương Mai, Đống Đa, việt Nam">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Lần khám cuối</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="date" class="form-control" id="exampleInputConfirmPassword2" value="2024-05-15">
+                                                    </div>
+                                                </div>
+                                              </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                                        <button type="button" class="btn btn-primary">Lưu thay đổi</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- main-panel ends -->
+<div data-include="_script"></div>
+<script>
+$(function () {
+    var includes = $('[data-include]');
+    $.each(includes, function () {
+        var container = $(this);
+        var file = '/partials/' + container.data('include') + '.html';
+        
+        $.get(file, function(data) {
+            container.replaceWith(data);
+        });
+    });
+});
+</script>
+</body>
+</html>
