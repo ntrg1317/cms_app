@@ -202,6 +202,13 @@
       .label{
         align-content: center;
       }
+
+      .select-option{
+          flex: 2;
+          padding: 5px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+      }
    </style>
 
 
@@ -598,6 +605,16 @@
                                             </div>
                                         </div>
                                         
+                                        
+                                          <label>Trạng thái</label>
+                                           <select id="options" name="options" class="select-option" required>
+                                               <option value="" disabled selected>Đã hủy</option>
+                                               <option value="option1">Đã hủy</option>
+                                               <option value="option2">Hoàn thành</option>
+                                               <option value="option3">Sắp tới</option>
+                                           </select>
+                                        
+
                                         <div class="group-2-form">
                                             <div class="group-form small-input-form">
                                                 <label for="date">Ngày</label>
@@ -701,10 +718,78 @@
                                       <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
                                     </button>
                                     
-                                    <button class=" icon-button">
+                                    <button class=" icon-button" id="showFormButton3">
                                       <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
                                     </button>
                                     
+                                    <div class="overlay" id="overlay3">
+                                      <div class="form-popup" id="desForm">
+                                          <form class="form-container">
+                                             <div class="profile">
+                                             <h4 class="tilte-form">Chỉnh sửa lịch hẹn</h4>
+                                             
+                                             </div>
+                                             <div class="form-section">
+                                                 <h6 class="form-subtitle">Thông tin cá nhân</h6>
+                                                 
+                                                     <div class="form-group2">
+                                                       <label>ID</label>
+                                                       <input type="text" value="BN1">
+                                                     </div>
+                                                     <div class="form-group2">
+                                                         <label>Họ và tên</label>
+                                                         <input type="text" value="Phạm Huê">
+                                                     </div>
+                                                     <div class="form-group2">
+                                                         <label>SĐT</label>
+                                                         <input type="text" value="0167577891">
+                                                     </div>
+                                                     <div class="form-group2">
+                                                         <label>Lí do hẹn khám</label>
+                                                         <input type="text" value="Nhổ răng khôn">
+                                                     </div>
+                                                     
+                                                       <div class="form-group2">
+                                                         <label>Giới tính</label>
+                                                         <input type="text" value="Nữ">
+                                                       </div>
+                                                       <div class="form-group2">
+                                                           <label>Tuổi</label>
+                                                           <input type="text" value="22 tuổi">
+                                                       </div>
+                                                     
+                                                 
+                                             </div>
+                                             <div class="form-section">
+                                                 <h6 class="form-subtitle">Thông tin lịch hẹn</h6>
+                                                 
+                                                     <div class="form-group2">
+                                                         <label>Ngày</label>
+                                                         <input type="text" value="15/5/2024">
+                                                     </div>
+                                                     <div class="form-group2">
+                                                         <label>Giờ</label>
+                                                         <input type="text" value="10:00 AM">
+                                                     </div>
+                                                     <div class="form-group2">
+                                                         <label>Trạng thái</label>
+                                                          <select id="options" name="options" class="select-option" required>
+                                                              <option value="" disabled selected>Đã hủy</option>
+                                                              <option value="option1">Đã hủy</option>
+                                                              <option value="option2">Hoàn thành</option>
+                                                              <option value="option3">Sắp tới</option>
+                                                          </select>
+                                                     </div>
+                                                 
+                                             </div>
+                                              
+                                             <div class="btn-group">
+                                                  <button type="submit" class="btn-form">Lưu</button>
+                                                  <button type="button" class="btn-form cancel" id="cancelButton3">Đóng</button>
+                                             </div>
+                                          </form>
+                                      </div>
+                                     </div>
                                     
                                         <button class="des-btn icon-button" id="showFormButton2">
                                             <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết" ></i> 
@@ -721,7 +806,7 @@
                                                     <h6 class="form-subtitle">Thông tin cá nhân</h6>
                                                     
                                                         <div class="form-group2">
-                                                          <label>Id</label>
+                                                          <label>ID</label>
                                                           <input type="text" value="BN1">
                                                         </div>
                                                         <div class="form-group2">
@@ -1009,6 +1094,15 @@
       document.getElementById("cancelButton2").addEventListener("click", function() {
           document.getElementById("overlay2").style.display = "none";
       });
+
+      // Form 3
+      document.getElementById("showFormButton3").addEventListener("click", function() {
+        document.getElementById("overlay3").style.display = "flex";
+    });
+
+    document.getElementById("cancelButton3").addEventListener("click", function() {
+        document.getElementById("overlay3").style.display = "none";
+    });
   });
 </script>
 
