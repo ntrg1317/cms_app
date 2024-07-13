@@ -11,7 +11,7 @@
               <span></span>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="/index.html">
                 <i class="mdi mdi-view-quilt menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
               </a>
@@ -22,12 +22,19 @@
                 <span class="menu-title">Hoá đơn</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/views/patients.html">
-                <i class="mdi mdi-hotel menu-icon"></i>
+            <li class="nav-item nav-item">
+              <a class="nav-link" data-bs-toggle="collapse" href="#human-resources" aria-expanded="false" aria-controls="human-resources">
+                <i class="mdi mdi-account-multiple menu-icon"></i>
                 <span class="menu-title">Bệnh nhân</span>
+                <i class="menu-arrow"></i>
               </a>
-            </li>
+              <div class="collapse" id="human-resources">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="/views/patients/all-patients.html">Danh sách bệnh nhân</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="/views/patients/patient-profile.html">Hồ sơ bệnh nhân</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="/views/patients/add-patients.html">Thêm bệnh nhân</a></li>
+                </ul>
+              </div>
             </li>
             <li class="nav-item nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#human-resources" aria-expanded="false" aria-controls="human-resources">
