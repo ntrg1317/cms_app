@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Spica Admin</title>
+        <!-- base:css -->
+        <link rel="stylesheet" href="/vendors/mdi/css/materialdesignicons.min.css">
+        <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
+        <!-- endinject -->
+        <!-- inject:css -->
+        <link rel="stylesheet" href="/css/style.css">
+        <!-- endinject -->
+        <link rel="shortcut icon" href="/images/favicon.png" />
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    
+        <style>
+            /* CSS để làm mờ nền và hiển thị form */
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                display: none;
+                justify-content: right;
+                align-items: center;
+            }
+    
+    
+            .form-container {
+                background: white;
+                padding: 10px;
+                border-radius: 10px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                min-width: 950px;
+                width: 100%;
+                border: 1px solid #597ab7;
+            }
+    
+            /*css add appointment form */
+            .tilte-form {
+            text-align: center;
+            }
+    
+            .form-container input[type=text],
+            .form-container input[type=email],
+            .form-container input[type=tel],
+            .form-container input[type=number],
+            .form-container input[type=date],
+            .form-container input[type=time] {
+                width: 100%;
+                padding: 5px;
+                margin: 5px 0 5px 0;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-sizing: border-box;
+            }
+    
+            .form-container input[type=radio] {
+                margin-right: 5px;
+            }
+    
+            .form-container .btn-form {
+                background-color: #6640b2;
+                color: white;
+                border: none;
+                cursor: pointer;
+                padding: 6px;
+                margin: 5px 0;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+    
+            .btn-form {
+                min-width: 140px;
+            }
+            .form-container .btn-form:hover {
+                background-color: #5630a3;
+            }
+    
+            .form-container .cancel {
+                background-color: #b1a7a6;
+            }
+    
+            .form-container .cancel:hover {
+                background-color: #8d8684;
+            }
+    
+            .form-container .gender-group,
+            .form-container .appointment-group {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 15px;
+            }
+    
+            .form-container .gender-group input,
+            .form-container .appointment-group input {
+                margin-left: 10px;
+            }
+    
+            .form-container .gender-group label,
+            .form-container .appointment-group label {
+                margin-right: 10px;
+            }
+    
+            .group-2-form{
+                display: flex;
+                justify-content: space-between;
+            }
+    
+            .small-input-form{
+                width: 185px;
+            }
+    
+            .gender-group{
+                display: flex;
+                align-items: center;
+                gap: 10px; /* khoảng cách giữa các radio button */
+            }
+            
+            .gender-group input[type="radio"]{
+                margin-top:0;
+                transform: scale(1.2); /* để radio button lớn hơn nếu cần */
+            }
+            
+            .gender-group label{
+                margin: 0;
+                font-weight: normal;
+                color: #2d6a4f;
+            }
+    
+            .btn-group{
+                display: flex;
+                justify-content: space-around;
+            }
+    
+            .gender-label{
+                margin-bottom: 15px;
+            }
+    
+            .time-form{
+                min-width: 185px;
+                max-height: 42px;
+            }
+    
+            .icon-button {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                border: none;
+                background: none;
+                padding: 0;
+            }
+    
+            .icon-button:hover {
+                color: #007bff; /* Optional: Change color on hover */
+            }
+    
+            /*css des appointment form */
+    
+            .form-section {
+                margin-top: 10px;
+            }
+            
+            .form-subtitle{
+                margin-bottom: 5px;
+                color: #353535;
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 5px;
+            }
+            
+            .form-group2 {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 0 10px;  
+            }
+            
+            .form-group2 label {
+                flex: 1;
+                color: black;
+            }
+            
+            .form-group2 input {
+                flex: 2;
+                padding: 5px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+            
+            .label{
+                align-content: center;
+            }
+        
+            .select-option{
+                flex: 2;
+                padding: 5px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                margin: 5px 0 5px 0;
+            }
+
+            .col-form{
+                flex: 1;
+            }
+        
+        /* Cố định kích thước cho ô selection */
+            .select-container {
+            width: 100%;
+            margin: 5px 0;
+            }
+            
+            /* Hiển thị label và selection trên cùng một dòng */
+            .select-container label {
+            display: inline-block;
+            margin-right: 10px;
+            }
+            
+            /* Hiển thị ô selection kéo dài 100% */
+            .select-container select {
+            width: 100%;
+            }
+            
+            /* Chuyển label và selection xuống một dòng mới */
+            .select-container {
+            flex-direction: column;
+            }
+            
+            /* Căn chỉnh label và selection */
+            .select-container label {
+            align-self: flex-start;
+            }
+            
+            .select-container select {
+            align-self: stretch;
+            }
+
+            .col2-form-section{
+                display: flex;
+            }
+
+
+            .title-table{
+                margin-top: 10px;
+            }
+
+            .find-btn-form{
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+            
+    </style>
+    
+    
+    </head>
+    <body>
+    <div class="container-scroller d-flex">
+        <!-- partial:./partials/_sidebar.html -->
+        <div data-include="_sidebar"></div>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:./partials/_navbar.html -->
+            <div data-include="_navbar"></div>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Hóa đơn</li>
+                                </ol>
+                            </nav>
+                        </div>
+                        <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-direction-row justify-content-between">
+                                    <div class="col-lg-8 grid-margin stretch-card">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control border rounded-pill" placeholder="Search Here..." aria-label="search" aria-describedby="search">
+                                            </div>
+                                    </div>
+                                    <div class="col-lg-2 grid-margin stretch-card justify-content-center">
+                                        <button type="button" class="btn btn-light btn-icon-text">
+                                            <i class="mdi mdi-printer btn-icon-prepend"></i>
+                                            In tất cả
+                                        </button>
+                                    </div>
+                                    <div class="col-lg-2 grid-margin stretch-card justify-content-center">
+                                        <button type="button" class="btn btn-primary btn-icon-text" id="showFormButton1">
+                                            <i class="mdi mdi-plus btn-icon-prepend"></i>
+                                            Tạo hóa đơn
+                                        </button>
+                                        <div class="overlay" id="overlay1">
+                                            <div class="form-popup" id="desForm">
+                                                <form class="form-container">
+                                                    <div class="profile">
+                                                        <h4 class="tilte-form">Tạo hóa đơn</h4>
+                                                    </div>
+
+                                                    <div class="find-btn-form">
+                                                        <div class="col2-form-section">
+                                                            <div class="form-group2 col-form">
+                                                                <label style="min-width: 120px;" class="find-btn-form1">SĐT bệnh nhân</label>
+                                                                <input type="tel" placeholder="Nhập số điện thoại" name="phone" class="find-btn-form1" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col2-form-section">
+                                                            <div class=" col-form">
+                                                                <button type="submit" class="btn-form find-btn-form1">Tìm kiếm</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-section">
+                                                        <h6 class="form-subtitle">Thông tin cá nhân</h6>
+                                                        <div class="col2-form-section">
+                                                            <div class="form-group2 col-form">
+                                                                <label>Họ và tên</label>
+                                                                <input type="text" value="Phạm Huê">
+                                                            </div>
+                                                            <div class="form-group2 col-form">
+                                                                <label>Địa chỉ</label>
+                                                                <input type="text" value="Đống Đa, Hà Nội, Việt Nam">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col2-form-section">
+                                                            <div class="form-group2 col-form">
+                                                                <label>Giới tính</label>
+                                                                <input type="text" value="Nữ">
+                                                            </div>
+                                                            <div class="form-group2 col-form">
+                                                                <label>Tuổi</label>
+                                                                <input type="text" value="22 tuổi">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <div class="form-section">
+                                                        <h6 class="form-subtitle">Thông tin hóa đơn</h6>
+                                                            
+                                                            <div class="col2-form-section">
+                                                                <div class="form-group2 col-form">
+                                                                    <label for="date">Ngày</label>
+                                                                    <input type="date" name="date" value="2024-05-15" >
+                                                                </div>
+                                                                <div class="form-group2 col-form">
+                                                                    <label>Giờ</label>
+                                                                    <input type="time" name="time" value="10:00">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col2-form-section">
+                                                                
+                                                                <div class="form-group2 col-form">
+                                                                    <label>Tổng tiền</label>
+                                                                    <input type="text" value="1 500 000 VNĐ">
+                                                                </div>
+                                                                <div class="form-group2 col-form">
+                                                                    <label>Tiền thanh toán</label>
+                                                                    <input type="text" value="980 000 VNĐ">
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        
+                                                    </div>
+
+                                                    <h6 class="form-subtitle title-table">Chi tiết dịch vụ sử dụng</h6>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped">
+                                                            <thead>
+                                                                <tr>
+                                                                <th>
+                                                                    Mã dịch vụ
+                                                                </th>
+                                                                <th>
+                                                                    Tên dịch vụ
+                                                                </th>
+                                                                <th>
+                                                                    Số lượng
+                                                                </th>
+                                                                <th>
+                                                                    Ngày sử dụng
+                                                                </th>
+                                                                <th>
+                                                                    Giá tiền
+                                                                </th>
+                                                                <th>
+                                                                    Hoạt động
+                                                                </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                <td class="py-1">
+                                                                    DV101
+                                                                </td>
+                                                                <td>
+                                                                    Cắt lợi trùm
+                                                                </td>
+                                                                <td>
+                                                                    2
+                                                                </td>
+                                                                <td>
+                                                                    15/5/2024
+                                                                </td>
+                                                                <td>
+                                                                    500 000 VNĐ
+                                                                </td>
+                                                                <td class="action-icons">
+                                                
+                                                                    <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
+                                                                    <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                                                    <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i> 
+                                                                    
+                                                                </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="py-1">
+                                                                        DV109
+                                                                    </td>
+                                                                    <td>
+                                                                        Nhổ răng khôn
+                                                                    </td>
+                                                                    <td>
+                                                                        1
+                                                                    </td>
+                                                                    <td>
+                                                                        15/5/2024
+                                                                    </td>
+                                                                    <td>
+                                                                        1 000 000 VNĐ
+                                                                    </td>
+                                                                <td class="action-icons">
+                                                
+                                                                    <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
+                                                                    <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                                                    <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i> 
+                                                                    
+                                                                </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                    <div class="btn-group">
+                                                        <button type="submit" class="btn-form">Lưu</button>
+                                                        <button type="button" class="btn-form cancel" id="cancelButton1">Đóng</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class="filter-container">
+                                    <h4 class="mb-0">FILTER</h4>
+                                    <div class="filter-item">
+                                        <p class="filter-label m-0">Date:</p>
+                                        <input class="form-control rangedatepicker" type="text" name="dates" value="" />
+                                    </div>
+                                    <div class="filter-item">
+                                        <p class="filter-label m-0">Trạng thái:</p>
+                                        <select class="form-control" name="status">
+                                            <option value="all">Tất cả</option>
+                                            <option value="pending">Sắp tới</option>
+                                            <option value="completed">Hoàn thành</option>
+                                            <option value="cancelled">Đã huỷ</option>
+                                        </select>
+                                    </div>
+                                    <div class="filter-item">
+                                        <p class="filter-label">Sắp xếp theo:</p>
+                                        <select class="form-control" name="sort">
+                                            <option value="default">ID</option>
+                                            <option value="date">Ngày</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                            <th>
+                                                ID
+                                            </th>
+                                            <th>
+                                                Họ và tên
+                                            </th>
+                                            <th>
+                                                SĐT
+                                            </th>
+                                            <th>
+                                                Ngày thanh toán
+                                            </th>
+                                            <th>
+                                                Giờ
+                                            </th>
+                                            <th>
+                                                Tiền thanh toán
+                                            </th>
+                                            <th>
+                                                Hoạt động
+                                            </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                            <td class="py-1">
+                                                HD101
+                                            </td>
+                                            <td>
+                                                Phạm Huê
+                                            </td>
+                                            <td>
+                                                0167577891
+                                            </td>
+                                            <td>
+                                                15/5/2024
+                                            </td>
+                                            <td>
+                                                10:00 AM
+                                            </td>
+                                            <td>
+                                                980 000 VNĐ
+                                            </td>
+                                            <td class="action-icons">
+                                                <button class=" icon-button">
+                                                <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
+                                                </button>
+                                                
+                                                <button class=" icon-button" id="showFormButton3">
+                                                <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                                </button>
+                                                
+                                                <div class="overlay" id="overlay3">
+                                                <div class="form-popup" id="desForm">
+                                                    <form class="form-container">
+                                                        <div class="profile">
+                                                            <h4 class="tilte-form">Chỉnh sửa hóa đơn</h4>
+                                                        </div>
+
+                                                        <div class="form-section">
+                                                            <h6 class="form-subtitle">Thông tin cá nhân</h6>
+                                                            <div class="col2-form-section">
+                                                                <div class="form-group2 col-form">
+                                                                    <label>Họ và tên</label>
+                                                                    <input type="text" value="Phạm Huê">
+                                                                </div>
+                                                                <div class="form-group2 col-form">
+                                                                    <label>Địa chỉ</label>
+                                                                    <input type="text" value="Đống Đa, Hà Nội, Việt Nam">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col2-form-section">
+                                                                <div class="form-group2 col-form">
+                                                                    <label>Giới tính</label>
+                                                                    <input type="text" value="Nữ">
+                                                                </div>
+                                                                <div class="form-group2 col-form">
+                                                                    <label>Tuổi</label>
+                                                                    <input type="text" value="22 tuổi">
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <div class="form-section">
+                                                            <h6 class="form-subtitle">Thông tin hóa đơn</h6>
+                                                                
+                                                                <div class="col2-form-section">
+                                                                    <div class="form-group2 col-form">
+                                                                        <label for="date">Ngày</label>
+                                                                        <input type="date" name="date" value="2024-05-15" >
+                                                                    </div>
+                                                                    <div class="form-group2 col-form">
+                                                                        <label>Giờ</label>
+                                                                        <input type="time" name="time" value="10:00">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col2-form-section">
+                                                                    
+                                                                    <div class="form-group2 col-form">
+                                                                        <label>Tổng tiền</label>
+                                                                        <input type="text" value="1 500 000 VNĐ">
+                                                                    </div>
+                                                                    <div class="form-group2 col-form">
+                                                                        <label>Tiền thanh toán</label>
+                                                                        <input type="text" value="980 000 VNĐ">
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            
+                                                        </div>
+
+                                                        <h6 class="form-subtitle title-table">Chi tiết dịch vụ sử dụng</h6>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-striped">
+                                                                <thead>
+                                                                    <tr>
+                                                                    <th>
+                                                                        Mã dịch vụ
+                                                                    </th>
+                                                                    <th>
+                                                                        Tên dịch vụ
+                                                                    </th>
+                                                                    <th>
+                                                                        Số lượng
+                                                                    </th>
+                                                                    <th>
+                                                                        Ngày sử dụng
+                                                                    </th>
+                                                                    <th>
+                                                                        Giá tiền
+                                                                    </th>
+                                                                    <th>
+                                                                        Hoạt động
+                                                                    </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                    <td class="py-1">
+                                                                        DV101
+                                                                    </td>
+                                                                    <td>
+                                                                        Cắt lợi trùm
+                                                                    </td>
+                                                                    <td>
+                                                                        2
+                                                                    </td>
+                                                                    <td>
+                                                                        15/5/2024
+                                                                    </td>
+                                                                    <td>
+                                                                        500 000 VNĐ
+                                                                    </td>
+                                                                    <td class="action-icons">
+                                                    
+                                                                        <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
+                                                                        <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                                                        <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i> 
+                                                                        
+                                                                    </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="py-1">
+                                                                            DV109
+                                                                        </td>
+                                                                        <td>
+                                                                            Nhổ răng khôn
+                                                                        </td>
+                                                                        <td>
+                                                                            1
+                                                                        </td>
+                                                                        <td>
+                                                                            15/5/2024
+                                                                        </td>
+                                                                        <td>
+                                                                            1 000 000 VNĐ
+                                                                        </td>
+                                                                    <td class="action-icons">
+                                                    
+                                                                        <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
+                                                                        <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                                                        <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i> 
+                                                                        
+                                                                    </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                        <div class="btn-group">
+                                                            <button type="submit" class="btn-form">Lưu</button>
+                                                            <button type="button" class="btn-form cancel" id="cancelButton3">Đóng</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                </div>
+                                                
+                                                    <button class="des-btn icon-button" id="showFormButton2">
+                                                        <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết" ></i> 
+                                                    </button>
+                                                    
+                                                    <div class="overlay" id="overlay2">
+                                                        <div class="form-popup" id="desForm">
+                                                            <form class="form-container">
+                                                                <div class="profile">
+                                                                    <h4 class="tilte-form">Chi tiết hóa đơn</h4>
+                                                                </div>
+        
+                                                                <div class="form-section">
+                                                                    <h6 class="form-subtitle">Thông tin cá nhân</h6>
+                                                                    <div class="col2-form-section">
+                                                                        <div class="form-group2 col-form">
+                                                                            <label>Họ và tên</label>
+                                                                            <input type="text" value="Phạm Huê">
+                                                                        </div>
+                                                                        <div class="form-group2 col-form">
+                                                                            <label>Địa chỉ</label>
+                                                                            <input type="text" value="Đống Đa, Hà Nội, Việt Nam">
+                                                                        </div>
+                                                                    </div>
+        
+                                                                    <div class="col2-form-section">
+                                                                        <div class="form-group2 col-form">
+                                                                            <label>Giới tính</label>
+                                                                            <input type="text" value="Nữ">
+                                                                        </div>
+                                                                        <div class="form-group2 col-form">
+                                                                            <label>Tuổi</label>
+                                                                            <input type="text" value="22 tuổi">
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="form-section">
+                                                                    <h6 class="form-subtitle">Thông tin hóa đơn</h6>
+                                                                        
+                                                                        <div class="col2-form-section">
+                                                                            <div class="form-group2 col-form">
+                                                                                <label for="date">Ngày</label>
+                                                                                <input type="text" name="date" value="15/5/2024" >
+                                                                            </div>
+                                                                            <div class="form-group2 col-form">
+                                                                                <label>Giờ</label>
+                                                                                <input type="text" name="time" value="10:00 AM">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col2-form-section">
+                                                                            
+                                                                            <div class="form-group2 col-form">
+                                                                                <label>Tổng tiền</label>
+                                                                                <input type="text" value="1 500 000 VNĐ">
+                                                                            </div>
+                                                                            <div class="form-group2 col-form">
+                                                                                <label>Tiền thanh toán</label>
+                                                                                <input type="text" value="980 000 VNĐ">
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                    
+                                                                </div>
+        
+                                                                <h6 class="form-subtitle title-table">Chi tiết dịch vụ sử dụng</h6>
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-striped">
+                                                                        <thead>
+                                                                            <tr>
+                                                                            <th>
+                                                                                Mã dịch vụ
+                                                                            </th>
+                                                                            <th>
+                                                                                Tên dịch vụ
+                                                                            </th>
+                                                                            <th>
+                                                                                Số lượng
+                                                                            </th>
+                                                                            <th>
+                                                                                Ngày sử dụng
+                                                                            </th>
+                                                                            <th>
+                                                                                Giá tiền
+                                                                            </th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                            <td class="py-1">
+                                                                                DV101
+                                                                            </td>
+                                                                            <td>
+                                                                                Cắt lợi trùm
+                                                                            </td>
+                                                                            <td>
+                                                                                2
+                                                                            </td>
+                                                                            <td>
+                                                                                15/5/2024
+                                                                            </td>
+                                                                            <td>
+                                                                                500 000 VNĐ
+                                                                            </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="py-1">
+                                                                                    DV109
+                                                                                </td>
+                                                                                <td>
+                                                                                    Nhổ răng khôn
+                                                                                </td>
+                                                                                <td>
+                                                                                    1
+                                                                                </td>
+                                                                                <td>
+                                                                                    15/5/2024
+                                                                                </td>
+                                                                                <td>
+                                                                                    1 000 000 VNĐ
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+        
+                                                                <div class="btn-group">
+                                                                    <button type="button" class="btn-form cancel" id="cancelButton2">Đóng</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                            </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1">
+                                                    HD100
+                                                </td>
+                                                <td>
+                                                    Phạm Hằng
+                                                </td>
+                                                <td>
+                                                    0167577891
+                                                </td>
+                                                <td>
+                                                    15/5/2024
+                                                </td>
+                                                <td>
+                                                    10:00 AM
+                                                </td>
+                                                <td>
+                                                280 000 VNĐ
+                                            </td>
+                                            <td class="action-icons">
+                                                    
+                                                <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
+                                                <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                                <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i> 
+                                                
+                                            </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1">
+                                                    HD99
+                                                </td>
+                                                <td>
+                                                    Nguyễn Hân
+                                                </td>
+                                                <td>
+                                                    0167577891
+                                                </td>
+                                                <td>
+                                                    15/5/2024
+                                                </td>
+                                                <td>
+                                                    10:00 AM
+                                                </td>
+                                                <td>
+                                                300 000 VNĐ
+                                            </td>
+                                                <td class="action-icons">
+                                                    
+                                                    <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
+                                                    <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                                    <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i> 
+                                                    
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1">
+                                                    HD101
+                                                </td>
+                                                <td>
+                                                    Phạm Huê
+                                                </td>
+                                                <td>
+                                                    0167577891
+                                                </td>
+                                                <td>
+                                                    15/5/2024
+                                                </td>
+                                                <td>
+                                                    10:00 AM
+                                                </td>
+                                                <td>
+                                                980 000 VNĐ
+                                            </td>
+                                                <td class="action-icons">
+                                                    
+                                                    <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
+                                                    <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                                    <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i> 
+                                                    
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1">
+                                                    HD70
+                                                </td>
+                                                <td>
+                                                    Phạm Hân
+                                                </td>
+                                                <td>
+                                                    0167577891
+                                                </td>
+                                                <td>
+                                                    15/5/2024
+                                                </td>
+                                                <td>
+                                                    10:00 AM
+                                                </td>
+                                                <td>
+                                                980 000 VNĐ
+                                            </td>
+                                                <td class="action-icons">
+                                                    
+                                                    <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
+                                                    <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                                    <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i> 
+                                                    
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1">
+                                                    HD101
+                                                </td>
+                                                <td>
+                                                    Phan Tùng
+                                                </td>
+                                                <td>
+                                                    0167577891
+                                                </td>
+                                                <td>
+                                                    15/5/2024
+                                                </td>
+                                                <td>
+                                                    10:00 AM
+                                                </td>
+                                                <td>
+                                                580 000 VNĐ
+                                            </td>
+                                                <td class="action-icons">
+                                                    
+                                                    <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
+                                                    <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                                    <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i> 
+                                                    
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1">
+                                                    HD101
+                                                </td>
+                                                <td>
+                                                    Phạm Huê
+                                                </td>
+                                                <td>
+                                                    0167577891
+                                                </td>
+                                                <td>
+                                                    15/5/2024
+                                                </td>
+                                                <td>
+                                                    10:00 AM
+                                                </td>
+                                                <td>
+                                                980 000 VNĐ
+                                            </td>
+                                                <td class="action-icons">
+                                                    
+                                                    <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
+                                                    <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                                    <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
+                                                    
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <!-- main-panel ends -->
+    <div data-include="_script"></div>
+    <script>
+    $(function () {
+        var includes = $('[data-include]');
+        $.each(includes, function () {
+            var container = $(this);
+            var file = '/partials/' + container.data('include') + '.html';
+            
+            $.get(file, function(data) {
+                container.replaceWith(data);
+            });
+        });
+    });
+    </script>
+
+    <script type="text/javascript">
+        $('.rangedatepicker').daterangepicker({
+            alwaysShowCalendars: true,
+            locale: {
+                format: 'YYYY/MM/DD',
+            },
+            ranges: {
+                'Today'       : [moment(), moment()],
+                'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+                'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            },
+            startDate: moment().startOf('month'),
+            endDate  : moment().endOf('month'),
+        });
+    </script>
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Form 1
+        document.getElementById("showFormButton1").addEventListener("click", function() {
+            document.getElementById("overlay1").style.display = "flex";
+        });
+    
+        document.getElementById("cancelButton1").addEventListener("click", function() {
+            document.getElementById("overlay1").style.display = "none";
+        });
+    
+        // Form 2
+        document.getElementById("showFormButton2").addEventListener("click", function() {
+            document.getElementById("overlay2").style.display = "flex";
+        });
+    
+        document.getElementById("cancelButton2").addEventListener("click", function() {
+            document.getElementById("overlay2").style.display = "none";
+        });
+    
+        // Form 3
+        document.getElementById("showFormButton3").addEventListener("click", function() {
+            document.getElementById("overlay3").style.display = "flex";
+        });
+    
+        document.getElementById("cancelButton3").addEventListener("click", function() {
+            document.getElementById("overlay3").style.display = "none";
+        });
+    });
+    </script>
+    
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+    </body>
+</html>
