@@ -748,7 +748,7 @@
                                   </div>
                               </div>
                               <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-4">
                                   <label for="inputMedicineID">ID thuốc</label>
                                   <input
                                     type="text"
@@ -758,7 +758,7 @@
                                     value="T001"
                                   />
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-4">
                                   <label for="inputMedicineName"
                                     >Tên thuốc</label
                                   >
@@ -768,6 +768,18 @@
                                     id="inputMedicineName"
                                     placeholder="Tên thuốc"
                                     value="Paracetamol"
+                                  />
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="inputMedicineAmount"
+                                    >Số lượng</label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputMedicineAmount"
+                                    placeholder="Số lượng"
+                                    value="5 viên"
                                   />
                                 </div>
                               </div>
@@ -1275,6 +1287,7 @@ Chống chỉ định với người mẫn cảm với thành phần của thu�
           document.getElementById("inputPrescriptionDate").value = "";
           document.getElementById("inputMedicineID").value = "";
           document.getElementById("inputMedicineName").value = "";
+          document.getElementById("inputMedicineAmount").value = "";
           document.getElementById("inputDosage").value = "";
           document.getElementById("inputNotes").value = "";
         }
