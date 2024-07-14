@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>Spica Admin</title>
+   <!-- base:css -->
+   <link rel="stylesheet" href="/vendors/mdi/css/materialdesignicons.min.css">
+   <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
+   <!-- endinject -->
+   <!-- inject:css -->
+   <link rel="stylesheet" href="/css/style.css">
+   <!-- endinject -->
+   <link rel="shortcut icon" href="/images/favicon.png" />
+   <!-- jQuery -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+ 
+
+
+   <style>
+       /* CSS để làm mờ nền và hiển thị form */
+       .overlay {
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           background: rgba(0, 0, 0, 0.5);
+           display: none;
+           justify-content: center;
+           align-items: center;
+       }
+
+
+       .form-container {
+           background: white;
+           padding: 20px;
+           border-radius: 10px;
+           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+           max-width: 500px;
+           min-width: 450px;
+           width: 100%;
+       }
+
+       .btn-inverse-info:not(.btn-inverse-light) {
+        color: #26ab38;
+        }
+
+        .btn-inverse-info {
+            background-color: rgba(126, 211, 115, 0.2);
+            background-image: none;
+            border-color: rgba(15, 111, 40, 0);
+        }
+       /*css add appointment form */
+        .tilte-form {
+        text-align: center;
+       }
+
+        .form-container input[type=text],
+        .form-container input[type=email],
+        .form-container input[type=tel],
+        .form-container input[type=number],
+        .form-container input[type=date],
+        .form-container input[type=time] {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-container input[type=radio] {
+            margin-right: 5px;
+        }
+
+        .form-container .btn-form {
+            background-color: #6640b2;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn-form {
+            min-width: 140px;
+        }
+        .form-container .btn-form:hover {
+            background-color: #5630a3;
+        }
+
+        .form-container .cancel {
+            background-color: #b1a7a6;
+        }
+
+        .form-container .cancel:hover {
+            background-color: #8d8684;
+        }
+
+        .form-container .gender-group,
+        .form-container .appointment-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .form-container .gender-group input,
+        .form-container .appointment-group input {
+            margin-left: 10px;
+        }
+
+        .form-container .gender-group label,
+        .form-container .appointment-group label {
+            margin-right: 10px;
+        }
+
+        .group-2-form{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .small-input-form{
+            width: 185px;
+        }
+
+        .gender-group{
+            display: flex;
+            align-items: center;
+            gap: 10px; /* khoảng cách giữa các radio button */
+        }
+        
+        .gender-group input[type="radio"]{
+            margin-top:0;
+            transform: scale(1.2); /* để radio button lớn hơn nếu cần */
+        }
+        
+        .gender-group label{
+            margin: 0;
+            font-weight: normal;
+            color: #2d6a4f;
+        }
+
+        .btn-group{
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .gender-label{
+            margin-bottom: 15px;
+        }
+
+        .time-form{
+            min-width: 185px;
+            max-height: 42px;
+        }
+
+        .icon-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+        }
+
+        .icon-button:hover {
+            color: #007bff; /* Optional: Change color on hover */
+        }
+
+        /*css des appointment form */
+
+      .form-section {
+          margin-top: 10px;
+      }
+      
+      .form-subtitle{
+          margin-bottom: 5px;
+          color: #353535;
+          border-bottom: 1px solid #ddd;
+          padding-bottom: 5px;
+      }
+      
+      .form-group2 {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+      
+      .form-group2 label {
+          flex: 1;
+          color: black;
+      }
+      
+      .form-group2 input {
+          flex: 2;
+          padding: 5px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+      }
+      
+      .label{
+        align-content: center;
+      }
+
+      .select-option{
+          flex: 2;
+          padding: 5px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          margin: 5px 0 5px 0;
+      }
+
+      /* Cố định kích thước cho ô selection */
+.select-container {
+  width: 100%;
+  margin: 5px 0;
+}
+
+/* Hiển thị label và selection trên cùng một dòng */
+.select-container label {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Hiển thị ô selection kéo dài 100% */
+.select-container select {
+  width: 100%;
+}
+
+/* Chuyển label và selection xuống một dòng mới */
+.select-container {
+  flex-direction: column;
+}
+
+/* Căn chỉnh label và selection */
+.select-container label {
+  align-self: flex-start;
+}
+
+.select-container select {
+  align-self: stretch;
+}
+   </style>
+
+
+</head>
+<body>
+  <div class="container-scroller d-flex">
+    <!-- partial:./partials/_sidebar.html -->
+    <div data-include="_sidebar"></div>
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:./partials/_navbar.html -->
+      <div data-include="_navbar"></div>
+      <!-- partial -->
+      <div class="main-panel">
+       <div class="content-wrapper">
+           <div class="row">
+               <div class="col-lg-12 grid-margin stretch-card">
+                   <nav aria-label="breadcrumb">
+                       <ol class="breadcrumb">
+                         <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                         <li class="breadcrumb-item">Lịch hẹn</li>
+                         <li class="breadcrumb-item active" aria-current="page">Yêu cầu lịch hẹn</li>
+                       </ol>
+                   </nav>
+               </div>
+               <div class="col-lg-12 grid-margin stretch-card">
+               <div class="card">
+                   <div class="card-body">
+                       <div class="d-flex flex-direction-row justify-content-between">
+                           <div class="col-lg-8 grid-margin stretch-card">
+                               <div class="input-group">
+                                   <input type="text" class="form-control border rounded-pill" placeholder="Search Here..." aria-label="search" aria-describedby="search">
+                                   </div>
+                           </div>
+                           <div class="col-lg-2 grid-margin stretch-card justify-content-center">
+                               <button type="button" class="btn btn-light btn-icon-text">
+                                   <i class="mdi mdi-printer btn-icon-prepend"></i>
+                                   In tất cả
+                               </button>
+                           </div>
+                       </div>
+                      
+                       <div class="filter-container">
+                           <h4 class="mb-0">FILTER</h4>
+                           <div class="filter-item">
+                               <p class="filter-label m-0">Date:</p>
+                               <input class="form-control rangedatepicker" type="text" name="dates" value="" />
+                           </div>
+                           <div class="filter-item">
+                               <p class="filter-label m-0">Trạng thái:</p>
+                               <select class="form-control" name="status">
+                                   <option value="all">Tất cả</option>
+                                   <option value="pending">Sắp tới</option>
+                                   <option value="completed">Hoàn thành</option>
+                                   <option value="cancelled">Đã huỷ</option>
+                               </select>
+                           </div>
+                           <div class="filter-item">
+                               <p class="filter-label">Sắp xếp theo:</p>
+                               <select class="form-control" name="sort">
+                                   <option value="default">ID</option>
+                                   <option value="date">Ngày</option>
+                               </select>
+                           </div>
+                           </div>
+                           <div class="table-responsive">
+                            <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Họ và tên
+                                </th>
+                                <th>
+                                    SĐT
+                                </th>
+                                <th>
+                                    Lí do hẹn khám
+                                </th>
+                                <th>
+                                    Ngày
+                                </th>
+                                <th>
+                                    Giờ
+                                </th>
+                                <th>
+                                    Hoạt động
+                                </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <td class="py-1">
+                                    BN1
+                                </td>
+                                <td>
+                                    Phạm Huê
+                                </td>
+                                <td>
+                                    0167577891
+                                </td>
+                                <td>
+                                    Nhổ răng khôn
+                                </td>
+                                <td>
+                                    15/5/2024
+                                </td>
+                                <td>
+                                    10:00 AM
+                                </td>
+                                <td class="action-icons">
+                                    <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                        <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                        <i class="mdi mdi-check" data-toggle="tooltip" title="Xác nhận"></i>
+                                    </button>
+                                </td>
+                                </tr>
+                                <tr>
+                                <td class="py-1">
+                                    BN2
+                                </td>
+                                <td>
+                                    Nguyễn Trang
+                                </td>
+                                <td>
+                                    0167577891
+                                </td>
+                                <td>
+                                    Nhổ răng hàm
+                                </td>
+                                <td>
+                                    15/5/2024
+                                </td>
+                                <td>
+                                    8:30 AM
+                                </td>
+                                <td class="action-icons">
+                                    <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                        <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                        <i class="mdi mdi-check" data-toggle="tooltip" title="Xác nhận"></i>
+                                    </button>
+                                </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-1">
+                                        BN3
+                                    </td>
+                                    <td>
+                                        Lê Hà
+                                    </td>
+                                    <td>
+                                        0167577891
+                                    </td>
+                                    <td>
+                                        Bọc răng sứ
+                                    </td>
+                                    <td>
+                                        15/7/2024
+                                    </td>
+                                    <td>
+                                        7:30 AM
+                                    </td>
+                                    <td class="action-icons">
+                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                            <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                            <i class="mdi mdi-check" data-toggle="tooltip" title="Xác nhận"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-1">
+                                        BN4
+                                    </td>
+                                    <td>
+                                        Nguyễn Hiền
+                                    </td>
+                                    <td>
+                                        0167577891
+                                    </td>
+                                    <td>
+                                        Niềng răng
+                                    </td>
+                                    <td>
+                                        15/5/2024
+                                    </td>
+                                    <td>
+                                        10:30 AM
+                                    </td>
+                                    <td class="action-icons">
+                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                            <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                            <i class="mdi mdi-check" data-toggle="tooltip" title="Xác nhận"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-1">
+                                        BN5
+                                    </td>
+                                    <td>
+                                        Nguyễn Vang
+                                    </td>
+                                    <td>
+                                        0867577891
+                                    </td>
+                                    <td>
+                                        Trồng implant
+                                    </td>
+                                    <td>
+                                        10/5/2024
+                                    </td>
+                                    <td>
+                                        9:30 AM
+                                    </td>
+                                    <td class="action-icons">
+                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                            <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                            <i class="mdi mdi-check" data-toggle="tooltip" title="Xác nhận"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-1">
+                                        BN6
+                                    </td>
+                                    <td>
+                                        Lương Thu
+                                    </td>
+                                    <td>
+                                        0167577891
+                                    </td>
+                                    <td>
+                                        Nhổ răng khôn
+                                    </td>
+                                    <td>
+                                        15/5/2024
+                                    </td>
+                                    <td>
+                                        10:30 AM
+                                    </td>
+                                    <td class="action-icons">
+                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                            <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                            <i class="mdi mdi-check" data-toggle="tooltip" title="Xác nhận"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-1">
+                                        BN7
+                                    </td>
+                                    <td>
+                                        Nguyễn Trang
+                                    </td>
+                                    <td>
+                                        0167577891
+                                    </td>
+                                    <td>
+                                        Nhổ răng sữa
+                                    </td>
+                                    <td>
+                                        15/5/2024
+                                    </td>
+                                    <td>
+                                        10:30 AM
+                                    </td>
+                                    <td class="action-icons">
+                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                            <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                            <i class="mdi mdi-check" data-toggle="tooltip" title="Xác nhận"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                   </div>
+               </div>
+               </div>
+           </div>
+       </div>
+   </div>
+     <!-- main-panel ends -->
+   </div>
+   <!-- page-body-wrapper ends -->
+ </div>
+ <!-- container-scroller -->
+ <!-- base:js -->
+
+
+ <script type="text/javascript">
+   $('.rangedatepicker').daterangepicker({
+       alwaysShowCalendars: true,
+       locale: {
+           format: 'YYYY/MM/DD',
+       },
+       ranges: {
+           'Today'       : [moment(), moment()],
+           'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+           'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+           'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+           'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+       },
+       startDate: moment().startOf('month'),
+       endDate  : moment().endOf('month'),
+   });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      // Form 1
+      document.getElementById("showFormButton1").addEventListener("click", function() {
+          document.getElementById("overlay1").style.display = "flex";
+      });
+
+      document.getElementById("cancelButton1").addEventListener("click", function() {
+          document.getElementById("overlay1").style.display = "none";
+      });
+
+      // Form 2
+      document.getElementById("showFormButton2").addEventListener("click", function() {
+          document.getElementById("overlay2").style.display = "flex";
+      });
+
+      document.getElementById("cancelButton2").addEventListener("click", function() {
+          document.getElementById("overlay2").style.display = "none";
+      });
+
+      // Form 3
+      document.getElementById("showFormButton3").addEventListener("click", function() {
+        document.getElementById("overlay3").style.display = "flex";
+    });
+
+    document.getElementById("cancelButton3").addEventListener("click", function() {
+        document.getElementById("overlay3").style.display = "none";
+    });
+  });
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    /*$('.des-btn').on('click', function() {
+        $('#overlay').css('display', 'flex');
+    });
+
+    $('#cancelButton').on('click', function() {
+        $('#overlay').css('display', 'none');
+    });*/
+</script>
+
+<div data-include="_script"></div>
+    <script>
+    $(function () {
+        var includes = $('[data-include]');
+        $.each(includes, function () {
+            var container = $(this);
+            var file = '/partials/' + container.data('include') + '.html';
+            
+            $.get(file, function(data) {
+                container.replaceWith(data);
+            });
+        });
+    });
+    </script>
+
+<script src="/vendors/js/vendor.bundle.base.js"></script>
+ <!-- endinject -->
+ <script src="/js/jquery.cookie.js" type="text/javascript"></script>
+ <!-- inject:js -->
+ <script src="/js/off-canvas.js"></script>
+ <script src="/js/hoverable-collapse.js"></script>
+ <script src="/js/template.js"></script>
+ <script src="/js/snippet.js"></script>
+ <!-- endinject -->
+</body>
+
+
+</html>
