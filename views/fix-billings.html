@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Spica Admin</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <style>
+        /* CSS để làm mờ nền và hiển thị form */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+ 
+ 
+        .form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            min-width: 450px;
+            width: 100%;
+        }
+        /*css add appointment form */
+        .btn{
+            max-width: 150px;
+        }
+        
+        .tilte-form {
+        text-align: center;
+        margin: 20px 0;
+        }
+
+        .form-margin-bottom{
+            margin-bottom: 5px;
+        }
+
+        .form-container input[type=text],
+        .form-container input[type=email],
+        .form-container input[type=tel],
+        .form-container input[type=number],
+        .form-container input[type=date],
+        .form-container input[type=time] {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-container input[type=radio] {
+            margin-right: 5px;
+        }
+
+        .form-container .btn-form {
+            background-color: #6640b2;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn-form {
+            min-width: 140px;
+        }
+        .form-container .btn-form:hover {
+            background-color: #5630a3;
+        }
+
+        .form-container .cancel {
+            background-color: #b1a7a6;
+        }
+
+        .form-container .cancel:hover {
+            background-color: #8d8684;
+        }
+
+        .form-container .gender-group,
+        .form-container .appointment-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-container .gender-group input,
+        .form-container .appointment-group input {
+            margin-left: 10px;
+        }
+
+        .form-container .gender-group label,
+        .form-container .appointment-group label {
+            margin-right: 10px;
+        }
+
+        .group-2-form{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .small-input-form{
+            width: 185px;
+        }
+
+        .gender-group{
+            display: flex;
+            align-items: center;
+            gap: 10px; /* khoảng cách giữa các radio button */
+            flex: 2;
+        }
+        
+        .gender-group input[type="radio"]{
+            margin-top:0;
+            transform: scale(1.2); /* để radio button lớn hơn nếu cần */
+        }
+        
+        .gender-group label{
+            margin: 0;
+            font-weight: normal;
+            color: #2d6a4f;
+        }
+
+        .btn-group{
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+
+        .gender-label{
+            align-content: center;
+            flex: 1;
+        }
+
+        .time-form{
+            min-width: 185px;
+            max-height: 42px;
+            
+        }
+
+        .icon-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+        }
+
+        .icon-button:hover {
+            color: #007bff; /* Optional: Change color on hover */
+        }
+
+        /*css des appointment form */
+
+        .form-section {
+            margin-top: 10px;
+        }
+        
+        .form-subtitle{
+            margin-bottom: 10px;
+            color: #353535;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        
+        .form-group2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 10px;  
+        }
+        
+        .form-group2 label {
+            flex: 1;
+            color: black;
+        }
+        
+        .form-group2 input {
+            flex: 2;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .label{
+            align-content: center;
+        }
+    
+        .select-option{
+            flex: 2;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 5px 0 5px 0;
+        }
+
+        .col-form{
+            flex: 1;
+        }
+    
+    /* Cố định kích thước cho ô selection */
+        .select-container {
+        width: 100%;
+        margin: 5px 0;
+        padding: 12px 0;
+        }
+        
+        /* Hiển thị label và selection trên cùng một dòng */
+        .select-container label {
+        display: inline-block;
+        margin-right: 10px;
+        }
+        
+        /* Hiển thị ô selection kéo dài 100% */
+        .select-container select {
+        width: 100%;
+        }
+        
+        /* Chuyển label và selection xuống một dòng mới */
+        .select-container {
+        flex-direction: column;
+        }
+        
+        /* Căn chỉnh label và selection */
+        .select-container label {
+        align-self: flex-start;
+        }
+        
+        .select-container select {
+        align-self: stretch;
+        }
+
+        .col2-form-section{
+            display: flex;
+        }
+
+
+        .title-table{
+            margin-top: 10px;
+        }
+
+        .find-btn-form{
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container-scroller d-flex">
+        <!-- partial:./partials/_sidebar.html -->
+        <div data-include="_sidebar"></div>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:./partials/_navbar.html -->
+            <div data-include="_navbar"></div>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                                <li class="breadcrumb-item">Hóa đơn</li>
+                                <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa hóa đơn</li>
+                                </ol>
+                            </nav>
+                        </div>
+                        <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                
+                                        <div class="profile">
+                                            <h4 class="tilte-form">Chỉnh sửa hóa đơn</h4>
+                                        </div>
+
+                                        <div class="form-section">
+                                            <h6 class="form-subtitle">Thông tin cá nhân</h6>
+                                            <div class="col2-form-section form-margin-bottom">
+                                                <div class="form-group2 col-form ">
+                                                    <label>Họ và tên</label>
+                                                    <input type="text" value="Phạm Huê">
+                                                </div>
+                                                <div class="form-group2 col-form">
+                                                    <label>Địa chỉ</label>
+                                                    <input type="text" value="Đống Đa, Hà Nội, Việt Nam">
+                                                </div>
+                                            </div>
+
+                                            <div class="col2-form-section ">
+                                                <div class="form-group2 col-form">
+                                                    <label>Giới tính</label>
+                                                    <input type="text" value="Nữ">
+                                                </div>
+                                                <div class="form-group2 col-form">
+                                                    <label>Tuổi</label>
+                                                    <input type="text" value="22 tuổi">
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="form-section">
+                                            <h6 class="form-subtitle">Thông tin hóa đơn</h6>
+                                                
+                                                <div class="col2-form-section">
+                                                    <div class="form-group2 col-form">
+                                                        <label for="date">Ngày</label>
+                                                        <input type="date" name="date" value="2024-05-15" >
+                                                    </div>
+                                                    <div class="form-group2 col-form">
+                                                        <label>Giờ</label>
+                                                        <input type="time" name="time" value="10:00">
+                                                    </div>
+                                                </div>
+                                                <div class="col2-form-section">
+                                                    <div class="form-group2 col-form">
+                                                        <label>Hình thức thanh toán</label>
+                                                        <select id="options" name="options" class="select-option select-container" required>
+                                                            <option value="" disabled selected>Thẻ ngân hàng - Trả góp</option>
+                                                            <option value="option1">Tiền mặt - Trả đủ</option>
+                                                            <option value="option2">Tiền mặt - Trả góp</option>
+                                                            <option value="option2">Thẻ ngân hàng - Trả đủ</option>
+                                                            <option value="option3">Thẻ ngân hàng - Trả góp</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group2 col-form">
+                                                        <label>Tổng tiền</label>
+                                                        <input type="text" value="1 500 000 VNĐ">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col2-form-section">
+                                                    <div class="form-group2 col-form">
+                                                        <label>Tiền thanh toán</label>
+                                                        <input type="text" value="980 000 VNĐ">
+                                                    </div>
+
+                                                    <div class="form-group2 col-form">
+                                                        <label>Dư nợ</label>
+                                                        <input type="text" value="520 000 VNĐ">
+                                                    </div>
+                                                </div>
+                                                
+                                            
+                                        </div>
+
+                                        <h6 class="form-subtitle">Chi tiết dịch vụ sử dụng</h6>
+                                        <div class="d-flex flex-direction-row justify-content-between">
+                                            <div class="col-lg-8 grid-margin stretch-card">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control border rounded-pill" placeholder="Search Here..." aria-label="search" aria-describedby="search">
+                                                    </div>
+                                            </div>
+                                            <div class="col-lg-2 grid-margin stretch-card justify-content-center">
+                                                <button type="button" class="btn btn-light btn-icon-text">
+                                                    <i class="mdi mdi-printer btn-icon-prepend"></i>
+                                                    In tất cả
+                                                </button>
+                                            </div>
+                                            <div class="col-lg-2 grid-margin stretch-card justify-content-center">
+                                                <button type="button" class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#add-service">
+                                                    <i class="mdi mdi-plus btn-icon-prepend"></i>
+                                                    Thêm dịch vụ sử dụng
+                                                </button>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="filter-container">
+                                        <h4 class="mb-0">FILTER</h4>
+                                        <div class="filter-item">
+                                            <p class="filter-label m-0">Date:</p>
+                                            <input class="form-control rangedatepicker" type="text" name="dates" value="" />
+                                        </div>
+                                        <div class="filter-item">
+                                            <p class="filter-label m-0">Trạng thái:</p>
+                                            <select class="form-control" name="status">
+                                                <option value="all">Tất cả</option>
+                                                <option value="pending">Sắp tới</option>
+                                                <option value="completed">Hoàn thành</option>
+                                                <option value="cancelled">Đã huỷ</option>
+                                            </select>
+                                        </div>
+                                        <div class="filter-item">
+                                            <p class="filter-label">Sắp xếp theo:</p>
+                                            <select class="form-control" name="sort">
+                                                <option value="default">ID</option>
+                                                <option value="date">Ngày</option>
+                                            </select>
+                                        </div>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                    <th>
+                                                        Mã dịch vụ
+                                                    </th>
+                                                    <th>
+                                                        Tên dịch vụ
+                                                    </th>
+                                                    <th>
+                                                        Số lượng
+                                                    </th>
+                                                    <th>
+                                                        Ngày sử dụng
+                                                    </th>
+                                                    <th>
+                                                        Giờ sử dụng
+                                                    </th>
+                                                    <th>
+                                                        Giá tiền
+                                                    </th>
+                                                    <th>
+                                                        Hoạt động
+                                                    </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                    <td class="py-1">
+                                                        DV101
+                                                    </td>
+                                                    <td>
+                                                        Cắt lợi trùm
+                                                    </td>
+                                                    <td>
+                                                        2
+                                                    </td>
+                                                    <td>
+                                                        15/5/2024
+                                                    </td>
+                                                    <td>
+                                                        08:30 AM
+                                                    </td>
+                                                    <td>
+                                                        500 000 VNĐ
+                                                    </td>
+                                                    <td class="action-icons">
+                                    
+                                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-del-patient">
+                                                            <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                                        </button>
+                                                        
+                                                        <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon " data-bs-toggle="modal" data-bs-target="#fix-bill1">
+                                                            <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                                        </button>
+                                                    </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="py-1">
+                                                            DV109
+                                                        </td>
+                                                        <td>
+                                                            Nhổ răng khôn
+                                                        </td>
+                                                        <td>
+                                                            1
+                                                        </td>
+                                                        <td>
+                                                            15/5/2024
+                                                        </td>
+                                                        <td>
+                                                            10:00 AM
+                                                        </td>
+                                                        <td>
+                                                            1 000 000 VNĐ
+                                                        </td>
+                                                    <td class="action-icons">
+                                    
+                                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-del-patient">
+                                                            <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                                        </button>
+                                                        
+                                                        <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon " data-bs-toggle="modal" data-bs-target="#fix-bill2">
+                                                            <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                                        </button>
+                                                    </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <!-- Modal confirm delete -->
+                                            <div class="modal fade" id="confirm-del-patient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content border-0">   
+                                                        <div class="modal-body p-0">
+                                                            <div class="card border-0 p-sm-3 p-2 justify-content-center">
+                                                                <div class="card-header pb-0 bg-white border-0 d-flex flex-column justify-content-center align-items-center">
+                                                                    <button type="button" class="btn btn-inverse-dark btn-icon mb-3">
+                                                                        <i class="mdi mdi-alert text-center"></i>
+                                                                    </button>
+                                                                    <h4 class="font-weight-bold mb-2 text-center">Bạc có chắc chắn muốn xoá lịch hẹn này?</h4>
+                                                                </div>
+                                                                <div class="card-body px-sm-4 mb-2 pt-1 pb-0">
+                                                                    <div class="content">
+                                                                        <form class="infos">
+                                                                            <div class="info row">
+                                                                                <span class="col-sm-3 col-form-label">Bệnh nhân:</span>
+                                                                                <span class="col-sm-9 col-form-label">Phạm Huê</span>
+                                                                            </div>
+                                                                            <div class="info row">
+                                                                                <span class="col-sm-3 col-form-label">SĐT:</span>
+                                                                                <span class="col-sm-9 col-form-label">0167577891</span>
+                                                                            </div>
+                                                                            <div class="info row">
+                                                                                <span class="col-sm-3 col-form-label">Lí do hẹn:</span>
+                                                                                <span class="col-sm-9 col-form-label">Nhổ răng khôn</span>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="row justify-content-center no-gutters">
+                                                                        <div class="col-auto">
+                                                                            <button type="button" class="btn btn-danger px-4" data-dismiss="modal">Delete</button>
+                                                                        </div>
+                                                                        <div class="col-auto">
+                                                                            <button type="button" class="btn close btn-light text-muted" data-bs-dismiss="modal">Cancel</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>  
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Modal fix 1 -->
+                                            <div class="modal fade" id="fix-bill1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Sửa thông tin dịch vụ sử dụng</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form class="forms-sample">
+                                                            <div class="form-group row">
+                                                                
+                                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Tên dịch vụ</label>
+                                                                <div class="col-sm-9">
+                                                                    <select id="options" name="options" class="select-option select-container" required>
+                                                                        <option value="" disabled selected>Cắt lợi trùm</option>
+                                                                        <option value="option1">Trồng răng Implant</option>
+                                                                        <option value="option2">Niềng răng</option>
+                                                                        <option value="option2">Bọc răng sứ</option>
+                                                                        <option value="option3">Nha khoa tổng quát</option>
+                                                                        <option value="option3">Nha khoa thẩm mỹ</option>
+                                                                        <option value="option3">Nha khoa trẻ em</option>
+                                                                        <option value="option2">Nhổ răng khôn</option>
+                                                                        <option value="option2">Cắt lợi trùm</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Số lượng</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="email" class="form-control" id="exampleInputEmail2" value="2">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="exampleInputMobile" class="col-sm-3 col-form-label">Ngày dùng</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="date" class="form-control" id="exampleInputMobile" value="2024-05-15">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="exampleInputMobile" class="col-sm-3 col-form-label">Giờ dùng</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="time" class="form-control" id="exampleInputMobile" value="08:30">
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                                                    <button type="button" class="btn btn-primary">Lưu thay đổi</button>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Modal fix 2 -->
+                                            <div class="modal fade" id="fix-bill2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Sửa thông tin dịch vụ sử dụng</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form class="forms-sample">
+                                                            <div class="form-group row">
+                                                                
+                                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Tên dịch vụ</label>
+                                                                <div class="col-sm-9">
+                                                                    <select id="options" name="options" class="select-option select-container" required>
+                                                                        <option value="" disabled selected>Nhổ răng khôn</option>
+                                                                        <option value="option1">Trồng răng Implant</option>
+                                                                        <option value="option2">Niềng răng</option>
+                                                                        <option value="option2">Bọc răng sứ</option>
+                                                                        <option value="option3">Nha khoa tổng quát</option>
+                                                                        <option value="option3">Nha khoa thẩm mỹ</option>
+                                                                        <option value="option3">Nha khoa trẻ em</option>
+                                                                        <option value="option2">Nhổ răng khôn</option>
+                                                                        <option value="option2">Cắt lợi trùm</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Số lượng</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="email" class="form-control" id="exampleInputEmail2" value="1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="exampleInputMobile" class="col-sm-3 col-form-label">Ngày dùng</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="date" class="form-control" id="exampleInputMobile" value="2024-05-15">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="exampleInputMobile" class="col-sm-3 col-form-label">Giờ dùng</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="time" class="form-control" id="exampleInputMobile" value="10:00">
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                                                    <button type="button" class="btn btn-primary">Lưu thay đổi</button>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+
+
+                                            <!-- Modal add -->
+                                            <div class="modal fade" id="add-service" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm dịch vụ sử dụng</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form class="forms-sample">
+                                                            <div class="form-group row">
+                                                                
+                                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Tên dịch vụ</label>
+                                                                <div class="col-sm-9">
+                                                                    <select id="options" name="options" class="select-option select-container" required>
+                                                                        <option value="" disabled selected>Chọn dịch vụ</option>
+                                                                        <option value="option1">Trồng răng Implant</option>
+                                                                        <option value="option2">Niềng răng</option>
+                                                                        <option value="option2">Bọc răng sứ</option>
+                                                                        <option value="option3">Nha khoa tổng quát</option>
+                                                                        <option value="option3">Nha khoa thẩm mỹ</option>
+                                                                        <option value="option3">Nha khoa trẻ em</option>
+                                                                        <option value="option2">Nhổ răng khôn</option>
+                                                                        <option value="option2">Cắt lợi trùm</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Số lượng</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Nhập số lượng">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="exampleInputMobile" class="col-sm-3 col-form-label">Ngày dùng</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="date" class="form-control" id="exampleInputMobile" placeholder="Nhập ngày sử dụng">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="exampleInputMobile" class="col-sm-3 col-form-label">Giờ dùng</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="time" class="form-control" id="exampleInputMobile" placeholder="Nhập giờ sử dụng">
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                                                    <button type="button" class="btn btn-primary">Lưu thay đổi</button>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="btn-group">
+                                            <button type="submit" class="btn btn-primary">Lưu</button>
+                                            <a href="/views/billings.html" class="float-end btn btn-secondary">
+                                                Đóng
+                                            </a>
+                                        </div>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- main-panel ends -->
+    <div data-include="_script"></div>
+
+    <script type="text/javascript">
+        $('.rangedatepicker').daterangepicker({
+            alwaysShowCalendars: true,
+            locale: {
+                format: 'YYYY/MM/DD',
+            },
+            ranges: {
+                'Today'       : [moment(), moment()],
+                'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+                'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            },
+            startDate: moment().startOf('month'),
+            endDate  : moment().endOf('month'),
+        });
+    </script>
+
+    <script>
+    $(function () {
+        var includes = $('[data-include]');
+        $.each(includes, function () {
+            var container = $(this);
+            var file = '/partials/' + container.data('include') + '.html';
+            
+            $.get(file, function(data) {
+                container.replaceWith(data);
+            });
+        });
+    });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const buttons = document.querySelectorAll('.show-form-btn-fix');
+            const overlay = document.getElementById('overlay3');
+        
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    overlay.style.display = 'flex';
+                });
+            });
+        
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.style.display = 'none';
+                }
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const buttons = document.querySelectorAll('.show-form-btn-des');
+            const overlay = document.getElementById('overlay2');
+        
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    overlay.style.display = 'flex';
+                });
+            });
+        
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

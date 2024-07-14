@@ -363,10 +363,11 @@
                                     10:00 AM
                                 </td>
                                 <td class="action-icons">
-                                    <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                    <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-del-patient">
                                         <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
                                     </button>
-                                    <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                    
+                                    <button type="button" class="btn btn-inverse-info btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-accept-appoinments">
                                         <i class="mdi mdi-check" data-toggle="tooltip" title="Xác nhận"></i>
                                     </button>
                                 </td>
@@ -391,10 +392,11 @@
                                     8:30 AM
                                 </td>
                                 <td class="action-icons">
-                                    <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                    <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-del-patient">
                                         <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
                                     </button>
-                                    <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                    
+                                    <button type="button" class="btn btn-inverse-info btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-accept-appoinments">
                                         <i class="mdi mdi-check" data-toggle="tooltip" title="Xác nhận"></i>
                                     </button>
                                 </td>
@@ -419,10 +421,11 @@
                                         7:30 AM
                                     </td>
                                     <td class="action-icons">
-                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-del-patient">
                                             <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
                                         </button>
-                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                        
+                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-accept-appoinments">
                                             <i class="mdi mdi-check" data-toggle="tooltip" title="Xác nhận"></i>
                                         </button>
                                     </td>
@@ -447,10 +450,11 @@
                                         10:30 AM
                                     </td>
                                     <td class="action-icons">
-                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-del-patient">
                                             <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
                                         </button>
-                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                        
+                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-accept-appoinments">
                                             <i class="mdi mdi-check" data-toggle="tooltip" title="Xác nhận"></i>
                                         </button>
                                     </td>
@@ -475,10 +479,11 @@
                                         9:30 AM
                                     </td>
                                     <td class="action-icons">
-                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-del-patient">
                                             <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
                                         </button>
-                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                        
+                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-accept-appoinments">
                                             <i class="mdi mdi-check" data-toggle="tooltip" title="Xác nhận"></i>
                                         </button>
                                     </td>
@@ -503,10 +508,11 @@
                                         10:30 AM
                                     </td>
                                     <td class="action-icons">
-                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-del-patient">
                                             <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
                                         </button>
-                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                        
+                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-accept-appoinments">
                                             <i class="mdi mdi-check" data-toggle="tooltip" title="Xác nhận"></i>
                                         </button>
                                     </td>
@@ -531,16 +537,105 @@
                                         10:30 AM
                                     </td>
                                     <td class="action-icons">
-                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-del-patient">
                                             <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
                                         </button>
-                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                        
+                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-accept-appoinments">
                                             <i class="mdi mdi-check" data-toggle="tooltip" title="Xác nhận"></i>
                                         </button>
                                     </td>
                                 </tr>
                             </tbody>
                             </table>
+
+                            <!-- Modal confirm delete -->
+                            <div class="modal fade" id="confirm-del-patient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content border-0">   
+                                        <div class="modal-body p-0">
+                                            <div class="card border-0 p-sm-3 p-2 justify-content-center">
+                                                <div class="card-header pb-0 bg-white border-0 d-flex flex-column justify-content-center align-items-center">
+                                                    <button type="button" class="btn btn-inverse-dark btn-icon mb-3">
+                                                        <i class="mdi mdi-alert text-center"></i>
+                                                    </button>
+                                                    <h4 class="font-weight-bold mb-2 text-center">Bạc có chắc chắn muốn xoá lịch hẹn này?</h4>
+                                                </div>
+                                                <div class="card-body px-sm-4 mb-2 pt-1 pb-0">
+                                                    <div class="content">
+                                                        <form class="infos">
+                                                            <div class="info row">
+                                                                <span class="col-sm-3 col-form-label">Bệnh nhân:</span>
+                                                                <span class="col-sm-9 col-form-label">Phạm Huê</span>
+                                                            </div>
+                                                            <div class="info row">
+                                                                <span class="col-sm-3 col-form-label">SĐT:</span>
+                                                                <span class="col-sm-9 col-form-label">0167577891</span>
+                                                            </div>
+                                                            <div class="info row">
+                                                                <span class="col-sm-3 col-form-label">Lí do hẹn:</span>
+                                                                <span class="col-sm-9 col-form-label">Nhổ răng khôn</span>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="row justify-content-center no-gutters">
+                                                        <div class="col-auto">
+                                                            <button type="button" class="btn btn-danger px-4" data-dismiss="modal">Delete</button>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Modal confirm accept -->
+                            <div class="modal fade" id="confirm-accept-appoinments" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content border-0">   
+                                        <div class="modal-body p-0">
+                                            <div class="card border-0 p-sm-3 p-2 justify-content-center">
+                                                <div class="card-header pb-0 bg-white border-0 d-flex flex-column justify-content-center align-items-center">
+                                                    <button type="button" class="btn btn-inverse-dark btn-icon mb-3">
+                                                        <i class="mdi mdi-checkbox-marked-circle-outline text-center"></i>
+                                                    </button>
+                                                    <h4 class="font-weight-bold mb-2 text-center">Bạc có chắc chắn muốn xác nhận lịch hẹn này?</h4>
+                                                </div>
+                                                <div class="card-body px-sm-4 mb-2 pt-1 pb-0">
+                                                    <div class="content">
+                                                        <form class="infos">
+                                                            <div class="info row">
+                                                                <span class="col-sm-3 col-form-label">Bệnh nhân:</span>
+                                                                <span class="col-sm-9 col-form-label">Phạm Huê</span>
+                                                            </div>
+                                                            <div class="info row">
+                                                                <span class="col-sm-3 col-form-label">SĐT:</span>
+                                                                <span class="col-sm-9 col-form-label">0167577891</span>
+                                                            </div>
+                                                            <div class="info row">
+                                                                <span class="col-sm-3 col-form-label">Lí do hẹn:</span>
+                                                                <span class="col-sm-9 col-form-label">Nhổ răng khôn</span>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="row justify-content-center no-gutters">
+                                                        <div class="col-auto">
+                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Xác nhận</button>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                    </div>
                </div>
@@ -573,37 +668,6 @@
        startDate: moment().startOf('month'),
        endDate  : moment().endOf('month'),
    });
-</script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-      // Form 1
-      document.getElementById("showFormButton1").addEventListener("click", function() {
-          document.getElementById("overlay1").style.display = "flex";
-      });
-
-      document.getElementById("cancelButton1").addEventListener("click", function() {
-          document.getElementById("overlay1").style.display = "none";
-      });
-
-      // Form 2
-      document.getElementById("showFormButton2").addEventListener("click", function() {
-          document.getElementById("overlay2").style.display = "flex";
-      });
-
-      document.getElementById("cancelButton2").addEventListener("click", function() {
-          document.getElementById("overlay2").style.display = "none";
-      });
-
-      // Form 3
-      document.getElementById("showFormButton3").addEventListener("click", function() {
-        document.getElementById("overlay3").style.display = "flex";
-    });
-
-    document.getElementById("cancelButton3").addEventListener("click", function() {
-        document.getElementById("overlay3").style.display = "none";
-    });
-  });
 </script>
 
 <script>

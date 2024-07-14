@@ -269,98 +269,98 @@
                <div class="col-lg-12 grid-margin stretch-card">
                <div class="card">
                    <div class="card-body">
-                       <div class="d-flex flex-direction-row justify-content-between">
-                           <div class="col-lg-8 grid-margin stretch-card">
-                               <div class="input-group">
-                                   <input type="text" class="form-control border rounded-pill" placeholder="Search Here..." aria-label="search" aria-describedby="search">
-                                   </div>
-                           </div>
-                           <div class="col-lg-2 grid-margin stretch-card justify-content-center">
-                               <button type="button" class="btn btn-light btn-icon-text">
-                                   <i class="mdi mdi-printer btn-icon-prepend"></i>
-                                   In tất cả
-                               </button>
-                           </div>
-                           <div class="col-lg-2 grid-margin stretch-card justify-content-center">
-                               <button type="button" class="btn btn-primary btn-icon-text" id="showFormButton1">
-                                   <i class="mdi mdi-plus btn-icon-prepend"></i>
-                                   Thêm lịch hẹn
-                               </button>
-                               <div class="overlay" id="overlay1">
-                                <div class="form-popup" id="appointmentForm">
-                                    <form class="form-container">
-                                        <h4 class="tilte-form">Thêm lịch hẹn</h4>
-                                        <label for="name">Họ và tên</label>
-                                        <input type="text" placeholder="Nhập tên" name="name" required>
-                        
-                                        <label for="phone">SĐT</label>
-                                        <input type="tel" placeholder="Nhập số điện thoại" name="phone" required>
-                                        
-                                        <div class="group-2-form">
-                                            <div class="group-form">
-                                                <label class="gender-label">Giới tính</label><br>
-                                                <div class="gender-group">
-                                                    <input class="gender" type="radio" name="gender" value="male"> Nam
-                                                    <input class="gender" type="radio" name="gender" value="female"> Nữ
-                                                    <input class="gender" type="radio" name="gender" value="other"> Khác
+                        <div class="d-flex flex-direction-row justify-content-between">
+                            <div class="col-lg-8 grid-margin stretch-card">
+                                <div class="input-group">
+                                    <input type="text" class="form-control border rounded-pill" placeholder="Search Here..." aria-label="search" aria-describedby="search">
+                                    </div>
+                            </div>
+                            <div class="col-lg-2 grid-margin stretch-card justify-content-center">
+                                <button type="button" class="btn btn-light btn-icon-text">
+                                    <i class="mdi mdi-printer btn-icon-prepend"></i>
+                                    In tất cả
+                                </button>
+                            </div>
+                            <div class="col-lg-2 grid-margin stretch-card justify-content-center">
+                                <button type="button" class="btn btn-primary btn-icon-text" id="showFormButton1">
+                                    <i class="mdi mdi-plus btn-icon-prepend"></i>
+                                    Thêm lịch hẹn
+                                </button>
+                                <div class="overlay" id="overlay1">
+                                    <div class="form-popup" id="appointmentForm">
+                                        <form class="form-container">
+                                            <h4 class="tilte-form">Thêm lịch hẹn</h4>
+                                            <label for="name">Họ và tên</label>
+                                            <input type="text" placeholder="Nhập tên" name="name" required>
+                            
+                                            <label for="phone">SĐT</label>
+                                            <input type="tel" placeholder="Nhập số điện thoại" name="phone" required>
+                                            
+                                            <div class="group-2-form">
+                                                <div class="group-form">
+                                                    <label class="gender-label">Giới tính</label><br>
+                                                    <div class="gender-group">
+                                                        <input class="gender" type="radio" name="gender" value="male"> Nam
+                                                        <input class="gender" type="radio" name="gender" value="female"> Nữ
+                                                        <input class="gender" type="radio" name="gender" value="other"> Khác
+                                                    </div>
+                                                </div>
+
+                                                <div class="group-form small-input-form">
+                                                    <label for="age">Tuổi</label>
+                                                    <input type="number" placeholder="Nhập tuổi" name="age" required>
                                                 </div>
                                             </div>
+                                            
+                                            <label for="name">Lí do hẹn khám</label>
+                                            <input type="text" placeholder="Nhập lí do" name="name" required>
 
-                                            <div class="group-form small-input-form">
-                                                <label for="age">Tuổi</label>
-                                                <input type="number" placeholder="Nhập tuổi" name="age" required>
-                                            </div>
-                                        </div>
-                                        
-                                        <label for="name">Lí do hẹn khám</label>
-                                        <input type="text" placeholder="Nhập lí do" name="name" required>
+                                            <label>Dịch vụ</label>
+                                            <select id="options" name="options" class="select-option select-container" required>
+                                                <option value="" disabled selected>Lựa chọn dịch vụ</option>
+                                                <option value="option1">Trồng răng Implant</option>
+                                                <option value="option2">Niềng răng</option>
+                                                <option value="option2">Bọc răng sứ</option>
+                                                <option value="option3">Nha khoa tổng quát</option>
+                                                <option value="option3">Nha khoa thẩm mỹ</option>
+                                                <option value="option3">Nha khoa trẻ em</option>
+                                                
+                                            </select>
 
-                                        <label>Dịch vụ</label>
-                                        <select id="options" name="options" class="select-option select-container" required>
-                                               <option value="" disabled selected>Lựa chọn dịch vụ</option>
-                                               <option value="option1">Trồng răng Implant</option>
-                                               <option value="option2">Niềng răng</option>
-                                               <option value="option2">Bọc răng sứ</option>
-                                               <option value="option3">Nha khoa tổng quát</option>
-                                               <option value="option3">Nha khoa thẩm mỹ</option>
-                                               <option value="option3">Nha khoa trẻ em</option>
-                                               
-                                        </select>
+                                            <label>Chi nhánh</label>
+                                            <select id="options" name="options" class="select-option select-container" required>
+                                                <option value="" disabled selected>Lựa chọn chi nhánh</option>
+                                                <option value="option1">Hưng Yên</option>
+                                                <option value="option2">Hà Nội</option>
+                                                <option value="option3">Thái Nguyên</option>
+                                                <option value="option3">Thái Bình</option>
+                                                <option value="option3">Quảng Ninh</option>
+                                            </select>
+                                            
 
-                                        <label>Chi nhánh</label>
-                                        <select id="options" name="options" class="select-option select-container" required>
-                                               <option value="" disabled selected>Lựa chọn chi nhánh</option>
-                                               <option value="option1">Hưng Yên</option>
-                                               <option value="option2">Hà Nội</option>
-                                               <option value="option3">Thái Nguyên</option>
-                                               <option value="option3">Thái Bình</option>
-                                               <option value="option3">Quảng Ninh</option>
-                                        </select>
-                                        
-
-                                        <div class="group-2-form">
-                                            <div class="group-form small-input-form">
-                                                <label for="date">Ngày</label>
-                                                <input type="date" name="date" required>
+                                            <div class="group-2-form">
+                                                <div class="group-form small-input-form">
+                                                    <label for="date">Ngày</label>
+                                                    <input type="date" name="date" required>
+                                                </div>
+                                                
+                                                <div class="group-form time-form">
+                                                    <label for="time">Giờ</label>
+                                                    <input type="time" name="time" required>
+                                                </div>
                                             </div>
                                             
-                                            <div class="group-form time-form">
-                                                <label for="time">Giờ</label>
-                                                <input type="time" name="time" required>
+                                            <div class="btn-group">
+                                                <button type="submit" class="btn-form">Đặt</button>
+                                                <button type="button" class="btn-form cancel" id="cancelButton1">Hủy</button>
                                             </div>
-                                        </div>
-                                        
-                                        <div class="btn-group">
-                                            <button type="submit" class="btn-form">Đặt</button>
-                                            <button type="button" class="btn-form cancel" id="cancelButton1">Hủy</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                </div>
-                           </div>
-                       </div>
+                                        </form>
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
                       
-                       <div class="filter-container">
+                        <div class="filter-container">
                            <h4 class="mb-0">FILTER</h4>
                            <div class="filter-item">
                                <p class="filter-label m-0">Date:</p>
@@ -382,8 +382,9 @@
                                    <option value="date">Ngày</option>
                                </select>
                            </div>
-                           </div>
-                           <div class="table-responsive">
+                        </div>
+                        
+                        <div class="table-responsive">
                             <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -437,107 +438,106 @@
                                     <label class="badge badge-danger">Đã hủy</label>
                                 </td>
                                 <td class="action-icons">
-                                    <button class=" icon-button">
-                                      <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
-                                    </button>
-                                    
-                                    <button class=" icon-button" id="showFormButton3">
-                                      <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
-                                    </button>
-                                    
-                                    <div class="overlay" id="overlay3">
-                                      <div class="form-popup" id="desForm">
-                                          <form class="form-container">
-                                             <div class="profile">
-                                             <h4 class="tilte-form">Chỉnh sửa lịch hẹn</h4>
-                                             
-                                             </div>
-                                             <div class="form-section">
-                                                 <h6 class="form-subtitle">Thông tin cá nhân</h6>
-                                                 
-                                                     <div class="form-group2">
-                                                         <label>Họ và tên</label>
-                                                         <input type="text" value="Phạm Huê">
-                                                     </div>
-                                                     <div class="form-group2">
-                                                         <label>SĐT</label>
-                                                         <input type="text" value="0167577891">
-                                                     </div>
-                                                     
-                                                       <div class="form-group2">
-                                                         <label>Giới tính</label>
-                                                         <input type="text" value="Nữ">
-                                                       </div>
-                                                       <div class="form-group2">
-                                                           <label>Tuổi</label>
-                                                           <input type="text" value="22 tuổi">
-                                                       </div>
-                                                     
-                                                 
-                                             </div>
-                                             <div class="form-section">
-                                                 <h6 class="form-subtitle">Thông tin lịch hẹn</h6>
-                                                 <div class="form-group2">
-                                                  <label>Lí do hẹn khám</label>
-                                                  <input type="text" value="Nhổ răng khôn">
+                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-del-patient">
+                                            <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                        </button>
+                                        
+                                        <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon" id="showFormButton3">
+                                            <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                        </button>
+                                        <div class="overlay" id="overlay3">
+                                        <div class="form-popup" id="desForm">
+                                            <form class="form-container">
+                                                <div class="profile">
+                                                <h4 class="tilte-form">Chỉnh sửa lịch hẹn</h4>
+                                                
                                                 </div>
-                                                <div class="form-group2">
-                                                  <label>Dịch vụ</label>
-                                                 <select id="options" name="options" class="select-option" required>
-                                                        <option value="" disabled selected>Nha khoa tổng quát</option>
-                                                        <option value="option1">Trồng răng Implant</option>
-                                                        <option value="option2">Niềng răng</option>
-                                                        <option value="option2">Bọc răng sứ</option>
-                                                        <option value="option3">Nha khoa tổng quát</option>
-                                                        <option value="option3">Nha khoa thẩm mỹ</option>
-                                                        <option value="option3">Nha khoa trẻ em</option>
+                                                <div class="form-section">
+                                                    <h6 class="form-subtitle">Thông tin cá nhân</h6>
+                                                    
+                                                        <div class="form-group2">
+                                                            <label>Họ và tên</label>
+                                                            <input type="text" value="Phạm Huê">
+                                                        </div>
+                                                        <div class="form-group2">
+                                                            <label>SĐT</label>
+                                                            <input type="text" value="0167577891">
+                                                        </div>
                                                         
-                                                 </select>
+                                                        <div class="form-group2">
+                                                            <label>Giới tính</label>
+                                                            <input type="text" value="Nữ">
+                                                        </div>
+                                                        <div class="form-group2">
+                                                            <label>Tuổi</label>
+                                                            <input type="text" value="22 tuổi">
+                                                        </div>
+                                                        
+                                                    
                                                 </div>
-                                                 
-                                                <div class="form-group2">
-                                                 <label>Chi nhánh</label>
-                                                 <select id="options" name="options" class="select-option" required>
-                                                        <option value="" disabled selected>Hưng Yên</option>
-                                                        <option value="option1">Hưng Yên</option>
-                                                        <option value="option2">Hà Nội</option>
-                                                        <option value="option3">Thái Nguyên</option>
-                                                        <option value="option3">Thái Bình</option>
-                                                        <option value="option3">Quảng Ninh</option>
-                                                 </select>
-                                                </div>
-                                                <div class="form-group2">
-                                                  <label for="date">Ngày</label>
-                                                  <input type="date" name="date" value="2024-05-15" >
+                                                <div class="form-section">
+                                                    <h6 class="form-subtitle">Thông tin lịch hẹn</h6>
+                                                    <div class="form-group2">
+                                                    <label>Lí do hẹn khám</label>
+                                                    <input type="text" value="Nhổ răng khôn">
+                                                    </div>
+                                                    <div class="form-group2">
+                                                    <label>Dịch vụ</label>
+                                                    <select id="options" name="options" class="select-option" required>
+                                                            <option value="" disabled selected>Nha khoa tổng quát</option>
+                                                            <option value="option1">Trồng răng Implant</option>
+                                                            <option value="option2">Niềng răng</option>
+                                                            <option value="option2">Bọc răng sứ</option>
+                                                            <option value="option3">Nha khoa tổng quát</option>
+                                                            <option value="option3">Nha khoa thẩm mỹ</option>
+                                                            <option value="option3">Nha khoa trẻ em</option>
+                                                            
+                                                    </select>
+                                                    </div>
+                                                    
+                                                    <div class="form-group2">
+                                                    <label>Chi nhánh</label>
+                                                    <select id="options" name="options" class="select-option" required>
+                                                            <option value="" disabled selected>Hưng Yên</option>
+                                                            <option value="option1">Hưng Yên</option>
+                                                            <option value="option2">Hà Nội</option>
+                                                            <option value="option3">Thái Nguyên</option>
+                                                            <option value="option3">Thái Bình</option>
+                                                            <option value="option3">Quảng Ninh</option>
+                                                    </select>
+                                                    </div>
+                                                    <div class="form-group2">
+                                                    <label for="date">Ngày</label>
+                                                    <input type="date" name="date" value="2024-05-15" >
+                                                    </div>
+                                                    
+                                                    <div class="form-group2">
+                                                        <label for="time">Giờ</label>
+                                                        <input type="time" name="time" value="10:00">
+                                                    </div>
+                                                        
+                                                        <div class="form-group2">
+                                                            <label>Trạng thái</label>
+                                                            <select id="options" name="options" class="select-option" required>
+                                                                <option value="" disabled selected>Đã hủy</option>
+                                                                <option value="option1">Đã hủy</option>
+                                                                <option value="option2">Hoàn thành</option>
+                                                                <option value="option3">Sắp tới</option>
+                                                            </select>
+                                                        </div>
+                                                    
                                                 </div>
                                                 
-                                                <div class="form-group2">
-                                                    <label for="time">Giờ</label>
-                                                    <input type="time" name="time" value="10:00">
+                                                <div class="btn-group">
+                                                    <button type="submit" class="btn-form">Lưu</button>
+                                                    <button type="button" class="btn-form cancel" id="cancelButton3">Đóng</button>
                                                 </div>
-                                                     
-                                                     <div class="form-group2">
-                                                         <label>Trạng thái</label>
-                                                          <select id="options" name="options" class="select-option" required>
-                                                              <option value="" disabled selected>Đã hủy</option>
-                                                              <option value="option1">Đã hủy</option>
-                                                              <option value="option2">Hoàn thành</option>
-                                                              <option value="option3">Sắp tới</option>
-                                                          </select>
-                                                     </div>
-                                                 
-                                             </div>
-                                              
-                                             <div class="btn-group">
-                                                  <button type="submit" class="btn-form">Lưu</button>
-                                                  <button type="button" class="btn-form cancel" id="cancelButton3">Đóng</button>
-                                             </div>
-                                          </form>
-                                      </div>
-                                     </div>
-                                    
-                                        <button class="des-btn icon-button" id="showFormButton2">
-                                            <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết" ></i> 
+                                            </form>
+                                        </div>
+                                        </div>
+
+                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon" id="showFormButton2">
+                                            <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
                                         </button>
                                         
                                         <div class="overlay" id="overlay2">
@@ -635,9 +635,17 @@
                                 </td>
                                 <td class="action-icons">
                                         
-                                    <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
-                                    <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
-                                    <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i> 
+                                    <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-del-patient">
+                                        <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                    </button>
+                                    
+                                    <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon show-form-btn-fix">
+                                        <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                    </button>
+
+                                    <button type="button" class="btn btn-inverse-info btn-rounded btn-icon show-form-btn-des" id="showFormButton2">
+                                        <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
+                                    </button>
                                       
                                 </td>
                                 </tr>
@@ -665,9 +673,17 @@
                                     </td>
                                     <td class="action-icons">
                                         
-                                        <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
-                                        <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
-                                        <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i> 
+                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-del-patient">
+                                            <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                        </button>
+                                        
+                                        <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon show-form-btn-fix">
+                                            <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                        </button>
+    
+                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon show-form-btn-des" id="showFormButton2">
+                                            <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
+                                        </button>
                                           
                                     </td>
                                 </tr>
@@ -695,9 +711,17 @@
                                     </td>
                                     <td class="action-icons">
                                         
-                                        <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
-                                        <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
-                                        <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i> 
+                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-del-patient">
+                                            <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                        </button>
+                                        
+                                        <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon show-form-btn-fix">
+                                            <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                        </button>
+    
+                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon show-form-btn-des" id="showFormButton2">
+                                            <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
+                                        </button>
                                           
                                     </td>
                                 </tr>
@@ -725,9 +749,17 @@
                                     </td>
                                     <td class="action-icons">
                                         
-                                        <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
-                                        <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
-                                        <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i> 
+                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-del-patient">
+                                            <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                        </button>
+                                        
+                                        <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon show-form-btn-fix">
+                                            <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                        </button>
+    
+                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon show-form-btn-des" id="showFormButton2">
+                                            <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
+                                        </button>
                                           
                                     </td>
                                 </tr>
@@ -755,9 +787,17 @@
                                     </td>
                                     <td class="action-icons">
                                         
-                                        <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
-                                        <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
-                                        <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i> 
+                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-del-patient">
+                                            <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                        </button>
+                                        
+                                        <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon show-form-btn-fix">
+                                            <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                        </button>
+    
+                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon show-form-btn-des" id="showFormButton2">
+                                            <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
+                                        </button>
                                           
                                     </td>
                                 </tr>
@@ -785,14 +825,68 @@
                                     </td>
                                     <td class="action-icons">
                                         
-                                        <i class="mdi mdi-delete-forever" data-toggle="tooltip" title="Xóa"></i>
-                                        <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
-                                        <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
+                                        <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-del-patient">
+                                            <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                        </button>
+                                        
+                                        <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon show-form-btn-fix">
+                                            <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                        </button>
+    
+                                        <button type="button" class="btn btn-inverse-info btn-rounded btn-icon show-form-btn-des" id="showFormButton2">
+                                            <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
+                                        </button>
                                           
                                     </td>
                                 </tr>
                             </tbody>
                             </table>
+
+                            
+
+                            <!-- Modal confirm delete -->
+                            <div class="modal fade" id="confirm-del-patient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content border-0">   
+                                        <div class="modal-body p-0">
+                                            <div class="card border-0 p-sm-3 p-2 justify-content-center">
+                                                <div class="card-header pb-0 bg-white border-0 d-flex flex-column justify-content-center align-items-center">
+                                                    <button type="button" class="btn btn-inverse-dark btn-icon mb-3">
+                                                        <i class="mdi mdi-alert text-center"></i>
+                                                    </button>
+                                                    <h4 class="font-weight-bold mb-2 text-center">Bạc có chắc chắn muốn xoá lịch hẹn này?</h4>
+                                                </div>
+                                                <div class="card-body px-sm-4 mb-2 pt-1 pb-0">
+                                                    <div class="content">
+                                                        <form class="infos">
+                                                            <div class="info row">
+                                                                <span class="col-sm-3 col-form-label">Bệnh nhân:</span>
+                                                                <span class="col-sm-9 col-form-label">Phạm Huê</span>
+                                                            </div>
+                                                            <div class="info row">
+                                                                <span class="col-sm-3 col-form-label">SĐT:</span>
+                                                                <span class="col-sm-9 col-form-label">0167577891</span>
+                                                            </div>
+                                                            <div class="info row">
+                                                                <span class="col-sm-3 col-form-label">Lí do hẹn:</span>
+                                                                <span class="col-sm-9 col-form-label">Nhổ răng khôn</span>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="row justify-content-center no-gutters">
+                                                        <div class="col-auto">
+                                                            <button type="button" class="btn btn-danger px-4" data-dismiss="modal">Delete</button>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <button type="button" class="btn close btn-light text-muted" data-bs-dismiss="modal">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                    </div>
                </div>
@@ -800,6 +894,7 @@
            </div>
        </div>
    </div>
+
      <!-- main-panel ends -->
    </div>
    <!-- page-body-wrapper ends -->
@@ -887,6 +982,41 @@
     });
     </script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const buttons = document.querySelectorAll('.show-form-btn-fix');
+            const overlay = document.getElementById('overlay3');
+        
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    overlay.style.display = 'flex';
+                });
+            });
+        
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.style.display = 'none';
+                }
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const buttons = document.querySelectorAll('.show-form-btn-des');
+            const overlay = document.getElementById('overlay2');
+        
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    overlay.style.display = 'flex';
+                });
+            });
+        
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.style.display = 'none';
+                }
+            });
+        });
+    </script>
 <script src="/vendors/js/vendor.bundle.base.js"></script>
  <!-- endinject -->
  <script src="/js/jquery.cookie.js" type="text/javascript"></script>
