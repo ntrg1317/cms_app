@@ -1,802 +1,909 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-   <!-- Required meta tags -->
-   <meta charset="utf-8" />
-   <meta
-     name="viewport"
-     content="width=device-width, initial-scale=1, shrink-to-fit=no"
-   />
-   <title>Spica Admin</title>
-   <!-- base:css -->
-   <link
-     rel="stylesheet"
-     href="/vendors/mdi/css/materialdesignicons.min.css"
-   />
-   <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css" />
-   <!-- endinject -->
-   <!-- inject:css -->
-   <link rel="stylesheet" href="/css/style.css" />
-   <!-- endinject -->
-   <link rel="shortcut icon" href="/images/favicon.png" />
-   <!-- jQuery -->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-   <script
-     type="text/javascript"
-     src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
-   ></script>
-   <script
-     type="text/javascript"
-     src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
-   ></script>
-   <script
-     type="text/javascript"
-     src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
-   ></script>
-   <link
-     rel="stylesheet"
-     type="text/css"
-     href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
-   />
-   <link
-     rel="stylesheet"
-     href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css"
-   />
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Spica Admin</title>
+    <!-- base:css -->
+    <link
+      rel="stylesheet"
+      href="/vendors/mdi/css/materialdesignicons.min.css"
+    />
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- endinject -->
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css"
+    />
 
+    <style>
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: none;
+        justify-content: center;
+        align-items: center;
+      }
 
-   <style>
-     .overlay {
-       position: fixed;
-       top: 0;
-       left: 0;
-       width: 100%;
-       height: 100%;
-       background: rgba(0, 0, 0, 0.5);
-       display: none;
-       justify-content: center;
-       align-items: center;
-     }
+      .form-container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 100%;
+      }
 
+      .form-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+      }
 
-     .form-container {
-       background: white;
-       padding: 20px;
-       border-radius: 10px;
-       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-       max-width: 500px;
-       width: 100%;
-     }
+      .form-group {
+        flex: 1;
+        margin-right: 10px;
+      }
 
-     .action-icons .d-flex {
-       width: 100%;
-       justify-content: center;
-       align-items: center;
-     }
+      .form-group:last-child {
+        margin-right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-scroller d-flex">
+      <!-- partial:./partials/_sidebar.html -->
+      <div data-include="_sidebar"></div>
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:./partials/_navbar.html -->
+        <div data-include="_navbar"></div>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="row">
+              <div class="col-lg-12 grid-margin stretch-card">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                      Lịch sử điều trị
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div
+                      class="d-flex flex-direction-row justify-content-between"
+                    >
+                      <div class="col-lg-8 grid-margin stretch-card">
+                        <div class="input-group">
+                          <input
+                            type="text"
+                            class="form-control border rounded-pill"
+                            placeholder="Search Here..."
+                            aria-label="search"
+                            aria-describedby="search"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="col-lg-2 grid-margin stretch-card justify-content-center"
+                      >
+                        <button
+                          type="button"
+                          class="btn btn-light btn-icon-text"
+                        >
+                          <i class="mdi mdi-printer btn-icon-prepend"></i>
+                          In tất cả
+                        </button>
+                      </div>
+                      <div
+                        class="col-lg-2 grid-margin stretch-card justify-content-center"
+                      >
+                        <button
+                          type="button"
+                          class="btn btn-primary btn-icon-text"
+                          title="Thêm LSĐT"
+                          onclick="showForm('add', this)"
+                        >
+                          <i class="mdi mdi-plus btn-icon-prepend"></i>
+                          Thêm LSĐT
+                        </button>
 
+                        <div class="overlay" id="overlay" style="display: none">
+                          <div class="form-container">
+                            <h4 class="card-title" id="form-title">
+                              Default form
+                            </h4>
+                            <p class="card-description" id="form-description">
+                              Basic form layout
+                            </p>
+                            <form class="forms-sample">
+                              <div class="form-row">
+                                <div class="form-group col-md-4">
+                                  <label for="inputID">ID</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputID"
+                                    placeholder="ID"
+                                  />
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="inputDoctorID">ID bác sĩ</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputDoctorID"
+                                    placeholder="ID bác sĩ"
+                                  />
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="inputDoctorName"
+                                    >Tên bác sĩ</label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputDoctorName"
+                                    placeholder="Tên bác sĩ"
+                                    value="Lê Hà"
+                                  />
+                                </div>
+                              </div>
+                              <div class="form-row">
+                                <div class="form-group col-md-4">
+                                  <label for="inputTreatmentDate"
+                                    >Ngày điều trị</label
+                                  >
+                                  <input
+                                    type="date"
+                                    class="form-control"
+                                    id="inputTreatmentDate"
+                                  />
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="inputPatientID"
+                                    >ID bệnh nhân</label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputPatientID"
+                                    placeholder="ID bệnh nhân"
+                                  />
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="inputPatientName"
+                                    >Tên bệnh nhân</label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputPatientName"
+                                    placeholder="Tên bệnh nhân"
+                                    value="Nguyệt Hà"
+                                  />
+                                </div>
+                              </div>
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="inputServiceID">ID dịch vụ</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputServiceID"
+                                    placeholder="ID dịch vụ"
+                                    value="S001"
+                                  />
+                                </div>
+                                <div class="form-group col-md-6">
+                                  <label for="inputServiceName"
+                                    >Tên dịch vụ</label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputServiceName"
+                                    placeholder="Tên dịch vụ"
+                                    value="Hàn răng"
+                                  />
+                                </div>
+                              </div>
+                              <button
+                                type="button"
+                                class="btn btn-primary me-2"
+                                id="add-supply-btn"
+                                onclick="addSupplyFields()"
+                              >
+                                Thêm vật tư
+                              </button>
+                              <div class="form-row">
+                                <div class="form-group col-md-4">
+                                  <label for="inputSupplyID">ID vật tư</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputSupplyID"
+                                    placeholder="ID vật tư"
+                                    value="V001"
+                                  />
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="inputSupplyName"
+                                    >Tên vật tư</label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputSupplyName"
+                                    placeholder="Tên vật tư"
+                                    value="Nhựa composite"
+                                  />
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="inputSupplyAmount"
+                                    >Số lượng
+                                  </label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputSupplyAmount"
+                                    placeholder="Số lượng"
+                                    value="3 gam"
+                                  />
+                                </div>
+                              </div>
 
-     .action-icons i {
-       margin: 0 5px;
-       font-size: 1rem;
-     }
-     .icon-button {
-       display: inline-flex;
-       align-items: center;
-       justify-content: center;
-       cursor: pointer;
-       border: none;
-       background: none;
-       padding: 0;
-     }
-
-
-     .icon-button:hover {
-       color: #007bff; /* Optional: Change color on hover */
-     }
-     .form-container {
-       background: white;
-       padding: 20px;
-       border-radius: 10px;
-       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-       max-width: 600px;
-       width: 100%;
-     }
-
-
-     .form-row {
-       display: flex;
-       justify-content: space-between;
-       margin-bottom: 15px;
-     }
-
-
-     .form-group {
-       flex: 1;
-       margin-right: 10px;
-     }
-
-
-     .form-group:last-child {
-       margin-right: 0;
-     }
-   </style>
- </head>
- <body>
-   <div class="container-scroller d-flex">
-     <!-- partial:./partials/_sidebar.html -->
-     <div data-include="_sidebar"></div>
-     <div class="container-fluid page-body-wrapper">
-       <!-- partial:./partials/_navbar.html -->
-       <div data-include="_navbar"></div>
-       <!-- partial -->
-       <div class="main-panel">
-         <div class="content-wrapper">
-           <div class="row">
-             <div class="col-lg-12 grid-margin stretch-card">
-               <nav aria-label="breadcrumb">
-                 <ol class="breadcrumb">
-                   <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                   <li class="breadcrumb-item active" aria-current="page">
-                     Lịch sử điều trị
-                   </li>
-                 </ol>
-               </nav>
-             </div>
-             <div class="col-lg-12 grid-margin stretch-card">
-               <div class="card">
-                 <div class="card-body">
-                   <div
-                     class="d-flex flex-direction-row justify-content-between"
-                   >
-                     <div class="col-lg-8 grid-margin stretch-card">
-                       <div class="input-group">
-                         <input
-                           type="text"
-                           class="form-control border rounded-pill"
-                           placeholder="Search Here..."
-                           aria-label="search"
-                           aria-describedby="search"
-                         />
-                       </div>
-                     </div>
-                     <div
-                       class="col-lg-2 grid-margin stretch-card justify-content-center"
-                     >
-                       <button
-                         type="button"
-                         class="btn btn-light btn-icon-text"
-                       >
-                         <i class="mdi mdi-printer btn-icon-prepend"></i>
-                         In tất cả
-                       </button>
-                     </div>
-                     <div
-                       class="col-lg-2 grid-margin stretch-card justify-content-center"
-                     >
-                       <button
-                         type="button"
-                         class="btn btn-primary btn-icon-text"
-                         title="Thêm LSĐT"
-                         onclick="showForm('add', this)"
-                       >
-                         <i class="mdi mdi-plus btn-icon-prepend"></i>
-                         Thêm LSĐT
-                       </button>
-
-
-                      <div class="overlay" id="overlay" style="display:none;">
-                         <div class="form-container">
-                           <h4 class="card-title" id="form-title">Default form</h4>
-                           <p class="card-description" id="form-description">Basic form layout</p>
-                           <form class="forms-sample">
-                             <div class="form-row">
-                               <div class="form-group col-md-4">
-                                 <label for="inputID">ID</label>
-                                 <input type="text" class="form-control" id="inputID" placeholder="ID" />
-                               </div>
-                               <div class="form-group col-md-4">
-                                 <label for="inputDoctorID">ID bác sĩ</label>
-                                 <input type="text" class="form-control" id="inputDoctorID" placeholder="ID bác sĩ" />
-                               </div>
-                               <div class="form-group col-md-4">
-                                 <label for="inputDoctorName">Tên bác sĩ</label>
-                                 <input type="text" class="form-control" id="inputDoctorName" placeholder="Tên bác sĩ" value="Lê Hà" />
-                               </div>
-                             </div>
-                             <div class="form-row">
-                               <div class="form-group col-md-4">
-                                 <label for="inputTreatmentDate">Ngày điều trị</label>
-                                 <input type="date" class="form-control" id="inputTreatmentDate" />
-                               </div>
-                               <div class="form-group col-md-4">
-                                 <label for="inputPatientID">ID bệnh nhân</label>
-                                 <input type="text" class="form-control" id="inputPatientID" placeholder="ID bệnh nhân" />
-                               </div>
-                               <div class="form-group col-md-4">
-                                 <label for="inputPatientName">Tên bệnh nhân</label>
-                                 <input type="text" class="form-control" id="inputPatientName" placeholder="Tên bệnh nhân" value="Nguyệt Hà" />
-                               </div>
-                             </div>
-                             <div class="form-row">
-                               <div class="form-group col-md-6">
-                                 <label for="inputServiceID">ID dịch vụ</label>
-                                 <input type="text" class="form-control" id="inputServiceID" placeholder="ID dịch vụ" value="S001" />
-                               </div>
-                               <div class="form-group col-md-6">
-                                 <label for="inputServiceName">Tên dịch vụ</label>
-                                 <input type="text" class="form-control" id="inputServiceName" placeholder="Tên dịch vụ" value="Hàn răng" />
-                               </div>
-                             </div>
-                             <button type="button" class="btn btn-primary me-2" id="add-supply-btn" onclick="addSupplyFields()">
-                               Thêm vật tư
-                             </button>
-                             <div class="form-row">
-                               <div class="form-group col-md-4">
-                                 <label for="inputSupplyID">ID vật tư</label>
-                                 <input type="text" class="form-control" id="inputSupplyID" placeholder="ID vật tư" value="V001" />
-                               </div>
-                               <div class="form-group col-md-4">
-                                 <label for="inputSupplyName">Tên vật tư</label>
-                                 <input type="text" class="form-control" id="inputSupplyName" placeholder="Tên vật tư" value="Nhựa composite" />
-                               </div>
-                               <div class="form-group col-md-4">
-                                   <label for="inputSupplyAmount">Số lượng </label>
-                                   <input type="text" class="form-control" id="inputSupplyAmount" placeholder="Số lượng" value="3 gam" />
-                                 </div>
-                             </div>
-                          
-                            
                               <div class="form-group">
-                               <label for="inputNotes">Ghi chú</label>
-                               <textarea class="form-control" id="inputNotes" rows="3" placeholder="Ghi chú">
-                                
-                               </textarea>
-                             </div>
-                             <button type="submit" class="btn btn-primary me-2">Submit</button>
-                             <button type="button" class="btn btn-light" id="cancelButton" onclick="hideForm()">Cancel</button>
-                           </form>
-                         </div>
-                       </div>
-                      
-                     </div>
-                   </div>
-
-
-                   <div class="filter-container">
-                     <h4 class="mb-0">FILTER</h4>
-                     <div class="filter-item">
-                       <p class="filter-label m-0">Date:</p>
-                       <input
-                         class="form-control rangedatepicker"
-                         type="text"
-                         name="dates"
-                         value=""
-                       />
-                     </div>
-                     <div class="filter-item">
-                       <p class="filter-label m-0">Trạng thái:</p>
-                       <select class="form-control" name="status">
-                         <option value="all">Tất cả</option>
-                      
-                         <option value="completed">Hoàn thành</option>
-                         <option value="cancelled">Đã huỷ</option>
-                       </select>
-                     </div>
-                     <div class="filter-item">
-                       <p class="filter-label">Sắp xếp theo:</p>
-                       <select class="form-control" name="sort">
-                         <option value="default">ID</option>
-                         <option value="date">Ngày</option>
-                       </select>
-                     </div>
-                   </div>
-                   <div class="table-responsive">
-                     <table class="table table-striped">
-                       <thead>
-                         <tr>
-                           <th>ID</th>
-                           <th>ID bác sĩ</th>
-                           <th>ID bệnh nhân</th>
-                           <th>Ngày điều trị</th>
-
-
-                           <th>Trạng thái</th>
-                           <th>Action</th>
-                         </tr>
-                       </thead>
-
-
-                       <tbody>
-                         <tr>
-                           <td class="py-1">1</td>
-                           <td>BS123</td>
-                           <td>BN456</td>
-                           <td>2024-07-01</td>
-                           <td>
-                             <label class="badge badge-danger">Đã hủy</label>
-                           </td>
-                           <td class="action-icons">
-                             <button class="icon-button">
-                               <i
-                                 class="mdi mdi-delete-forever"
-                                 data-toggle="tooltip"
-                                 title="Xóa"
-                               ></i>
-                             </button>
-
-
-                             <button class="icon-button">
-                               <i
-                                 class="mdi mdi-table-edit"
-                                 data-toggle="tooltip"
-                                 title="Chỉnh sửa"
-                               ></i>
-                             </button>
-
-
-                             <button class="icon-button">
-                               <i
-                                 class="mdi mdi-eye"
-                                 data-toggle="tooltip"
-                                 title="Chi tiết"
-                               ></i>
-                             </button>
-                           </td>
-                         </tr>
-                         <tr>
-                           <td>2</td>
-                           <td>BS124</td>
-                           <td>BN457</td>
-                           <td>2024-07-02</td>
-
-
-                           <td>
-                             <label class="badge badge-success">Đã hoàn thành</label>
-                           </td>
-
-
-                           <td class="action-icons">
-                             <button class="icon-button">
-                               <i
-                                 class="mdi mdi-delete-forever"
-                                 data-toggle="tooltip"
-                                 title="Xóa"
-                               ></i>
-                             </button>
-                             <button
-                               class="icon-button"
-                               onclick="showForm('edit', this)"
-                             >
-                               <i
-                                 class="mdi mdi-table-edit"
-                                 data-toggle="tooltip"
-                                 title="Chỉnh sửa"
-                               ></i>
-                             </button>
-                             <button
-                               class="icon-button"
-                               onclick="showForm('view', this)"
-                             >
-                               <i
-                                 class="mdi mdi-eye"
-                                 data-toggle="tooltip"
-                                 title="Chi tiết"
-                               ></i>
-                             </button>
-                           </td>
-                         </tr>
-                         <tr>
-                           <td>3</td>
-                           <td>BS125</td>
-                           <td>BN458</td>
-                           <td>2024-07-03</td>
-
-
-                           <td>
-                             <label class="badge badge-success">Đã hoàn thành</label>
-                           </td>
-                           <td class="action-icons">
-                             <button class="icon-button">
-                               <i
-                                 class="mdi mdi-delete-forever"
-                                 data-toggle="tooltip"
-                                 title="Xóa"
-                               ></i>
-                             </button>
-                             <button
-                               class="icon-button"
-                               onclick="showForm('edit', this)"
-                             >
-                               <i
-                                 class="mdi mdi-table-edit"
-                                 data-toggle="tooltip"
-                                 title="Chỉnh sửa"
-                               ></i>
-                             </button>
-                             <button
-                               class="icon-button"
-                               onclick="showForm('view', this)"
-                             >
-                               <i
-                                 class="mdi mdi-eye"
-                                 data-toggle="tooltip"
-                                 title="Chi tiết"
-                               ></i>
-                             </button>
-                           </td>
-                         </tr>
-                         <tr>
-                           <td>4</td>
-                           <td>BS126</td>
-                           <td>BN459</td>
-                           <td>2024-07-04</td>
-
-
-                           <td>
-                             <label class="badge badge-success">Đã hoàn thành</label>
-                           </td>
-                           <td class="action-icons">
-                             <button class="icon-button">
-                               <i
-                                 class="mdi mdi-delete-forever"
-                                 data-toggle="tooltip"
-                                 title="Xóa"
-                               ></i>
-                             </button>
-                             <button
-                               class="icon-button"
-                               onclick="showForm('edit', this)"
-                             >
-                               <i
-                                 class="mdi mdi-table-edit"
-                                 data-toggle="tooltip"
-                                 title="Chỉnh sửa"
-                               ></i>
-                             </button>
-                             <button
-                               class="icon-button"
-                               onclick="showForm('view', this)"
-                             >
-                               <i
-                                 class="mdi mdi-eye"
-                                 data-toggle="tooltip"
-                                 title="Chi tiết"
-                               ></i>
-                             </button>
-                           </td>
-                         </tr>
-                         <tr>
-                           <td>5</td>
-                           <td>BS127</td>
-                           <td>BN460</td>
-                           <td>2024-07-05</td>
-
-
-                           <td>
-                             <label class="badge badge-danger">Đã hủy</label>
-                           </td>
-                           <td class="action-icons">
-                             <button class="icon-button">
-                               <i
-                                 class="mdi mdi-delete-forever"
-                                 data-toggle="tooltip"
-                                 title="Xóa"
-                               ></i>
-                             </button>
-
-
-                             <button class="icon-button">
-                               <i
-                                 class="mdi mdi-table-edit"
-                                 data-toggle="tooltip"
-                                 title="Chỉnh sửa"
-                               ></i>
-                             </button>
-
-
-                             <button class="icon-button">
-                               <i
-                                 class="mdi mdi-eye"
-                                 data-toggle="tooltip"
-                                 title="Chi tiết"
-                               ></i>
-                             </button>
-                           </td>
-                         </tr>
-                         <tr>
-                           <td>6</td>
-                           <td>BS128</td>
-                           <td>BN461</td>
-                           <td>2024-07-06</td>
-
-
-                           <td>
-                             <label class="badge badge-danger">Đã hủy</label>
-                           </td>
-                           <td class="action-icons">
-                             <button class="icon-button">
-                               <i
-                                 class="mdi mdi-delete-forever"
-                                 data-toggle="tooltip"
-                                 title="Xóa"
-                               ></i>
-                             </button>
-
-
-                             <button class="icon-button">
-                               <i
-                                 class="mdi mdi-table-edit"
-                                 data-toggle="tooltip"
-                                 title="Chỉnh sửa"
-                               ></i>
-                             </button>
-
-
-                             <button class="icon-button">
-                               <i
-                                 class="mdi mdi-eye"
-                                 data-toggle="tooltip"
-                                 title="Chi tiết"
-                               ></i>
-                             </button>
-                           </td>
-                         </tr>
-                         <tr>
-                           <td>7</td>
-                           <td>BS129</td>
-                           <td>BN462</td>
-                           <td>2024-07-07</td>
-
-
-                           <td>
-                             <label class="badge badge-success">Đã hoàn thành</label>
-                           </td>
-                           <td class="action-icons">
-                             <button class="icon-button">
-                               <i
-                                 class="mdi mdi-delete-forever"
-                                 data-toggle="tooltip"
-                                 title="Xóa"
-                               ></i>
-                             </button>
-                             <button
-                               class="icon-button"
-                               onclick="showForm('edit', this)"
-                             >
-                               <i
-                                 class="mdi mdi-table-edit"
-                                 data-toggle="tooltip"
-                                 title="Chỉnh sửa"
-                               ></i>
-                             </button>
-                             <button
-                               class="icon-button"
-                               onclick="showForm('view', this)"
-                             >
-                               <i
-                                 class="mdi mdi-eye"
-                                 data-toggle="tooltip"
-                                 title="Chi tiết"
-                               ></i>
-                             </button>
-                           </td>
-                         </tr>
-                         <tr>
-                           <td>8</td>
-                           <td>BS130</td>
-                           <td>BN463</td>
-                           <td>2024-07-08</td>
-
-
-                           <td>
-                             <label class="badge badge-success">Đã hoàn thành</label>
-                           </td>
-                           <td class="action-icons">
-                             <button class="icon-button">
-                               <i
-                                 class="mdi mdi-delete-forever"
-                                 data-toggle="tooltip"
-                                 title="Xóa"
-                               ></i>
-                             </button>
-                             <button
-                               class="icon-button"
-                               onclick="showForm('edit', this)"
-                             >
-                               <i
-                                 class="mdi mdi-table-edit"
-                                 data-toggle="tooltip"
-                                 title="Chỉnh sửa"
-                               ></i>
-                             </button>
-                             <button
-                               class="icon-button"
-                               onclick="showForm('view', this)"
-                             >
-                               <i
-                                 class="mdi mdi-eye"
-                                 data-toggle="tooltip"
-                                 title="Chi tiết"
-                               ></i>
-                             </button>
-                           </td>
-                         </tr>
-                         <tr>
-                           <td>9</td>
-                           <td>BS131</td>
-                           <td>BN464</td>
-                           <td>2024-07-09</td>
-
-
-                           <td>
-                             <label class="badge badge-danger">Đã hủy</label>
-                           </td>
-                           <td class="action-icons">
-                             <button class="icon-button">
-                               <i
-                                 class="mdi mdi-delete-forever"
-                                 data-toggle="tooltip"
-                                 title="Xóa"
-                               ></i>
-                             </button>
-
-
-                             <button class="icon-button">
-                               <i
-                                 class="mdi mdi-table-edit"
-                                 data-toggle="tooltip"
-                                 title="Chỉnh sửa"
-                               ></i>
-                             </button>
-
-
-                             <button class="icon-button">
-                               <i
-                                 class="mdi mdi-eye"
-                                 data-toggle="tooltip"
-                                 title="Chi tiết"
-                               ></i>
-                             </button>
-                           </td>
-                         </tr>
-                       </tbody>
-                     </table>
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-       <!-- main-panel ends -->
-     </div>
-     <!-- page-body-wrapper ends -->
-   </div>
-   <!-- container-scroller -->
-   <!-- base:js -->
-
-
-   <script type="text/javascript">
-       $(".rangedatepicker").daterangepicker({
-         alwaysShowCalendars: true,
-         locale: {
-           format: "YYYY/MM/DD",
-         },
-         ranges: {
-           Today: [moment(), moment()],
-           Yesterday: [
-             moment().subtract(1, "days"),
-             moment().subtract(1, "days"),
-           ],
-           "Last 7 Days": [moment().subtract(6, "days"), moment()],
-           "Last 30 Days": [moment().subtract(29, "days"), moment()],
-           "This Month": [moment().startOf("month"), moment().endOf("month")],
-           "Last Month": [
-             moment().subtract(1, "month").startOf("month"),
-             moment().subtract(1, "month").endOf("month"),
-           ],
-         },
-         startDate: moment().startOf("month"),
-         endDate: moment().endOf("month"),
-       });
-
-
-       $(document).ready(function () {
-         $('[data-toggle="tooltip"]').tooltip();
-       });
-       function showForm(type, button) {
-       const overlay = document.getElementById("overlay");
-       const formTitle = document.getElementById("form-title");
-       const formDescription = document.getElementById("form-description");
-       const addSupplyBtn = document.getElementById("add-supply-btn");
-
-
-       if (type === "edit" || type === "view") {
-         const row = button.closest("tr");
-         const cells = row.querySelectorAll("td");
-
-
-         const id = cells[0].innerText.trim();
-         const doctorID = cells[1].innerText.trim();
-         const patientID = cells[2].innerText.trim();
-         const treatmentDate = cells[3].innerText.trim();
-
-
-         document.getElementById("inputID").value = id;
-         document.getElementById("inputDoctorID").value = doctorID;
-         document.getElementById("inputPatientID").value = patientID;
-         document.getElementById("inputTreatmentDate").value =
-          treatmentDate;
-           addSupplyBtn.style.display = "none";
-        
-
-
-         if (type === "edit") {
-           formTitle.innerText = "Chỉnh sửa";
-           formDescription.innerText = "Chỉnh sửa thông tin LSĐT";
-         } else if (type === "view") {
-           formTitle.innerText = "Chi tiết";
-           formDescription.innerText = "Xem chi tiết thông tin LSĐT";
-         }
-       } else if (type === "add") {
-         formTitle.innerText = "Thêm";
-         formDescription.innerText = "Thêm LSĐT";
-
-
-         document.getElementById("inputID").value = "";
-         document.getElementById("inputDoctorID").value = "";
-         document.getElementById("inputDoctorName").value = "";
-         document.getElementById("inputPatientID").value = "";
-         document.getElementById("inputPatientName").value = "";
-         document.getElementById("inputTreatmentDate").value = "";
-         document.getElementById("inputServiceID").value = "";
-         document.getElementById("inputServiceName").value = "";
-         document.getElementById("inputSupplyID").value = "";
-         document.getElementById("inputSupplyName").value = "";
-         document.getElementById("inputSupplyAmount").value = "";
-         document.getElementById("inputNotes").value = "";
-         addSupplyBtn.style.display = "inline-block";
-       }
-
-
-       overlay.style.display = "flex";
-     }
-
-
-     function hideForm() {
-       const overlay = document.getElementById("overlay");
-       overlay.style.display = "none";
-     }
-
-
-
-
-       $(function(){
-         var includes = $('[data-include]')
-         $.each(includes, function(){
-             var container = $(this);
-             var file = '/partials/' + container.data('include') + '.html';
-
-
-             $.get(file, function(data){
-                 container.replaceWith(data);
-         });
-         });
-
-
-       });
-   </script>
-
-
-   <script src="/vendors/js/vendor.bundle.base.js"></script>
-   <!-- endinject -->
-   <script src="/js/jquery.cookie.js" type="text/javascript"></script>
-   <!-- inject:js -->
-   <script src="/js/off-canvas.js"></script>
-   <script src="/js/hoverable-collapse.js"></script>
-   <script src="/js/template.js"></script>
-   <script src="/js/snippet.js"></script>
-   <!-- endinject -->
-   <!-- jQuery -->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
- </body>
+                                <label for="inputNotes">Ghi chú</label>
+                                <textarea
+                                  class="form-control"
+                                  id="inputNotes"
+                                  rows="3"
+                                  placeholder="Ghi chú"
+                                >
+                                </textarea>
+                              </div>
+                              <button
+                                type="submit"
+                                class="btn btn-primary me-2"
+                              >
+                                Submit
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-light"
+                                id="cancelButton"
+                                onclick="hideForm()"
+                              >
+                                Cancel
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="filter-container">
+                      <h4 class="mb-0">FILTER</h4>
+                      <div class="filter-item">
+                        <p class="filter-label m-0">Date:</p>
+                        <input
+                          class="form-control rangedatepicker"
+                          type="text"
+                          name="dates"
+                          value=""
+                        />
+                      </div>
+                      <div class="filter-item">
+                        <p class="filter-label m-0">Trạng thái:</p>
+                        <select class="form-control" name="status">
+                          <option value="all">Tất cả</option>
+
+                          <option value="completed">Hoàn thành</option>
+                          <option value="cancelled">Đã huỷ</option>
+                        </select>
+                      </div>
+                      <div class="filter-item">
+                        <p class="filter-label">Sắp xếp theo:</p>
+                        <select class="form-control" name="sort">
+                          <option value="default">ID</option>
+                          <option value="date">Ngày</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>ID bác sĩ</th>
+                            <th>ID bệnh nhân</th>
+                            <th>Ngày điều trị</th>
+
+                            <th>Trạng thái</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr>
+                            <td class="py-1">1</td>
+                            <td>BS123</td>
+                            <td>BN456</td>
+                            <td>2024-07-01</td>
+                            <td>
+                              <label class="badge badge-danger">Đã hủy</label>
+                            </td>
+                            <td class="d-flex flex-row" style="gap: 5px">
+                              <button
+                                type="button"
+                                class="btn btn-inverse-danger btn-rounded btn-icon"
+                                data-bs-toggle="modal"
+                                data-bs-target="#confirm-del-patient"
+                              >
+                                <i
+                                  class="mdi mdi-delete"
+                                  data-toggle="tooltip"
+                                  title="Xoá"
+                                ></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-inverse-primary btn-rounded btn-icon"
+                                onclick="showForm('edit', this)"
+                              >
+                                <i
+                                  class="mdi mdi-table-edit"
+                                  data-toggle="tooltip"
+                                  title="Chỉnh sửa"
+                                ></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-inverse-info btn-rounded btn-icon"
+                              >
+                                <i
+                                  class="mdi mdi-eye"
+                                  onclick="showForm('view', this)"
+                                  data-toggle="tooltip"
+                                  title="Chi tiết"
+                                ></i>
+                              </button>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>2</td>
+                            <td>BS124</td>
+                            <td>BN457</td>
+                            <td>2024-07-02</td>
+
+                            <td>
+                              <label class="badge badge-success"
+                                >Đã hoàn thành</label
+                              >
+                            </td>
+
+                            <td class="d-flex flex-row" style="gap: 5px">
+                              <button
+                                type="button"
+                                class="btn btn-inverse-danger btn-rounded btn-icon"
+                                data-bs-toggle="modal"
+                                data-bs-target="#confirm-del-patient"
+                              >
+                                <i
+                                  class="mdi mdi-delete"
+                                  data-toggle="tooltip"
+                                  title="Xoá"
+                                ></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-inverse-primary btn-rounded btn-icon"
+                                onclick="showForm('edit', this)"
+                              >
+                                <i
+                                  class="mdi mdi-table-edit"
+                                  data-toggle="tooltip"
+                                  title="Chỉnh sửa"
+                                ></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-inverse-info btn-rounded btn-icon"
+                              >
+                                <i
+                                  class="mdi mdi-eye"
+                                  onclick="showForm('view', this)"
+                                  data-toggle="tooltip"
+                                  title="Chi tiết"
+                                ></i>
+                              </button>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>3</td>
+                            <td>BS125</td>
+                            <td>BN458</td>
+                            <td>2024-07-03</td>
+
+                            <td>
+                              <label class="badge badge-success"
+                                >Đã hoàn thành</label
+                              >
+                            </td>
+                            <td class="d-flex flex-row" style="gap: 5px">
+                              <button
+                                type="button"
+                                class="btn btn-inverse-danger btn-rounded btn-icon"
+                                data-bs-toggle="modal"
+                                data-bs-target="#confirm-del-patient"
+                              >
+                                <i
+                                  class="mdi mdi-delete"
+                                  data-toggle="tooltip"
+                                  title="Xoá"
+                                ></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-inverse-primary btn-rounded btn-icon"
+                                onclick="showForm('edit', this)"
+                              >
+                                <i
+                                  class="mdi mdi-table-edit"
+                                  data-toggle="tooltip"
+                                  title="Chỉnh sửa"
+                                ></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-inverse-info btn-rounded btn-icon"
+                              >
+                                <i
+                                  class="mdi mdi-eye"
+                                  onclick="showForm('view', this)"
+                                  data-toggle="tooltip"
+                                  title="Chi tiết"
+                                ></i>
+                              </button>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>4</td>
+                            <td>BS126</td>
+                            <td>BN459</td>
+                            <td>2024-07-04</td>
+
+                            <td>
+                              <label class="badge badge-success"
+                                >Đã hoàn thành</label
+                              >
+                            </td>
+                            <td class="d-flex flex-row" style="gap: 5px">
+                              <button
+                                type="button"
+                                class="btn btn-inverse-danger btn-rounded btn-icon"
+                                data-bs-toggle="modal"
+                                data-bs-target="#confirm-del-patient"
+                              >
+                                <i
+                                  class="mdi mdi-delete"
+                                  data-toggle="tooltip"
+                                  title="Xoá"
+                                ></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-inverse-primary btn-rounded btn-icon"
+                                onclick="showForm('edit', this)"
+                              >
+                                <i
+                                  class="mdi mdi-table-edit"
+                                  data-toggle="tooltip"
+                                  title="Chỉnh sửa"
+                                ></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-inverse-info btn-rounded btn-icon"
+                              >
+                                <i
+                                  class="mdi mdi-eye"
+                                  onclick="showForm('view', this)"
+                                  data-toggle="tooltip"
+                                  title="Chi tiết"
+                                ></i>
+                              </button>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>5</td>
+                            <td>BS127</td>
+                            <td>BN460</td>
+                            <td>2024-07-05</td>
+
+                            <td>
+                              <label class="badge badge-danger">Đã hủy</label>
+                            </td>
+                            <td class="d-flex flex-row" style="gap: 5px">
+                              <button
+                                type="button"
+                                class="btn btn-inverse-danger btn-rounded btn-icon"
+                                data-bs-toggle="modal"
+                                data-bs-target="#confirm-del-patient"
+                              >
+                                <i
+                                  class="mdi mdi-delete"
+                                  data-toggle="tooltip"
+                                  title="Xoá"
+                                ></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-inverse-primary btn-rounded btn-icon"
+                                onclick="showForm('edit', this)"
+                              >
+                                <i
+                                  class="mdi mdi-table-edit"
+                                  data-toggle="tooltip"
+                                  title="Chỉnh sửa"
+                                ></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-inverse-info btn-rounded btn-icon"
+                              >
+                                <i
+                                  class="mdi mdi-eye"
+                                  onclick="showForm('view', this)"
+                                  data-toggle="tooltip"
+                                  title="Chi tiết"
+                                ></i>
+                              </button>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>6</td>
+                            <td>BS128</td>
+                            <td>BN461</td>
+                            <td>2024-07-06</td>
+
+                            <td>
+                              <label class="badge badge-danger">Đã hủy</label>
+                            </td>
+                            <td class="d-flex flex-row" style="gap: 5px">
+                              <button
+                                type="button"
+                                class="btn btn-inverse-danger btn-rounded btn-icon"
+                                data-bs-toggle="modal"
+                                data-bs-target="#confirm-del-patient"
+                              >
+                                <i
+                                  class="mdi mdi-delete"
+                                  data-toggle="tooltip"
+                                  title="Xoá"
+                                ></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-inverse-primary btn-rounded btn-icon"
+                                onclick="showForm('edit', this)"
+                              >
+                                <i
+                                  class="mdi mdi-table-edit"
+                                  data-toggle="tooltip"
+                                  title="Chỉnh sửa"
+                                ></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-inverse-info btn-rounded btn-icon"
+                              >
+                                <i
+                                  class="mdi mdi-eye"
+                                  onclick="showForm('view', this)"
+                                  data-toggle="tooltip"
+                                  title="Chi tiết"
+                                ></i>
+                              </button>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>7</td>
+                            <td>BS129</td>
+                            <td>BN462</td>
+                            <td>2024-07-07</td>
+
+                            <td>
+                              <label class="badge badge-success"
+                                >Đã hoàn thành</label
+                              >
+                            </td>
+                            <td class="d-flex flex-row" style="gap: 5px">
+                              <button
+                                type="button"
+                                class="btn btn-inverse-danger btn-rounded btn-icon"
+                                data-bs-toggle="modal"
+                                data-bs-target="#confirm-del-patient"
+                              >
+                                <i
+                                  class="mdi mdi-delete"
+                                  data-toggle="tooltip"
+                                  title="Xoá"
+                                ></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-inverse-primary btn-rounded btn-icon"
+                                onclick="showForm('edit', this)"
+                              >
+                                <i
+                                  class="mdi mdi-table-edit"
+                                  data-toggle="tooltip"
+                                  title="Chỉnh sửa"
+                                ></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-inverse-info btn-rounded btn-icon"
+                              >
+                                <i
+                                  class="mdi mdi-eye"
+                                  onclick="showForm('view', this)"
+                                  data-toggle="tooltip"
+                                  title="Chi tiết"
+                                ></i>
+                              </button>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>8</td>
+                            <td>BS130</td>
+                            <td>BN463</td>
+                            <td>2024-07-08</td>
+
+                            <td>
+                              <label class="badge badge-success"
+                                >Đã hoàn thành</label
+                              >
+                            </td>
+                            <td class="d-flex flex-row" style="gap: 5px">
+                              <button
+                                type="button"
+                                class="btn btn-inverse-danger btn-rounded btn-icon"
+                                data-bs-toggle="modal"
+                                data-bs-target="#confirm-del-patient"
+                              >
+                                <i
+                                  class="mdi mdi-delete"
+                                  data-toggle="tooltip"
+                                  title="Xoá"
+                                ></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-inverse-primary btn-rounded btn-icon"
+                                onclick="showForm('edit', this)"
+                              >
+                                <i
+                                  class="mdi mdi-table-edit"
+                                  data-toggle="tooltip"
+                                  title="Chỉnh sửa"
+                                ></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-inverse-info btn-rounded btn-icon"
+                              >
+                                <i
+                                  class="mdi mdi-eye"
+                                  onclick="showForm('view', this)"
+                                  data-toggle="tooltip"
+                                  title="Chi tiết"
+                                ></i>
+                              </button>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>9</td>
+                            <td>BS131</td>
+                            <td>BN464</td>
+                            <td>2024-07-09</td>
+
+                            <td>
+                              <label class="badge badge-danger">Đã hủy</label>
+                            </td>
+                            <td class="d-flex flex-row" style="gap: 5px">
+                              <button
+                                type="button"
+                                class="btn btn-inverse-danger btn-rounded btn-icon"
+                                data-bs-toggle="modal"
+                                data-bs-target="#confirm-del-patient"
+                              >
+                                <i
+                                  class="mdi mdi-delete"
+                                  data-toggle="tooltip"
+                                  title="Xoá"
+                                ></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-inverse-primary btn-rounded btn-icon"
+                                onclick="showForm('edit', this)"
+                              >
+                                <i
+                                  class="mdi mdi-table-edit"
+                                  data-toggle="tooltip"
+                                  title="Chỉnh sửa"
+                                ></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-inverse-info btn-rounded btn-icon"
+                              >
+                                <i
+                                  class="mdi mdi-eye"
+                                  onclick="showForm('view', this)"
+                                  data-toggle="tooltip"
+                                  title="Chi tiết"
+                                ></i>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- base:js -->
+
+    <script type="text/javascript">
+      $(".rangedatepicker").daterangepicker({
+        alwaysShowCalendars: true,
+        locale: {
+          format: "YYYY/MM/DD",
+        },
+        ranges: {
+          Today: [moment(), moment()],
+          Yesterday: [
+            moment().subtract(1, "days"),
+            moment().subtract(1, "days"),
+          ],
+          "Last 7 Days": [moment().subtract(6, "days"), moment()],
+          "Last 30 Days": [moment().subtract(29, "days"), moment()],
+          "This Month": [moment().startOf("month"), moment().endOf("month")],
+          "Last Month": [
+            moment().subtract(1, "month").startOf("month"),
+            moment().subtract(1, "month").endOf("month"),
+          ],
+        },
+        startDate: moment().startOf("month"),
+        endDate: moment().endOf("month"),
+      });
+
+      $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+      function showForm(type, button) {
+        const overlay = document.getElementById("overlay");
+        const formTitle = document.getElementById("form-title");
+        const formDescription = document.getElementById("form-description");
+        const addSupplyBtn = document.getElementById("add-supply-btn");
+
+        if (type === "edit" || type === "view") {
+          const row = button.closest("tr");
+          const cells = row.querySelectorAll("td");
+
+          const id = cells[0].innerText.trim();
+          const doctorID = cells[1].innerText.trim();
+          const patientID = cells[2].innerText.trim();
+          const treatmentDate = cells[3].innerText.trim();
+
+          document.getElementById("inputID").value = id;
+          document.getElementById("inputDoctorID").value = doctorID;
+          document.getElementById("inputPatientID").value = patientID;
+          document.getElementById("inputTreatmentDate").value = treatmentDate;
+          addSupplyBtn.style.display = "none";
+
+          if (type === "edit") {
+            formTitle.innerText = "Chỉnh sửa";
+            formDescription.innerText = "Chỉnh sửa thông tin LSĐT";
+          } else if (type === "view") {
+            formTitle.innerText = "Chi tiết";
+            formDescription.innerText = "Xem chi tiết thông tin LSĐT";
+          }
+        } else if (type === "add") {
+          formTitle.innerText = "Thêm";
+          formDescription.innerText = "Thêm LSĐT";
+
+          document.getElementById("inputID").value = "";
+          document.getElementById("inputDoctorID").value = "";
+          document.getElementById("inputDoctorName").value = "";
+          document.getElementById("inputPatientID").value = "";
+          document.getElementById("inputPatientName").value = "";
+          document.getElementById("inputTreatmentDate").value = "";
+          document.getElementById("inputServiceID").value = "";
+          document.getElementById("inputServiceName").value = "";
+          document.getElementById("inputSupplyID").value = "";
+          document.getElementById("inputSupplyName").value = "";
+          document.getElementById("inputSupplyAmount").value = "";
+          document.getElementById("inputNotes").value = "";
+          addSupplyBtn.style.display = "inline-block";
+        }
+
+        overlay.style.display = "flex";
+      }
+
+      function hideForm() {
+        const overlay = document.getElementById("overlay");
+        overlay.style.display = "none";
+      }
+
+      $(function () {
+        var includes = $("[data-include]");
+        $.each(includes, function () {
+          var container = $(this);
+          var file = "/partials/" + container.data("include") + ".html";
+
+          $.get(file, function (data) {
+            container.replaceWith(data);
+          });
+        });
+      });
+    </script>
+
+    <div data-include="_script"></div>
+  </body>
 </html>
