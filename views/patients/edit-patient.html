@@ -19,8 +19,17 @@
             <div class="content-wrapper">
                 <div class="container-fluid">
                     <div class="row">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                  <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                                  <li class="breadcrumb-item">Bệnh nhân</li>
+                                  <li class="breadcrumb-item active" aria-current="page">Sửa thông tin và cài đặt</li>
+                                </ol>
+                            </nav>
+                        </div>
                        <div class="col-lg-12">
-                          <div class="card mb-3">
+                          <div class="card mb-3 border-0 rounded shadow">
                                 <div class="card-body p-0">
                                     <div class="edit-list">
                                         <ul class="edit-profile nav nav-pills list-inline mb-0 flex-md-row flex-column p-0 border-bottom-none" role="tablist">
@@ -53,7 +62,7 @@
                             <div class="edit-list-data">
                                 <div class="tab-content">
                                     <div class="tab-pane fade active show" id="personal-information" role="tabpanel">
-                                    <div class="card">
+                                    <div class="card p-4 border-0 rounded shadow">
                                         <div class="card-header d-flex justify-content-between" style="background-color: white;">
                                             <div class="header-title my-2">
                                                 <h4 class="card-title">Thông tin cá nhân</h4>
@@ -75,15 +84,15 @@
                                                 <div class=" row align-items-center">
                                                 <div class="form-group col-sm-6">
                                                     <label for="fname">Họ và tên:</label>
-                                                    <input type="text" class="form-control my-2" id="fname" value="Phạm Huê">
+                                                    <input type="text" class="form-control my-2" id="fname" value="Nguyễn Trang">
                                                 </div>
                                                 <div class="form-group col-sm-6">
                                                     <label for="lname">Tài khoản:</label>
-                                                    <input type="text" class="form-control my-2" id="lname" value="huepham0305">
+                                                    <input type="text" class="form-control my-2" id="lname" value="ntrg1317">
                                                 </div>
                                                 <div class="form-group col-sm-6">
                                                     <label for="dob">Ngày sinh:</label>
-                                                    <input type="date" class="form-control my-2" id="dob" value="2003-05-03">
+                                                    <input type="date" class="form-control my-2" id="dob" value="2003-03-17">
                                                 </div>
                                                 <div class="form-group col-sm-6">
                                                     <label class="d-block">Giới tính:</label>
@@ -117,7 +126,7 @@
                                                     <div class="form-floating overflow-hidden">
                                                         <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
                                                         <label for="floatingTextarea2">
-                                                            3 Phương Mai, Đống Đa, việt Nam</label>
+                                                            19 Nguyễn Ngọc Doãn, Đống Đa, việt Nam</label>
                                                     </div>
                                                 </div>
                                                 </div>
@@ -128,7 +137,7 @@
                                     </div>
                                     </div>
                                     <div class="tab-pane fade" id="chang-pwd" role="tabpanel">
-                                        <div class="card mb-3">
+                                        <div class="card mb-3 p-4 rounded shadow">
                                             <div class="card-header d-flex justify-content-between" style="background-color: white;">
                                                 <div class="header-title my-2">
                                                     <h4 class="card-title">Xác minh</h4>
@@ -143,7 +152,7 @@
                                                 </form>
                                             </div>
                                         </div>
-                                        <div class="card">
+                                        <div class="card border-0 p-4 rounded shadow">
                                             <div class="card-header d-flex justify-content-between" style="background-color: white;">
                                                 <div class="header-title my-2">
                                                     <h4 class="card-title">Đổi mật khẩu</h4>
@@ -153,7 +162,7 @@
                                                 <form>
                                                     <div class="form-group">
                                                         <label for="npass">Tài khoản:</label>
-                                                        <input type="text" class="form-control my-2" id="npass" value="phamhue0305">
+                                                        <input type="text" class="form-control my-2" id="npass" value="ntrg1317">
                                                     </div>
                                                     <div class="form-group">
                                                     <label for="npass">Mật khẩu mới:</label>
@@ -166,7 +175,7 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="emailandsms" role="tabpanel">
-                                    <div class="card">
+                                    <div class="card border-0 p-4 rounded shadow">
                                         <div class="card-header d-flex justify-content-between" style="background-color: white;">
                                             <div class="header-title my-2">
                                                 <h4 class="card-title">Email and SMS</h4>
@@ -228,7 +237,7 @@
                                     </div>
                                     </div>
                                     <div class="tab-pane fade" id="manage-contact" role="tabpanel">
-                                    <div class="card">
+                                    <div class="card border-0 p-4 rounded shadow">
                                         <div class="card-header d-flex justify-content-between" style="background-color: white;">
                                             <div class="header-title my-2">
                                                 <h4 class="card-title">Quản lý liên hệ</h4>
@@ -242,7 +251,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                 <label for="email">Email:</label>
-                                                <input type="text" class="form-control my-2" id="email" value="phamhue@demo.com">
+                                                <input type="text" class="form-control my-2" id="email" value="nguyentrang@demo.com">
                                                 </div>
                                                 <div class="form-group">
                                                 <label for="url">Facebook:</label>

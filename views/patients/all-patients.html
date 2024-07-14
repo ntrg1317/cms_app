@@ -28,7 +28,7 @@
                         </nav>
                     </div>
                     <div class="col-lg-12 grid-margin stretch-card">
-                    <div class="card">
+                    <div class="card border-0 p-4 rounded shadow">
                         <div class="card-body">
                             <div class="d-flex flex-direction-row justify-content-between">
                                 <div class="col-lg-8 grid-margin stretch-card">
@@ -72,124 +72,74 @@
                                     <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                        <th>
-                                            ID
-                                        </th>
-                                        <th>
-                                            Họ và tên
-                                        </th>
-                                        <th>
-                                            SĐT
-                                        </th>
-                                        <th>
-                                            Tuổi
-                                        </th>
-                                        <th>
-                                            Địa chỉ
-                                        </th>
-                                        <th>
-                                            Lần khám cuối
-                                        </th>
-                                        <th>
-                                            Trạng thái
-                                        </th>
-                                        <th>
-                                            Hành động
-                                        </th>
+                                        <th>ID</th>
+                                        <th>Họ và tên</th>
+                                        <th>SĐT</th>
+                                        <th>Tuổi</th>
+                                        <th>Giới tính</th>
+                                        <th>Địa chỉ</th>
+                                        <th>Lần khám cuối</th>
+                                        <th>Trạng thái</th>
+                                        <th>Hành động</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                        <td class="py-1">
-                                            BN1
-                                        </td>
-                                        <td>
-                                            Phạm Huê
-                                        </td>
-                                        <td>
-                                            0167577891
-                                        </td>
-                                        <td>
-                                            22
-                                        </td>
-                                        <td>
-                                            3 Phương Mai, Đống Đa, việt Nam
-                                        </td>
-                                        <td>
-                                            15/5/2024
-                                        </td>
-                                        <td>
-                                            <label class="badge badge-danger">Đã hủy</label>
-                                        </td>
-                                        <td class="d-flex" style="gap: 5px;">
-                                            <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-del-patient">
-                                                <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon" data-bs-toggle="modal" data-bs-target="#add-patient">
-                                                <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
-                                                <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
-                                            </button>
-                                        </td>
+                                            <td class="py-1">BN1</td>
+                                            <td>Phạm Huê</td>
+                                            <td>0167577891</td>
+                                            <td>22</td>
+                                            <td>Nữ</td>
+                                            <td>3 Phương Mai, Đống Đa, việt Nam</td>
+                                            <td>15/5/2024</td>
+                                            <td><label class="badge badge-danger">Đã hủy</label></td>
+                                            <td class="d-flex flex-column align-items-center" style="gap: 5px;">
+                                                <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon"  data-bs-toggle="modal" data-bs-target="#confirm-del-patient">
+                                                    <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon" data-bs-toggle="modal" data-bs-target="#add-patient">
+                                                    <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                                </button>
+                                                <a href="/views/patients/patient-profile.html">
+                                                    <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                                        <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
+                                                    </button>
+                                                </a>
+                                            </td>
                                         </tr>
                                         <tr>
-                                        <td class="py-1">
-                                            BN2
-                                        </td>
-                                        <td>
-                                            Nguyễn Trang
-                                        </td>
-                                        <td>
-                                            0167577891
-                                        </td>
-                                        <td>
-                                            22
-                                        </td>
-                                        <td>
-                                            19 Nguyễn Ngọc Doãn, Đống Đa, Việt Nam
-                                        </td>
-                                        <td>
-                                            15/5/2024
-                                        </td>
-                                        <td>
-                                            <label class="badge badge-success">Hoàn thành</label>
-                                        </td>
-                                        <td class="d-flex" style="gap: 5px;">
-                                            <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
-                                                <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon">
-                                                <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
-                                                <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
-                                            </button>
-                                        </td>
+                                            <td class="py-1">BN2</td>
+                                            <td>Nguyễn Trang</td>
+                                            <td>0167577891</td>
+                                            <td>22</td>
+                                            <td>Nữ</td>
+                                            <td>19 Nguyễn Ngọc Doãn, Đống Đa, Việt Nam</td>
+                                            <td>15/5/2024</td>
+                                            <td><label class="badge badge-success">Hoàn thành</label></td>
+                                            <td class="d-flex flex-column align-items-center" style="gap: 5px;">
+                                                <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
+                                                    <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon">
+                                                    <i class="mdi mdi-table-edit" data-toggle="tooltip" title="Chỉnh sửa"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-inverse-info btn-rounded btn-icon">
+                                                    <i class="mdi mdi-eye" data-toggle="tooltip" title="Chi tiết"></i>
+                                                </button>
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td class="py-1">
-                                                BN3
-                                            </td>
-                                            <td>
-                                                Lê Hà
-                                            </td>
-                                            <td>
-                                                0167577891
-                                            </td>
-                                            <td>
-                                                22
-                                            </td>
-                                            <td>
-                                                19 Nguyễn Ngọc Doãn, Đống Đa, Việt Nam
-                                            </td>
-                                            <td>
-                                                15/5/2024
-                                            </td>
+                                            <td class="py-1">BN3</td>
+                                            <td>Lê Hà</td>
+                                            <td>0167577891</td>
+                                            <td>22</td>
+                                            <td>Nữ</td>
+                                            <td>19 Nguyễn Ngọc Doãn, Đống Đa, Việt Nam</td>
+                                            <td>15/5/2024</td>
                                             <td>
                                                 <label class="badge badge-warning">Sắp tới</label>
                                             </td>
-                                            <td class="d-flex" style="gap: 5px;">
+                                            <td class="d-flex flex-column align-items-center" style="gap: 5px;">
                                                 <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
                                                     <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
                                                 </button>
@@ -202,28 +152,15 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="py-1">
-                                                BN4
-                                            </td>
-                                            <td>
-                                                Nguyễn Hiền
-                                            </td>
-                                            <td>
-                                                0167577891
-                                            </td>
-                                            <td>
-                                                22
-                                            </td>
-                                            <td>
-                                                19 Nguyễn Ngọc Doãn, Đống Đa, Việt Nam
-                                            </td>
-                                            <td>
-                                                15/5/2024
-                                            </td>
-                                            <td>
-                                                <label class="badge badge-success">Hoàn thành</label>
-                                            </td>
-                                            <td class="d-flex" style="gap: 5px;">
+                                            <td class="py-1">BN4</td>
+                                            <td>Nguyễn Hiền</td>
+                                            <td>0167577891</td>
+                                            <td>22</td>
+                                            <td>Nữ</td>
+                                            <td>19 Nguyễn Ngọc Doãn, Đống Đa, Việt Nam</td>
+                                            <td>15/5/2024</td>
+                                            <td><label class="badge badge-success">Hoàn thành</label></td>
+                                            <td class="d-flex flex-column align-items-center" style="gap: 5px;">
                                                 <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
                                                     <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
                                                 </button>
@@ -236,28 +173,15 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="py-1">
-                                                BN5
-                                            </td>
-                                            <td>
-                                                Nguyễn Vang
-                                            </td>
-                                            <td>
-                                                0867577891
-                                            </td>
-                                            <td>
-                                                22
-                                            </td>
-                                            <td>
-                                                19 Nguyễn Ngọc Doãn, Đống Đa, Việt Nam
-                                            </td>
-                                            <td>
-                                                15/5/2024
-                                            </td>
-                                            <td>
-                                                <label class="badge badge-success">Hoàn thành</label>
-                                            </td>
-                                            <td class="d-flex" style="gap: 5px;">
+                                            <td class="py-1">BN5</td>
+                                            <td>Nguyễn Vang</td>
+                                            <td>0867577891</td>
+                                            <td>22</td>
+                                            <td>Nữ</td>
+                                            <td>19 Nguyễn Ngọc Doãn, Đống Đa, Việt Nam</td>
+                                            <td>15/5/2024</td>
+                                            <td><label class="badge badge-success">Hoàn thành</label></td>
+                                            <td class="d-flex flex-column align-items-center" style="gap: 5px;">
                                                 <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
                                                     <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
                                                 </button>
@@ -270,28 +194,15 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="py-1">
-                                                BN6
-                                            </td>
-                                            <td>
-                                                Lương Thu
-                                            </td>
-                                            <td>
-                                                0167577891
-                                            </td>
-                                            <td>
-                                                22
-                                            </td>
-                                            <td>
-                                                19 Nguyễn Ngọc Doãn, Đống Đa, Việt Nam
-                                            </td>
-                                            <td>
-                                                15/5/2024
-                                            </td>
-                                            <td>
-                                                <label class="badge badge-success">Hoàn thành</label>
-                                            </td>
-                                            <td class="d-flex" style="gap: 5px;">
+                                            <td class="py-1">BN6</td>
+                                            <td>Lương Thu</td>
+                                            <td>0167577891</td>
+                                            <td>22</td>
+                                            <td>Nữ</td>
+                                            <td>19 Nguyễn Ngọc Doãn, Đống Đa, Việt Nam</td>
+                                            <td>15/5/2024</td>
+                                            <td><label class="badge badge-success">Hoàn thành</label></td>
+                                            <td class="d-flex flex-column align-items-center" style="gap: 5px;">
                                                 <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
                                                     <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
                                                 </button>
@@ -304,28 +215,15 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="py-1">
-                                                BN7
-                                            </td>
-                                            <td>
-                                                Nguyễn Trang
-                                            </td>
-                                            <td>
-                                                0167577891
-                                            </td>
-                                            <td>
-                                                22
-                                            </td>
-                                            <td>
-                                                19 Nguyễn Ngọc Doãn, Đống Đa, Việt Nam
-                                            </td>
-                                            <td>
-                                                15/5/2024
-                                            </td>
-                                            <td>
-                                                <label class="badge badge-danger">Đã hủy</label>
-                                            </td>
-                                            <td class="d-flex" style="gap: 5px;">
+                                            <td class="py-1">BN7</td>
+                                            <td>Nguyễn Trang</td>
+                                            <td>0167577891</td>
+                                            <td>22</td>
+                                            <td>Nữ</td>
+                                            <td>19 Nguyễn Ngọc Doãn, Đống Đa, Việt Nam</td>
+                                            <td>15/5/2024</td>
+                                            <td><label class="badge badge-danger">Đã hủy</label></td>
+                                            <td class="d-flex flex-column align-items-center" style="gap: 5px;">
                                                 <button type="button" class="btn btn-inverse-danger btn-rounded btn-icon">
                                                     <i class="mdi mdi-delete" data-toggle="tooltip" title="Xoá"></i>
                                                 </button>

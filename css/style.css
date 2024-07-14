@@ -22407,4 +22407,11 @@ dl li {
   color: #fff;
   background-color: #6610f2;
 }
+
+/* Doctor profile */
+.dr-profile-img {
+  bottom: 0;
+  position: absolute;
+}
+
 /*# sourceMappingURL=maps/style.css.map */

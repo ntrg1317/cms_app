@@ -21,17 +21,17 @@
                     <div class="col-lg-12 grid-margin stretch-card">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                              <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                              <li class="breadcrumb-item"><a href="/index.html">Trang chủ</a></li>
                               <li class="breadcrumb-item">Bệnh nhân</li>
                               <li class="breadcrumb-item active" aria-current="page">Hồ sơ bệnh nhân</li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-lg-12 grid-margin stretch-card">
-                        <div class="card">
+                        <div class="card border-0 p-4 rounded shadow">
                             <div class="card-body">
                                 <div class="row mb-4">
-                                    <div class="col-md-4 col-sm-12">
+                                    <div class="col-md-6 col-sm-12">
                                         <div class="info-title">
                                             <h4>Thông tin cá nhân</h4>
                                         </div>
@@ -39,9 +39,14 @@
                                         <div class="info stack">
                                             <form class="forms-sample">
                                                 <div class="form-group row">
+                                                    <div class="profile-img-edit">
+                                                        <img class="profile-pic" src="/images/faces/face11.jpg" alt="profile-pic">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
                                                     <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Họ và tên</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" readonly class="form-control" id="exampleInputUsername2" value="Phạm Huê">
+                                                        <input type="text" readonly class="form-control" id="exampleInputUsername2" value="Nguyễn Trang">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -57,9 +62,15 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
+                                                    <label for="exampleInputMobile" class="col-sm-3 col-form-label">Giới tính</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" readonly class="form-control" id="exampleInputMobile" value="Nữ">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
                                                     <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Địa chỉ</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" readonly class="form-control" id="exampleInputPassword2" value="3 Phương Mai, Đống Đa, việt Nam">
+                                                        <input type="text" readonly class="form-control" id="exampleInputPassword2" value="19 Nguyễn Ngọc Doãn, Đống Đa, Việt Nam">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -68,13 +79,15 @@
                                                         <input type="date" readonly class="form-control" id="exampleInputConfirmPassword2" value="2024-05-15">
                                                     </div>
                                                 </div>
+                                                <div class="form-group-">
+                                                    <a class="float-end" href="/views/patients/edit-patient.html">
+                                                        <button class="btn btn-primary">Sửa thông tin</button>
+                                                    </a>
+                                                </div>
                                             </form>
-                                            <button type="button" class="btn btn-primary w-100">
-                                                <span>Lưu thay đổi</span>
-                                            </button>
                                         </div>
                                     </div>
-                                    <div class="col-md-8 col-sm-12">
+                                    <div class="col-md-6 col-sm-12">
                                         <ul class="timeline">
                                             <li class="timeline-item">
                                                 <div class="timeline-item-tail"></div>
@@ -160,7 +173,7 @@
                         </div>
                     </div>
                     <div class="col-lg-12 grid-margin stretch-card">
-                        <div class="card">
+                        <div class="card border-0 p-4 rounded shadow">
                             <div class="card-header" style="background-color: white;">
                                 <h2 class="card-title mt-2">Hoá đơn</h2>
                             </div>
