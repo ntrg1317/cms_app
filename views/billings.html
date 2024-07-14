@@ -37,12 +37,13 @@
     
             .form-container {
                 background: white;
-                padding: 10px;
+                padding: 20px;
                 border-radius: 10px;
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                min-width: 950px;
+                min-width: 1000px;
+                height: 100vh;
                 width: 100%;
-                border: 1px solid #597ab7;
+                border-left: 2px solid #223e9c;
             }
     
             /*css add appointment form */
@@ -73,7 +74,7 @@
                 color: white;
                 border: none;
                 cursor: pointer;
-                padding: 6px;
+                padding: 10px;
                 margin: 5px 0;
                 border-radius: 5px;
                 font-size: 16px;
@@ -98,7 +99,6 @@
             .form-container .appointment-group {
                 display: flex;
                 justify-content: space-between;
-                margin-bottom: 15px;
             }
     
             .form-container .gender-group input,
@@ -124,6 +124,7 @@
                 display: flex;
                 align-items: center;
                 gap: 10px; /* khoảng cách giữa các radio button */
+                flex: 2;
             }
             
             .gender-group input[type="radio"]{
@@ -143,7 +144,8 @@
             }
     
             .gender-label{
-                margin-bottom: 15px;
+                align-content: center;
+                flex: 1;
             }
     
             .time-form{
@@ -304,7 +306,7 @@
                                             Tạo hóa đơn
                                         </button>
                                         <div class="overlay" id="overlay1">
-                                            <div class="form-popup" id="desForm">
+                                            <div class="form-popup" id="Form">
                                                 <form class="form-container">
                                                     <div class="profile">
                                                         <h4 class="tilte-form">Tạo hóa đơn</h4>
@@ -328,24 +330,30 @@
                                                         <h6 class="form-subtitle">Thông tin cá nhân</h6>
                                                         <div class="col2-form-section">
                                                             <div class="form-group2 col-form">
-                                                                <label>Họ và tên</label>
-                                                                <input type="text" value="Phạm Huê">
+                                                                <label for="name">Họ và tên</label>
+                                                                <input type="text" placeholder="Họ và tên bệnh nhân" name="name">
                                                             </div>
                                                             <div class="form-group2 col-form">
-                                                                <label>Địa chỉ</label>
-                                                                <input type="text" value="Đống Đa, Hà Nội, Việt Nam">
+                                                                <label for="name">Địa chỉ</label>
+                                                                <input type="text" placeholder="Địa chỉ bệnh nhân" name="name">
                                                             </div>
                                                         </div>
 
                                                         <div class="col2-form-section">
                                                             <div class="form-group2 col-form">
-                                                                <label>Giới tính</label>
-                                                                <input type="text" value="Nữ">
+                                                                <label for="age">Tuổi</label>
+                                                                <input type="number" placeholder="Nhập tuổi" name="age" required>
                                                             </div>
+
                                                             <div class="form-group2 col-form">
-                                                                <label>Tuổi</label>
-                                                                <input type="text" value="22 tuổi">
+                                                                <label class="gender-label">Giới tính</label><br>
+                                                                <div class="gender-group">
+                                                                    <input class="gender" type="radio" name="gender" value="male"> Nam
+                                                                    <input class="gender" type="radio" name="gender" value="female"> Nữ
+                                                                    <input class="gender" type="radio" name="gender" value="other"> Khác
+                                                                </div>
                                                             </div>
+                                                            
                                                         </div>
                                                         
                                                     </div>
@@ -355,26 +363,42 @@
                                                             <div class="col2-form-section">
                                                                 <div class="form-group2 col-form">
                                                                     <label for="date">Ngày</label>
-                                                                    <input type="date" name="date" value="2024-05-15" >
+                                                                    <input type="date" name="date" placeholder="Ngày thanh toán" >
                                                                 </div>
                                                                 <div class="form-group2 col-form">
                                                                     <label>Giờ</label>
-                                                                    <input type="time" name="time" value="10:00">
+                                                                    <input type="time" name="time" vplaceholder="Giờ thanh toán">
                                                                 </div>
                                                             </div>
+
+                                                            <div class="col2-form-section">
+                                                                <div class="form-group2 col-form">
+                                                                    <label>Hình thức thanh toán</label>
+                                                                    <select id="options" name="options" class="select-option select-container" required>
+                                                                        <option value="" disabled selected>Lựa chọn hình thức thanh toán</option>
+                                                                        <option value="option1">Tiền mặt - Trả đủ</option>
+                                                                        <option value="option2">Tiền mặt - Trả góp</option>
+                                                                        <option value="option2">Thẻ ngân hàng - Trả đủ</option>
+                                                                        <option value="option3">Thẻ ngân hàng - Trả góp</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group2 col-form">
+                                                                    <label>Tổng tiền</label>
+                                                                    <input type="text" placeholder="Tổng tiền">
+                                                                </div>
+                                                            </div>
+
                                                             <div class="col2-form-section">
                                                                 
                                                                 <div class="form-group2 col-form">
-                                                                    <label>Tổng tiền</label>
-                                                                    <input type="text" value="1 500 000 VNĐ">
+                                                                    <label>Tiền thanh toán</label>
+                                                                    <input type="text" placeholder="Tiền đã thanh toán">
                                                                 </div>
                                                                 <div class="form-group2 col-form">
-                                                                    <label>Tiền thanh toán</label>
-                                                                    <input type="text" value="980 000 VNĐ">
+                                                                    <label>Dư nợ</label>
+                                                                    <input type="text" placeholder="Tiền dư nợ">
                                                                 </div>
                                                             </div>
-                                                            
-                                                        
                                                     </div>
 
                                                     <h6 class="form-subtitle title-table">Chi tiết dịch vụ sử dụng</h6>
@@ -545,7 +569,7 @@
                                                 </button>
                                                 
                                                 <div class="overlay" id="overlay3">
-                                                <div class="form-popup" id="desForm">
+                                                <div class="form-popup" id="Form">
                                                     <form class="form-container">
                                                         <div class="profile">
                                                             <h4 class="tilte-form">Chỉnh sửa hóa đơn</h4>
@@ -695,7 +719,7 @@
                                                     </button>
                                                     
                                                     <div class="overlay" id="overlay2">
-                                                        <div class="form-popup" id="desForm">
+                                                        <div class="form-popup" id="Form">
                                                             <form class="form-container">
                                                                 <div class="profile">
                                                                     <h4 class="tilte-form">Chi tiết hóa đơn</h4>
@@ -1066,5 +1090,7 @@
             $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
+
+    
     </body>
 </html>
