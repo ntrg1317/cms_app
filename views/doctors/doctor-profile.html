@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <div data-include="_header"></div>
+<!-- review css -->
+<link rel="stylesheet" href="/css/reviews.css">
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
@@ -21,12 +23,437 @@
                     <div class="col-lg-12 my-2">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/index.html">Trang chủ</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Thông tin bác sĩ</li>
+                                <li class="breadcrumb-item"><a href="/index.html">Trang chủ</a></li>
+                                <li class="breadcrumb-item">Bác sĩ</li>
+                                <li class="breadcrumb-item active" aria-current="page">Thông tin bác sĩ</li>
                             </ol>
                         </nav>
                     </div>
-                    
+                    <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="card rounded shadow overflow-hidden border-0" style="padding-left: 100px; padding-right: 100px; padding-top:20px; padding-bottom: 20px">
+                            <div class="avatar-profile d-flex margin-nagative mt-n5 position-relative p-3">
+                                <img src="/images/faces/face10.jpg" class="rounded-circle shadow-md avatar avatar-medium" alt="">
+                                <div class="mt-4 ms-3 pt-3">
+                                    <h5 class="mt-3 mb-1">Nguyễn Thị Trang</h5>
+                                    <p class="text-muted mb-0">Bác sĩ Nha khoa WinSmile</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card mb-3 border-0 rounded shadow">
+                                        <div class="card-body p-0">
+                                            <div class="edit-list">
+                                                <ul class="edit-profile nav nav-pills list-inline mb-0 flex-md-row flex-column p-0 border-bottom-none" role="tablist">
+                                                    <li class="col-md-3 p-0">
+                                                        <a class="nav-link active" data-bs-toggle="pill" href="#doctor-info" aria-selected="true" role="tab">
+                                                        Giới thiệu
+                                                        </a>
+                                                    </li>
+                                                    <li class="col-md-3 p-0">
+                                                        <a class="nav-link" data-bs-toggle="pill" href="#experiences" aria-selected="false" role="tab" tabindex="-1">
+                                                        Kinh nghiệm
+                                                        </a>
+                                                    </li>
+                                                    <li class="col-md-3 p-0">
+                                                        <a class="nav-link" data-bs-toggle="pill" href="#reviews" aria-selected="false" tabindex="-1" role="tab">
+                                                        Đánh giá
+                                                        </a>
+                                                    </li>
+                                                    <li class="col-md-3 p-0">
+                                                        <a class="nav-link" data-bs-toggle="pill" href="#time-table" aria-selected="false" tabindex="-1" role="tab">
+                                                        Lịch làm việc
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                      </div>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade show active" id="doctor-info" role="tabpanel">
+                                            <p class="text-muted">
+                                                Bác sĩ Nguyễn Thị Trang là người có nhiều năm kinh nghiệm trong lĩnh vực niềng răng – chỉnh nha chuyên sâu. 
+                                                Sau nhiều năm học tập và thực hành, Bác sĩ Đàm Hương tiếp tục trau dồi thêm kinh nghiệm và kiến thức tại 
+                                                các trường học danh tiếng tại Việt Nam và ngoài nước. Không dừng lại ở đó, bác sĩ Đàm Hương luôn tâm 
+                                                huyết với nghề, chỉn chu, kĩ càng trong chẩn đoán, điều trị. Bác sĩ Đàm Hương được rất nhiều khách hàng 
+                                                khen ngợi, yêu mến. Rất nhiều người sẵn sàng chờ đợi để được bác sĩ Hương thăm khám – tư vấn – điều trị.
+                                            </p>
+                                            <h6 class="mb-0 pt-2">Trình độ học vấn: </h6>
+                                            <ul class="list-unstyled mt-4">
+                                                <li class="mt-1 ms-0">
+                                                    <i class="mdi mdi-arrow-right" style="color: #6610f2;"></i>
+                                                    Bác sĩ chuyên sâu niềng răng
+                                                </li>
+                                                <li class="mt-1 ms-0">
+                                                    <i class="mdi mdi-arrow-right" style="color: #6610f2;"></i>
+                                                    Tốt nghiệp chuyên khoa Răng – Hàm – Mặt trường Đại học Y Dược Thái Nguyên
+                                                </li>
+                                            </ul>
+                                            <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4">
+                                                <div class="col mt-4">
+                                                    <div class="card team border-0 rounded shadow overflow-hidden">
+                                                        <div class="team-person position-relative overflow-hidden">
+                                                            <img src="/images/faces/face20.jpg" class="w-100" alt="">
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <a class="text-decoration-none text-black h5" href="/views/doctors/doctor-profile.html">Bác sĩ Nguyễn Hường</a>
+                                                            <p class="text-muted speciality">Chuyên sâu niềng răng</p>
+                                                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                                                <ul class="list-unstyled mb-0">
+                                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                                </ul>
+                                                                <p class="text-muted mb-0">5 Star</p>
+                                                            </div>
+                                                            <ul class="list-unstyled mt-2 mb-0">
+                                                                <li class="d-flex ms-0 align-items-center">
+                                                                    <i class="mdi mdi-map-marker" style="color: #6610f2;"></i>
+                                                                    <small class="text-muted ms-2">Chi nhánh Hà Nội</small>
+                                                                </li>
+                                                                <li class="d-flex ms-0 align-items-center mt-2">
+                                                                    <i class="mdi mdi-timer" style="color: #6610f2;"></i>
+                                                                    <small class="text-muted ms-2">Mon: 2:00PM - 6:00PM</small>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col mt-4">
+                                                    <div class="card team border-0 rounded shadow overflow-hidden">
+                                                        <div class="team-person position-relative overflow-hidden">
+                                                            <img src="/images/faces/face21.jpg" class="w-100" alt="">
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <a class="text-decoration-none text-black h5" href="/views/doctors/doctor-profile.html">Bác sĩ Phan Đinh Tùng</a>
+                                                            <p class="text-muted speciality">Chuyên sâu niềng răng</p>
+                                                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                                                <ul class="list-unstyled mb-0">
+                                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                                </ul>
+                                                                <p class="text-muted mb-0">5 Star</p>
+                                                            </div>
+                                                            <ul class="list-unstyled mt-2 mb-0">
+                                                                <li class="d-flex ms-0 align-items-center">
+                                                                    <i class="mdi mdi-map-marker" style="color: #6610f2;"></i>
+                                                                    <small class="text-muted ms-2">Chi nhánh Hà Nội</small>
+                                                                </li>
+                                                                <li class="d-flex ms-0 align-items-center mt-2">
+                                                                    <i class="mdi mdi-timer" style="color: #6610f2;"></i>
+                                                                    <small class="text-muted ms-2">Mon: 2:00PM - 6:00PM</small>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col mt-4">
+                                                    <div class="card team border-0 rounded shadow overflow-hidden">
+                                                        <div class="team-person position-relative overflow-hidden">
+                                                            <img src="/images/faces/face22.jpg" class="w-100" alt="">
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <a class="text-decoration-none text-black h5" href="/views/doctors/doctor-profile.html">Bác sĩ Trần Minh Hiếu</a>
+                                                            <p class="text-muted speciality">Chuyên sâu niềng răng</p>
+                                                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                                                <ul class="list-unstyled mb-0">
+                                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                                </ul>
+                                                                <p class="text-muted mb-0">5 Star</p>
+                                                            </div>
+                                                            <ul class="list-unstyled mt-2 mb-0">
+                                                                <li class="d-flex ms-0 align-items-center">
+                                                                    <i class="mdi mdi-map-marker" style="color: #6610f2;"></i>
+                                                                    <small class="text-muted ms-2">Chi nhánh Thái BÌnh</small>
+                                                                </li>
+                                                                <li class="d-flex ms-0 align-items-center mt-2">
+                                                                    <i class="mdi mdi-timer" style="color: #6610f2;"></i>
+                                                                    <small class="text-muted ms-2">Mon: 2:00PM - 6:00PM</small>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col mt-4">
+                                                    <div class="card team border-0 rounded shadow overflow-hidden">
+                                                        <div class="team-person position-relative overflow-hidden">
+                                                            <img src="/images/faces/face23.jpg" class="w-100" alt="">
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <a class="text-decoration-none text-black h5" href="/views/doctors/doctor-profile.html">Bác sĩ Nguyễn Hà</a>
+                                                            <p class="text-muted speciality">Chuyên sâu niềng răng</p>
+                                                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                                                <ul class="list-unstyled mb-0">
+                                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                                </ul>
+                                                                <p class="text-muted mb-0">5 Star</p>
+                                                            </div>
+                                                            <ul class="list-unstyled mt-2 mb-0">
+                                                                <li class="d-flex ms-0 align-items-center">
+                                                                    <i class="mdi mdi-map-marker" style="color: #6610f2;"></i>
+                                                                    <small class="text-muted ms-2">Chi nhánh Quảng Ninh</small>
+                                                                </li>
+                                                                <li class="d-flex ms-0 align-items-center mt-2">
+                                                                    <i class="mdi mdi-timer" style="color: #6610f2;"></i>
+                                                                    <small class="text-muted ms-2">Mon: 2:00PM - 6:00PM</small>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="experiences" role="tabpanel">
+                                            <h5 class="mb-1">Kinh nghiệm:</h5>
+                                            <p class="text-muted mt-4">Năm 2019 – nay: Công tác tại nha khoa WinSmile</p>
+                                            <h6 class="mb-0">Chứng chỉ:</h6>
+                                            <div class="row">
+                                                <ul class="list-unstyled mt-4">
+                                                    <li class="mt-1 ms-0">
+                                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-primary" height="1em" width="1em">
+                                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                                        </svg>
+                                                        Chứng chỉ niềng răng trong suốt invisalign – Tập đòan Align
+                                                    </li>
+                                                    <li class="mt-1 ms-0">
+                                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-primary" height="1em" width="1em">
+                                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                                        </svg>
+                                                        Chứng chỉ ứng công nghệ GEAW vào niềng răng bởi Giáo sư Dr.Akiyoshi Shirasu
+                                                    </li>
+                                                    <li class="mt-1 ms-0">
+                                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-primary" height="1em" width="1em">
+                                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                                        </svg>
+                                                        Chứng chỉ chuyên sâu điều trị cắn hở hiệu quả và ổn định – GS.Tae-Woo Kim – Đại học Seoul
+                                                    </li>
+                                                    <li class="mt-1 ms-0">
+                                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-primary" height="1em" width="1em">
+                                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                                        </svg>
+                                                        Chứng chỉ điều trị sai khớp cắn hạng II và III với kỹ thuật Meaw – Dr. Nelson Oppermann – University of Illinois at Chicago United States
+                                                    </li>
+                                                    <li class="mt-1 ms-0">
+                                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-primary" height="1em" width="1em">
+                                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                                        </svg>
+                                                        Chứng chỉ khóa học Meaw kết hợp dây thẳng trong chỉnh nha toàn diện – GS.Dennis C.Lim chủ tịch hội chỉnh nha Philippine
+                                                    </li>
+                                                    <li class="mt-1 ms-0">
+                                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-primary" height="1em" width="1em">
+                                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                                        </svg>
+                                                        Chứng chỉ Khóa học về Phương pháp bẻ dây với kỹ thuật Geaw – GS Shirasu
+                                                    </li>
+                                                    <li class="mt-1 ms-0">
+                                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-primary" height="1em" width="1em">
+                                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                                        </svg>
+                                                        Chứng chỉ chỉnh nha chuyên nghiệp Bio-Meaw-Geaw – GS, TS Nelson Oppermann
+                                                    </li>
+                                                    <li class="mt-1 ms-0">
+                                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-primary" height="1em" width="1em">
+                                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                                        </svg>
+                                                        Chứng chỉ chỉnh nha nâng cao Bio-Meaw-Geaw – GS, TS Nelson Oppermann – University of Illinois at Chicago, United States
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="reviews" role="tabpanel">
+                                            <div class="row d-flex justify-content-center">
+                                                <div class="col-md-10 col-xl-8 text-center">
+                                                    <h3 class="mb-4">Testimonials</h3>
+                                                    <p class="mb-4 pb-2 mb-md-5 pb-md-0">
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet
+                                                        numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum
+                                                        quisquam eum porro a pariatur veniam.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row text-center">
+                                                <div class="col-md-4 mb-5 mb-md-0">
+                                                    <div class="d-flex justify-content-center mb-4">
+                                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"
+                                                            class="rounded-circle shadow-1-strong" width="150" height="150" />
+                                                    </div>
+                                                    <h5 class="mb-3">Phạm Huê</h5>
+                                                    <h6 class="text-primary mb-3">Web Developer</h6>
+                                                    <p class="px-xl-3">
+                                                        <i class="fas fa-quote-left pe-2"></i>Nhổ răng ở đây rất an tâm, các bác sĩ luôn tận tình hỏi thăm, chăm sóc
+                                                    </p>
+                                                    <ul class="list-unstyled mb-0">
+                                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-4 mb-5 mb-md-0">
+                                                    <div class="d-flex justify-content-center mb-4">
+                                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
+                                                            class="rounded-circle shadow-1-strong" width="150" height="150" />
+                                                    </div>
+                                                    <h5 class="mb-3">Ngọc Hiền</h5>
+                                                    <h6 class="text-primary mb-3">Graphic Designer</h6>
+                                                    <p class="px-xl-3">
+                                                        <i class="fas fa-quote-left pe-2"></i>Tôi rất hài lòng về dịch vụ và bác sĩ. 
+                                                    </p>
+                                                    <ul class="list-unstyled mb-0">
+                                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-4 mb-0">
+                                                    <div class="d-flex justify-content-center mb-4">
+                                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(9).webp"
+                                                            class="rounded-circle shadow-1-strong" width="150" height="150" />
+                                                    </div>
+                                                    <h5 class="mb-3">Sơn Tùng</h5>
+                                                    <h6 class="text-primary mb-3">Marketing Specialist</h6>
+                                                    <p class="px-xl-3">
+                                                        <i class="fas fa-quote-left pe-2"></i>Bác sĩ rất thân thiện, và luôn chăm sóc kỹ càng bệnh nhân
+                                                    </p>
+                                                    <ul class="list-unstyled mb-0">
+                                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="time-table" role="tabpanel">
+                                            <div class="tab-pane fade show active">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-12">
+                                                        <div class="time-table">
+                                                            <ul class="list-unstyled mb-0">
+                                                                <li class="d-flex justify-content-between mt-2">
+                                                                    <p class="text-muted mb-0">
+                                                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-primary align-middle h5 mb-0" height="1em" width="1em">
+                                                                            <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM13 12V7H11V14H17V12H13Z"></path>
+                                                                        </svg>
+                                                                        Monday
+                                                                    </p>
+                                                                    <p class="text-primary mb-0"><span class="text-dark">Time:</span> 8.00 - 20.00</p>
+                                                                </li>
+                                                                <li class="d-flex justify-content-between mt-2 ms-0 mt-3">
+                                                                    <p class="text-muted mb-0">
+                                                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-primary align-middle h5 mb-0" height="1em" width="1em">
+                                                                            <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM13 12V7H11V14H17V12H13Z"></path>
+                                                                        </svg>
+                                                                        Tuesday
+                                                                    </p>
+                                                                    <p class="text-primary mb-0"><span class="text-dark">Time:</span> 8.00 - 20.00</p>
+                                                                </li>
+                                                                <li class="d-flex justify-content-between mt-2 ms-0 mt-3">
+                                                                    <p class="text-muted mb-0">
+                                                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-primary align-middle h5 mb-0" height="1em" width="1em">
+                                                                            <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM13 12V7H11V14H17V12H13Z"></path>
+                                                                        </svg>
+                                                                        Wednesday
+                                                                    </p>
+                                                                    <p class="text-primary mb-0"><span class="text-dark">Time:</span> 8.00 - 20.00</p>
+                                                                </li>
+                                                                <li class="d-flex justify-content-between mt-2 ms-0 mt-3">
+                                                                    <p class="text-muted mb-0">
+                                                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-primary align-middle h5 mb-0" height="1em" width="1em">
+                                                                            <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM13 12V7H11V14H17V12H13Z"></path>
+                                                                        </svg>
+                                                                        Thursday
+                                                                    </p>
+                                                                    <p class="text-primary mb-0"><span class="text-dark">Time:</span> 8.00 - 20.00</p>
+                                                                </li>
+                                                                <li class="d-flex justify-content-between mt-2 ms-0 mt-3">
+                                                                    <p class="text-muted mb-0">
+                                                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-primary align-middle h5 mb-0" height="1em" width="1em">
+                                                                            <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM13 12V7H11V14H17V12H13Z"></path>
+                                                                        </svg>
+                                                                        Friday
+                                                                    </p>
+                                                                    <p class="text-primary mb-0"><span class="text-dark">Time:</span> 8.00 - 20.00</p>
+                                                                </li>
+                                                                <li class="d-flex justify-content-between mt-2 ms-0 mt-3">
+                                                                    <p class="text-muted mb-0">
+                                                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-primary align-middle h5 mb-0" height="1em" width="1em">
+                                                                            <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM13 12V7H11V14H17V12H13Z"></path>
+                                                                        </svg>
+                                                                        Saturday
+                                                                    </p>
+                                                                    <p class="text-primary mb-0"><span class="text-dark">Time:</span> 8.00 - 18.00</p>
+                                                                </li>
+                                                                <li class="d-flex justify-content-between mt-2 ms-0 mt-3">
+                                                                    <p class="text-muted mb-0">
+                                                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-primary align-middle h5 mb-0" height="1em" width="1em">
+                                                                            <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM13 12V7H11V14H17V12H13Z"></path>
+                                                                        </svg>
+                                                                        Sunday
+                                                                    </p>
+                                                                    <p class="text-primary mb-0"><span class="text-dark">Time:</span> 8.00 - 14.00</p>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-6 mt-4 mt-lg-0 pt-2 pt-lg-0">
+                                                        <div class="card border-0 text-center features feature-primary">
+                                                            <div class="icon text-center mx-auto rounded-md">
+                                                                <button class="btn btn-inverse-primary btn-icon"><i class="mdi mdi-phone"></i></button>
+                                                            </div>
+                                                            <div class="card-body p-0 mt-4">
+                                                                <h4 class="title fw-bold">Phone</h4>
+                                                                <p class="text-muted" style="font-size: 15px;">Số điện thoại liên lạc</p>
+                                                                <a class="link" href="tel:+84534-468-854" style="text-decoration: none;">+84 534-468-854</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-6 mt-4 mt-lg-0 pt-2 pt-lg-0">
+                                                        <div class="card border-0 text-center features feature-primary">
+                                                            <div class="icon text-center mx-auto rounded-md">
+                                                                <button class="btn btn-inverse-primary btn-icon"><i class="mdi mdi-email"></i></button>
+                                                            </div>
+                                                            <div class="card-body p-0 mt-4">
+                                                                <h4 class="title fw-bold">Email</h4>
+                                                                <p class="text-muted" style="font-size: 15px;">Địa chỉ email liên hệ với bác sĩ</p>
+                                                                <a class="link" href="mailto:contact@example.com"  style="text-decoration: none;">contact@example.com</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
