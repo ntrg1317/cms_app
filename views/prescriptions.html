@@ -1,933 +1,907 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <title>Spica Admin</title>
-    <!-- base:css -->
-    <link
-      rel="stylesheet"
-      href="/vendors/mdi/css/materialdesignicons.min.css"
-    />
-    <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css" />
-    <!-- endinject -->
-    <!-- inject:css -->
-    <link rel="stylesheet" href="/css/style.css" />
-    <!-- endinject -->
-    <link rel="shortcut icon" href="/images/favicon.png" />
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
-    ></script>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css"
-    />
-
-    <style>
-      .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        display: none;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .form-container {
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        max-width: 500px;
-        width: 100%;
-      }
-
-      .form-row {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 15px;
-      }
-      .form-group {
-        flex: 1;
-        margin-right: 10px;
-      }
-
-      .form-group:last-child {
-        margin-right: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container-scroller d-flex">
-      <!-- partial:./partials/_sidebar.html -->
-      <div data-include="_sidebar"></div>
-      <!-- partial -->
-      <div class="container-fluid page-body-wrapper">
-        <!-- partial:./partials/_navbar.html -->
-        <div data-include="_navbar"></div>
-        <!-- partial -->
-        <div class="main-panel">
-          <div class="content-wrapper">
-            <div class="row">
-              <div class="col-lg-12 grid-margin stretch-card">
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">
-                      Đơn thuốc
-                    </li>
-                  </ol>
-                </nav>
-              </div>
-              <div class="col-lg-12 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <div
-                      class="d-flex flex-direction-row justify-content-between"
-                    >
-                      <div class="col-lg-8 grid-margin stretch-card">
-                        <div class="input-group">
-                          <input
-                            type="text"
-                            class="form-control border rounded-pill"
-                            placeholder="Search Here..."
-                            aria-label="search"
-                            aria-describedby="search"
-                          />
-                        </div>
-                      </div>
-                      <div
-                        class="col-lg-2 grid-margin stretch-card justify-content-center"
-                      >
-                        <button
-                          type="button"
-                          class="btn btn-light btn-icon-text"
-                        >
-                          <i class="mdi mdi-printer btn-icon-prepend"></i>
-                          In tất cả
-                        </button>
-                      </div>
-                      <div
-                        class="col-lg-2 grid-margin stretch-card justify-content-center"
-                      >
-                        <button
-                          type="button"
-                          class="btn btn-primary btn-icon-text"
-                          title="Thêm đơn thuốc"
-                          onclick="showForm('add', this)"
-                        >
-                          <i class="mdi mdi-plus btn-icon-prepend"></i>
-                          Thêm đơn thuốc
-                        </button>
-
-                        <div class="overlay" id="overlay">
-                          <div class="form-container">
-                            <h4 class="card-title" id="form-title">
-                              Default form
-                            </h4>
-                            <p class="card-description" id="form-description">
-                              Basic form layout
-                            </p>
-                            <form class="forms-sample">
-                              <div class="form-row">
-                                <div class="form-group col-md-4">
-                                  <label for="inputID">ID</label>
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    id="inputID"
-                                    placeholder="ID"
-                                  />
-                                </div>
-                                <div class="form-group col-md-4">
-                                  <label for="inputDoctorID">ID bác sĩ</label>
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    id="inputDoctorID"
-                                    placeholder="ID bác sĩ"
-                                  />
-                                </div>
-                                <div class="form-group col-md-4">
-                                  <label for="inputDoctorName"
-                                    >Tên bác sĩ</label
-                                  >
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    id="inputDoctorName"
-                                    placeholder="Tên bác sĩ"
-                                    value="Lê Hà"
-                                  />
-                                </div>
-                              </div>
-                              <div class="form-row">
-                                <div class="form-group col-md-4">
-                                  <label for="inputPrescriptionDate"
-                                    >Ngày kê</label
-                                  >
-                                  <input
-                                    type="date"
-                                    class="form-control"
-                                    id="inputPrescriptionDate"
-                                  />
-                                </div>
-                                <div class="form-group col-md-4">
-                                  <label for="inputPatientID"
-                                    >ID bệnh nhân</label
-                                  >
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    id="inputPatientID"
-                                    placeholder="ID bệnh nhân"
-                                  />
-                                </div>
-                                <div class="form-group col-md-4">
-                                  <label for="inputPatientName"
-                                    >Tên bệnh nhân</label
-                                  >
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    id="inputPatientName"
-                                    placeholder="Tên bệnh nhân"
-                                    value="Nguyệt Hà"
-                                  />
-                                </div>
-                              </div>
-                              <div class="form-row">
-                                <div class="form-group col-md-4">
-                                  <label for="inputMedicineID">ID thuốc</label>
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    id="inputMedicineID"
-                                    placeholder="ID thuốc"
-                                    value="T001"
-                                  />
-                                </div>
-                                <div class="form-group col-md-4">
-                                  <label for="inputMedicineName"
-                                    >Tên thuốc</label
-                                  >
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    id="inputMedicineName"
-                                    placeholder="Tên thuốc"
-                                    value="Paracetamol"
-                                  />
-                                </div>
-                                <div class="form-group col-md-4">
-                                  <label for="inputMedicineAmount"
-                                    >Số lượng</label
-                                  >
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    id="inputMedicineAmount"
-                                    placeholder="Số lượng"
-                                    value="5 viên"
-                                  />
-                                </div>
-                              </div>
-
-                              <div class="form-group">
-                                <label for="inputDosage">Liều dùng</label>
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="inputDosage"
-                                  placeholder="Liều dùng"
-                                  value="1 viên sau khi ăn"
-                                />
-                              </div>
-                              <div class="form-group">
-                                <label for="inputNotes">Ghi chú</label>
-                                <textarea
-                                  class="form-control"
-                                  id="inputNotes"
-                                  rows="3"
-                                  placeholder="Ghi chú"
-                                >
-Chống chỉ định với người mẫn cảm với thành phần của thuốc</textarea
-                                >
-                              </div>
-                              <button
-                                type="submit"
-                                class="btn btn-primary me-2"
-                              >
-                                Submit
-                              </button>
-                              <button
-                                type="button"
-                                class="btn btn-light"
-                                id="cancelButton"
-                                onclick="hideForm()"
-                              >
-                                Cancel
-                              </button>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="filter-container">
-                      <h4 class="mb-0">FILTER</h4>
-                      <div class="filter-item">
-                        <p class="filter-label m-0">Date:</p>
-                        <input
-                          class="form-control rangedatepicker"
-                          type="text"
-                          name="dates"
-                          value=""
-                        />
-                      </div>
-                      <div class="filter-item">
-                        <p class="filter-label m-0">Trạng thái:</p>
-                        <select class="form-control" name="status">
-                          <option value="all">Tất cả</option>
-
-                          <option value="completed">Đã cấp</option>
-                          <option value="cancelled">Đã huỷ</option>
-                        </select>
-                      </div>
-                      <div class="filter-item">
-                        <p class="filter-label">Sắp xếp theo:</p>
-                        <select class="form-control" name="sort">
-                          <option value="default">ID</option>
-                          <option value="date">Ngày</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="table-responsive">
-                      <table class="table table-striped">
-                        <thead>
-                          <tr>
-                            <th>ID</th>
-                            <th>ID bác sĩ</th>
-                            <th>ID bệnh nhân</th>
-                            <th>Ngày kê</th>
-
-                            <th>Trạng thái</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-
-                        <tbody>
-                          <tr>
-                            <td class="py-1">1</td>
-                            <td>BS123</td>
-                            <td>BN456</td>
-                            <td>2024-07-01</td>
-                            <td>
-                              <label class="badge badge-danger">Đã hủy</label>
-                            </td>
-                            <td class="d-flex flex-row" style="gap: 5px">
-                              <button
-                                type="button"
-                                class="btn btn-inverse-danger btn-rounded btn-icon"
-                                data-bs-toggle="modal"
-                                data-bs-target="#confirm-del-patient"
-                              >
-                                <i
-                                  class="mdi mdi-delete"
-                                  data-toggle="tooltip"
-                                  title="Xoá"
-                                ></i>
-                              </button>
-                              <button
-                                type="button"
-                                class="btn btn-inverse-primary btn-rounded btn-icon"
-                                onclick="showForm('edit', this)"
-                              >
-                                <i
-                                  class="mdi mdi-table-edit"
-                                  data-toggle="tooltip"
-                                  title="Chỉnh sửa"
-                                ></i>
-                              </button>
-                              <button
-                                type="button"
-                                class="btn btn-inverse-info btn-rounded btn-icon"
-                              >
-                                <i
-                                  class="mdi mdi-eye"
-                                  onclick="showForm('view', this)"
-                                  data-toggle="tooltip"
-                                  title="Chi tiết"
-                                ></i>
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>BS124</td>
-                            <td>BN457</td>
-                            <td>2024-07-02</td>
-
-                            <td>
-                              <label class="badge badge-success">Đã cấp</label>
-                            </td>
-
-                            <td class="d-flex flex-row" style="gap: 5px">
-                              <button
-                                type="button"
-                                class="btn btn-inverse-danger btn-rounded btn-icon"
-                                data-bs-toggle="modal"
-                                data-bs-target="#confirm-del-patient"
-                              >
-                                <i
-                                  class="mdi mdi-delete"
-                                  data-toggle="tooltip"
-                                  title="Xoá"
-                                ></i>
-                              </button>
-                              <button
-                                type="button"
-                                class="btn btn-inverse-primary btn-rounded btn-icon"
-                                onclick="showForm('edit', this)"
-                              >
-                                <i
-                                  class="mdi mdi-table-edit"
-                                  data-toggle="tooltip"
-                                  title="Chỉnh sửa"
-                                ></i>
-                              </button>
-                              <button
-                                type="button"
-                                class="btn btn-inverse-info btn-rounded btn-icon"
-                              >
-                                <i
-                                  class="mdi mdi-eye"
-                                  onclick="showForm('view', this)"
-                                  data-toggle="tooltip"
-                                  title="Chi tiết"
-                                ></i>
-                              </button>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td>3</td>
-                            <td>BS125</td>
-                            <td>BN458</td>
-                            <td>2024-07-03</td>
-
-                            <td>
-                              <label class="badge badge-success">Đã cấp</label>
-                            </td>
-                            <td class="d-flex flex-row" style="gap: 5px">
-                              <button
-                                type="button"
-                                class="btn btn-inverse-danger btn-rounded btn-icon"
-                                data-bs-toggle="modal"
-                                data-bs-target="#confirm-del-patient"
-                              >
-                                <i
-                                  class="mdi mdi-delete"
-                                  data-toggle="tooltip"
-                                  title="Xoá"
-                                ></i>
-                              </button>
-                              <button
-                                type="button"
-                                class="btn btn-inverse-primary btn-rounded btn-icon"
-                                onclick="showForm('edit', this)"
-                              >
-                                <i
-                                  class="mdi mdi-table-edit"
-                                  data-toggle="tooltip"
-                                  title="Chỉnh sửa"
-                                ></i>
-                              </button>
-                              <button
-                                type="button"
-                                class="btn btn-inverse-info btn-rounded btn-icon"
-                              >
-                                <i
-                                  class="mdi mdi-eye"
-                                  onclick="showForm('view', this)"
-                                  data-toggle="tooltip"
-                                  title="Chi tiết"
-                                ></i>
-                              </button>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td>4</td>
-                            <td>BS126</td>
-                            <td>BN459</td>
-                            <td>2024-07-04</td>
-
-                            <td>
-                              <label class="badge badge-success">Đã cấp</label>
-                            </td>
-                            <td class="d-flex flex-row" style="gap: 5px">
-                              <button
-                                type="button"
-                                class="btn btn-inverse-danger btn-rounded btn-icon"
-                                data-bs-toggle="modal"
-                                data-bs-target="#confirm-del-patient"
-                              >
-                                <i
-                                  class="mdi mdi-delete"
-                                  data-toggle="tooltip"
-                                  title="Xoá"
-                                ></i>
-                              </button>
-                              <button
-                                type="button"
-                                class="btn btn-inverse-primary btn-rounded btn-icon"
-                                onclick="showForm('edit', this)"
-                              >
-                                <i
-                                  class="mdi mdi-table-edit"
-                                  data-toggle="tooltip"
-                                  title="Chỉnh sửa"
-                                ></i>
-                              </button>
-                              <button
-                                type="button"
-                                class="btn btn-inverse-info btn-rounded btn-icon"
-                              >
-                                <i
-                                  class="mdi mdi-eye"
-                                  onclick="showForm('view', this)"
-                                  data-toggle="tooltip"
-                                  title="Chi tiết"
-                                ></i>
-                              </button>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td>5</td>
-                            <td>BS127</td>
-                            <td>BN460</td>
-                            <td>2024-07-05</td>
-
-                            <td>
-                              <label class="badge badge-danger">Đã hủy</label>
-                            </td>
-                            <td class="d-flex flex-row" style="gap: 5px">
-                              <button
-                                type="button"
-                                class="btn btn-inverse-danger btn-rounded btn-icon"
-                                data-bs-toggle="modal"
-                                data-bs-target="#confirm-del-patient"
-                              >
-                                <i
-                                  class="mdi mdi-delete"
-                                  data-toggle="tooltip"
-                                  title="Xoá"
-                                ></i>
-                              </button>
-                              <button
-                                type="button"
-                                class="btn btn-inverse-primary btn-rounded btn-icon"
-                                onclick="showForm('edit', this)"
-                              >
-                                <i
-                                  class="mdi mdi-table-edit"
-                                  data-toggle="tooltip"
-                                  title="Chỉnh sửa"
-                                ></i>
-                              </button>
-                              <button
-                                type="button"
-                                class="btn btn-inverse-info btn-rounded btn-icon"
-                              >
-                                <i
-                                  class="mdi mdi-eye"
-                                  onclick="showForm('view', this)"
-                                  data-toggle="tooltip"
-                                  title="Chi tiết"
-                                ></i>
-                              </button>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td>6</td>
-                            <td>BS128</td>
-                            <td>BN461</td>
-                            <td>2024-07-06</td>
-
-                            <td>
-                              <label class="badge badge-danger">Đã hủy</label>
-                            </td>
-                            <td class="d-flex flex-row" style="gap: 5px">
-                              <button
-                                type="button"
-                                class="btn btn-inverse-danger btn-rounded btn-icon"
-                                data-bs-toggle="modal"
-                                data-bs-target="#confirm-del-patient"
-                              >
-                                <i
-                                  class="mdi mdi-delete"
-                                  data-toggle="tooltip"
-                                  title="Xoá"
-                                ></i>
-                              </button>
-                              <button
-                                type="button"
-                                class="btn btn-inverse-primary btn-rounded btn-icon"
-                                onclick="showForm('edit', this)"
-                              >
-                                <i
-                                  class="mdi mdi-table-edit"
-                                  data-toggle="tooltip"
-                                  title="Chỉnh sửa"
-                                ></i>
-                              </button>
-                              <button
-                                type="button"
-                                class="btn btn-inverse-info btn-rounded btn-icon"
-                              >
-                                <i
-                                  class="mdi mdi-eye"
-                                  onclick="showForm('view', this)"
-                                  data-toggle="tooltip"
-                                  title="Chi tiết"
-                                ></i>
-                              </button>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td>7</td>
-                            <td>BS129</td>
-                            <td>BN462</td>
-                            <td>2024-07-07</td>
-
-                            <td>
-                              <label class="badge badge-success">Đã cấp</label>
-                            </td>
-                            <td class="d-flex flex-row" style="gap: 5px">
-                              <button
-                                type="button"
-                                class="btn btn-inverse-danger btn-rounded btn-icon"
-                                data-bs-toggle="modal"
-                                data-bs-target="#confirm-del-patient"
-                              >
-                                <i
-                                  class="mdi mdi-delete"
-                                  data-toggle="tooltip"
-                                  title="Xoá"
-                                ></i>
-                              </button>
-                              <button
-                                type="button"
-                                class="btn btn-inverse-primary btn-rounded btn-icon"
-                                onclick="showForm('edit', this)"
-                              >
-                                <i
-                                  class="mdi mdi-table-edit"
-                                  data-toggle="tooltip"
-                                  title="Chỉnh sửa"
-                                ></i>
-                              </button>
-                              <button
-                                type="button"
-                                class="btn btn-inverse-info btn-rounded btn-icon"
-                              >
-                                <i
-                                  class="mdi mdi-eye"
-                                  onclick="showForm('view', this)"
-                                  data-toggle="tooltip"
-                                  title="Chi tiết"
-                                ></i>
-                              </button>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td>8</td>
-                            <td>BS130</td>
-                            <td>BN463</td>
-                            <td>2024-07-08</td>
-
-                            <td>
-                              <label class="badge badge-success">Đã cấp</label>
-                            </td>
-
-                            <td class="d-flex flex-row" style="gap: 5px">
-                              <button
-                                type="button"
-                                class="btn btn-inverse-danger btn-rounded btn-icon"
-                                data-bs-toggle="modal"
-                                data-bs-target="#confirm-del-patient"
-                              >
-                                <i
-                                  class="mdi mdi-delete"
-                                  data-toggle="tooltip"
-                                  title="Xoá"
-                                ></i>
-                              </button>
-                              <button
-                                type="button"
-                                class="btn btn-inverse-primary btn-rounded btn-icon"
-                                onclick="showForm('edit', this)"
-                              >
-                                <i
-                                  class="mdi mdi-table-edit"
-                                  data-toggle="tooltip"
-                                  title="Chỉnh sửa"
-                                ></i>
-                              </button>
-                              <button
-                                type="button"
-                                class="btn btn-inverse-info btn-rounded btn-icon"
-                              >
-                                <i
-                                  class="mdi mdi-eye"
-                                  onclick="showForm('view', this)"
-                                  data-toggle="tooltip"
-                                  title="Chi tiết"
-                                ></i>
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>9</td>
-                            <td>BS131</td>
-                            <td>BN464</td>
-                            <td>2024-07-09</td>
-
-                            <td>
-                              <label class="badge badge-danger">Đã hủy</label>
-                            </td>
-                            <td class="d-flex flex-row" style="gap: 5px">
-                              <button
-                                type="button"
-                                class="btn btn-inverse-danger btn-rounded btn-icon"
-                                data-bs-toggle="modal"
-                                data-bs-target="#confirm-del-patient"
-                              >
-                                <i
-                                  class="mdi mdi-delete"
-                                  data-toggle="tooltip"
-                                  title="Xoá"
-                                ></i>
-                              </button>
-                              <button
-                                type="button"
-                                class="btn btn-inverse-primary btn-rounded btn-icon"
-                                onclick="showForm('edit', this)"
-                              >
-                                <i
-                                  class="mdi mdi-table-edit"
-                                  data-toggle="tooltip"
-                                  title="Chỉnh sửa"
-                                ></i>
-                              </button>
-                              <button
-                                type="button"
-                                class="btn btn-inverse-info btn-rounded btn-icon"
-                              >
-                                <i
-                                  class="mdi mdi-eye"
-                                  onclick="showForm('view', this)"
-                                  data-toggle="tooltip"
-                                  title="Chi tiết"
-                                ></i>
-                              </button>
-                            </td>
-                          </tr>
-                        </tbody>
-                        <div
-                          class="modal fade"
-                          id="confirm-del-patient"
-                          tabindex="-1"
-                          aria-labelledby="exampleModalLabel"
-                          aria-hidden="true"
-                        >
-                          <div
-                            class="modal-dialog modal-dialog-centered"
-                            role="document"
-                          >
-                            <div class="modal-content border-0">
-                              <div class="modal-body p-0">
-                                <div
-                                  class="card border-0 p-sm-3 p-2 justify-content-center"
-                                >
-                                  <div
-                                    class="card-header pb-0 bg-white border-0 d-flex flex-column justify-content-center align-items-center"
-                                  >
-                                    <button
-                                      type="button"
-                                      class="btn btn-inverse-dark btn-icon mb-3"
-                                    >
-                                      <i class="mdi mdi-alert text-center"></i>
-                                    </button>
-                                    <h4
-                                      class="font-weight-bold mb-2 text-center"
-                                    >
-                                      Bạc có chắc chắn muốn xoá đơn thuốc này?
-                                    </h4>
-                                  </div>
-                                  <div class="card-body px-sm-4 mb-2 pt-1 pb-0">
-                                    <div
-                                      class="row justify-content-end no-gutters"
-                                    >
-                                      <div class="col-auto">
-                                        <button
-                                          type="button"
-                                          class="btn close btn-light text-muted"
-                                          data-bs-dismiss="modal"
-                                        >
-                                          Cancel
-                                        </button>
-                                      </div>
-                                      <div class="col-auto">
-                                        <button
-                                          type="button"
-                                          class="btn btn-danger px-4"
-                                          data-dismiss="modal"
-                                        >
-                                          Delete
-                                        </button>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
-    <!-- base:js -->
-    <div data-include="_script"></div>
-    <script type="text/javascript">
-      $(".rangedatepicker").daterangepicker({
-        alwaysShowCalendars: true,
-        locale: {
-          format: "YYYY/MM/DD",
-        },
-        ranges: {
-          Today: [moment(), moment()],
-          Yesterday: [
-            moment().subtract(1, "days"),
-            moment().subtract(1, "days"),
-          ],
-          "Last 7 Days": [moment().subtract(6, "days"), moment()],
-          "Last 30 Days": [moment().subtract(29, "days"), moment()],
-          "This Month": [moment().startOf("month"), moment().endOf("month")],
-          "Last Month": [
-            moment().subtract(1, "month").startOf("month"),
-            moment().subtract(1, "month").endOf("month"),
-          ],
-        },
-        startDate: moment().startOf("month"),
-        endDate: moment().endOf("month"),
-      });
-
-      $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-      });
-      function showForm(type, button) {
-        const overlay = document.getElementById("overlay");
-        const formTitle = document.getElementById("form-title");
-        const formDescription = document.getElementById("form-description");
-
-        if (type === "edit" || type === "view") {
-          const row = button.closest("tr");
-          const cells = row.querySelectorAll("td");
-
-          const id = cells[0].innerText.trim();
-          const doctorID = cells[1].innerText.trim();
-          const patientID = cells[2].innerText.trim();
-          const prescriptionDate = cells[3].innerText.trim();
-
-          document.getElementById("inputID").value = id;
-          document.getElementById("inputDoctorID").value = doctorID;
-          document.getElementById("inputPatientID").value = patientID;
-          document.getElementById("inputPrescriptionDate").value =
-            prescriptionDate;
-
-          if (type === "edit") {
-            formTitle.innerText = "Chỉnh sửa";
-            formDescription.innerText = "Chỉnh sửa thông tin đơn thuốc";
-          } else if (type === "view") {
-            formTitle.innerText = "Chi tiết";
-            formDescription.innerText = "Xem chi tiết thông tin đơn thuốc";
-          }
-        } else if (type === "add") {
-          formTitle.innerText = "Thêm";
-          formDescription.innerText = "Thêm đơn thuốc";
-
-          document.getElementById("inputID").value = "";
-          document.getElementById("inputDoctorID").value = "";
-          document.getElementById("inputDoctorName").value = "";
-          document.getElementById("inputPatientID").value = "";
-          document.getElementById("inputPatientName").value = "";
-          document.getElementById("inputPrescriptionDate").value = "";
-          document.getElementById("inputMedicineID").value = "";
-          document.getElementById("inputMedicineName").value = "";
-          document.getElementById("inputMedicineAmount").value = "";
-          document.getElementById("inputDosage").value = "";
-          document.getElementById("inputNotes").value = "";
-        }
-
-        overlay.style.display = "flex";
-      }
-
-      function hideForm() {
-        const overlay = document.getElementById("overlay");
-        overlay.style.display = "none";
-      }
-    </script>
-    <script>
-      $(function () {
-        var includes = $("[data-include]");
-        $.each(includes, function () {
-          var container = $(this);
-          var file = "/partials/" + container.data("include") + ".html";
-
-          $.get(file, function (data) {
-            container.replaceWith(data);
-          });
-        });
-      });
-    </script>
-  </body>
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+			/>
+		<title>WinSmile</title>
+		<!-- base:css -->
+		<link
+			rel="stylesheet"
+			href="/vendors/mdi/css/materialdesignicons.min.css"
+			/>
+		<link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css" />
+		<!-- endinject -->
+		<!-- inject:css -->
+		<link rel="stylesheet" href="/css/style.css" />
+		<!-- endinject -->
+		<link rel="shortcut icon" href="/images/favicon.png" />
+		<!-- jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<script
+			type="text/javascript"
+			src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
+			></script>
+		<script
+			type="text/javascript"
+			src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+			></script>
+		<script
+			type="text/javascript"
+			src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+			></script>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+			/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css"
+			/>
+		<style>
+			.overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			display: none;
+			justify-content: center;
+			align-items: center;
+			}
+			.form-container {
+			background: white;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			max-width: 500px;
+			width: 100%;
+			}
+			.form-row {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 15px;
+			}
+			.form-group {
+			flex: 1;
+			margin-right: 10px;
+			}
+			.form-group:last-child {
+			margin-right: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container-scroller d-flex">
+			<!-- partial:./partials/_sidebar.html -->
+			<div data-include="_sidebar"></div>
+			<!-- partial -->
+			<div class="container-fluid page-body-wrapper">
+				<!-- partial:./partials/_navbar.html -->
+				<div data-include="_navbar"></div>
+				<!-- partial -->
+				<div class="main-panel">
+					<div class="content-wrapper">
+						<div class="row">
+							<div class="col-lg-12 grid-margin stretch-card">
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+										<li class="breadcrumb-item active" aria-current="page">
+											Đơn thuốc
+										</li>
+									</ol>
+								</nav>
+							</div>
+							<div class="col-lg-12 grid-margin stretch-card">
+								<div class="card rounded border-0 shadow p-4">
+									<div class="card-body">
+										<div
+											class="d-flex flex-direction-row justify-content-between"
+											>
+											<div class="col-lg-8 grid-margin stretch-card">
+												<div class="input-group">
+													<input
+														type="text"
+														class="form-control border rounded-pill"
+														placeholder="Search Here..."
+														aria-label="search"
+														aria-describedby="search"
+														/>
+												</div>
+											</div>
+											<div
+												class="col-lg-2 grid-margin stretch-card justify-content-center"
+												>
+												<button
+													type="button"
+													class="btn btn-light btn-icon-text"
+													>
+												<i class="mdi mdi-printer btn-icon-prepend"></i>
+												In tất cả
+												</button>
+											</div>
+											<div
+												class="col-lg-2 grid-margin stretch-card justify-content-center"
+												>
+												<button
+													type="button"
+													class="btn btn-primary btn-icon-text"
+													title="Thêm đơn thuốc"
+													onclick="showForm('add', this)"
+													>
+												<i class="mdi mdi-plus btn-icon-prepend"></i>
+												Thêm đơn thuốc
+												</button>
+												<div class="overlay" id="overlay">
+													<div class="form-container">
+														<h4 class="card-title" id="form-title">
+															Default form
+														</h4>
+														<p class="card-description" id="form-description">
+															Basic form layout
+														</p>
+														<form class="forms-sample">
+															<div class="form-row">
+																<div class="form-group col-md-4">
+																	<label for="inputID">ID</label>
+																	<input
+																		type="text"
+																		class="form-control"
+																		id="inputID"
+																		placeholder="ID"
+																		/>
+																</div>
+																<div class="form-group col-md-4">
+																	<label for="inputDoctorID">ID bác sĩ</label>
+																	<input
+																		type="text"
+																		class="form-control"
+																		id="inputDoctorID"
+																		placeholder="ID bác sĩ"
+																		/>
+																</div>
+																<div class="form-group col-md-4">
+																	<label for="inputDoctorName"
+																		>Tên bác sĩ</label
+																		>
+																	<input
+																		type="text"
+																		class="form-control"
+																		id="inputDoctorName"
+																		placeholder="Tên bác sĩ"
+																		value="Lê Hà"
+																		/>
+																</div>
+															</div>
+															<div class="form-row">
+																<div class="form-group col-md-4">
+																	<label for="inputPrescriptionDate"
+																		>Ngày kê</label
+																		>
+																	<input
+																		type="date"
+																		class="form-control"
+																		id="inputPrescriptionDate"
+																		/>
+																</div>
+																<div class="form-group col-md-4">
+																	<label for="inputPatientID"
+																		>ID bệnh nhân</label
+																		>
+																	<input
+																		type="text"
+																		class="form-control"
+																		id="inputPatientID"
+																		placeholder="ID bệnh nhân"
+																		/>
+																</div>
+																<div class="form-group col-md-4">
+																	<label for="inputPatientName"
+																		>Tên bệnh nhân</label
+																		>
+																	<input
+																		type="text"
+																		class="form-control"
+																		id="inputPatientName"
+																		placeholder="Tên bệnh nhân"
+																		value="Nguyệt Hà"
+																		/>
+																</div>
+															</div>
+															<div class="form-row">
+																<div class="form-group col-md-4">
+																	<label for="inputMedicineID">ID thuốc</label>
+																	<input
+																		type="text"
+																		class="form-control"
+																		id="inputMedicineID"
+																		placeholder="ID thuốc"
+																		value="T001"
+																		/>
+																</div>
+																<div class="form-group col-md-4">
+																	<label for="inputMedicineName"
+																		>Tên thuốc</label
+																		>
+																	<input
+																		type="text"
+																		class="form-control"
+																		id="inputMedicineName"
+																		placeholder="Tên thuốc"
+																		value="Paracetamol"
+																		/>
+																</div>
+																<div class="form-group col-md-4">
+																	<label for="inputMedicineAmount"
+																		>Số lượng</label
+																		>
+																	<input
+																		type="text"
+																		class="form-control"
+																		id="inputMedicineAmount"
+																		placeholder="Số lượng"
+																		value="5 viên"
+																		/>
+																</div>
+															</div>
+															<div class="form-group">
+																<label for="inputDosage">Liều dùng</label>
+																<input
+																	type="text"
+																	class="form-control"
+																	id="inputDosage"
+																	placeholder="Liều dùng"
+																	value="1 viên sau khi ăn"
+																	/>
+															</div>
+															<div class="form-group">
+																<label for="inputNotes">Ghi chú</label>
+																<textarea
+																	class="form-control"
+																	id="inputNotes"
+																	rows="3"
+																	placeholder="Ghi chú"
+																	>
+																Chống chỉ định với người mẫn cảm với thành phần của thuốc</textarea
+																	>
+															</div>
+															<button
+																type="submit"
+																class="btn btn-primary me-2"
+																>
+															Submit
+															</button>
+															<button
+																type="button"
+																class="btn btn-light"
+																id="cancelButton"
+																onclick="hideForm()"
+																>
+															Cancel
+															</button>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="filter-container">
+											<h4 class="mb-0">FILTER</h4>
+											<div class="filter-item">
+												<p class="filter-label m-0">Date:</p>
+												<input
+													class="form-control rangedatepicker"
+													type="text"
+													name="dates"
+													value=""
+													/>
+											</div>
+											<div class="filter-item">
+												<p class="filter-label m-0">Trạng thái:</p>
+												<select class="form-control" name="status">
+													<option value="all">Tất cả</option>
+													<option value="completed">Đã cấp</option>
+													<option value="cancelled">Đã huỷ</option>
+												</select>
+											</div>
+											<div class="filter-item">
+												<p class="filter-label">Sắp xếp theo:</p>
+												<select class="form-control" name="sort">
+													<option value="default">ID</option>
+													<option value="date">Ngày</option>
+												</select>
+											</div>
+										</div>
+										<div class="table-responsive">
+											<table class="table table-striped">
+												<thead>
+													<tr>
+														<th>ID</th>
+														<th>ID bác sĩ</th>
+														<th>ID bệnh nhân</th>
+														<th>Ngày kê</th>
+														<th>Trạng thái</th>
+														<th>Action</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td class="py-1">1</td>
+														<td>BS123</td>
+														<td>BN456</td>
+														<td>2024-07-01</td>
+														<td>
+															<label class="badge badge-danger">Đã hủy</label>
+														</td>
+														<td class="d-flex flex-row" style="gap: 5px">
+															<button
+																type="button"
+																class="btn btn-inverse-danger btn-rounded btn-icon"
+																data-bs-toggle="modal"
+																data-bs-target="#confirm-del-patient"
+																>
+															<i
+																class="mdi mdi-delete"
+																data-toggle="tooltip"
+																title="Xoá"
+																></i>
+															</button>
+															<button
+																type="button"
+																class="btn btn-inverse-primary btn-rounded btn-icon"
+																onclick="showForm('edit', this)"
+																>
+															<i
+																class="mdi mdi-table-edit"
+																data-toggle="tooltip"
+																title="Chỉnh sửa"
+																></i>
+															</button>
+															<button
+																type="button"
+																class="btn btn-inverse-info btn-rounded btn-icon"
+																>
+															<i
+																class="mdi mdi-eye"
+																onclick="showForm('view', this)"
+																data-toggle="tooltip"
+																title="Chi tiết"
+																></i>
+															</button>
+														</td>
+													</tr>
+													<tr>
+														<td>2</td>
+														<td>BS124</td>
+														<td>BN457</td>
+														<td>2024-07-02</td>
+														<td>
+															<label class="badge badge-success">Đã cấp</label>
+														</td>
+														<td class="d-flex flex-row" style="gap: 5px">
+															<button
+																type="button"
+																class="btn btn-inverse-danger btn-rounded btn-icon"
+																data-bs-toggle="modal"
+																data-bs-target="#confirm-del-patient"
+																>
+															<i
+																class="mdi mdi-delete"
+																data-toggle="tooltip"
+																title="Xoá"
+																></i>
+															</button>
+															<button
+																type="button"
+																class="btn btn-inverse-primary btn-rounded btn-icon"
+																onclick="showForm('edit', this)"
+																>
+															<i
+																class="mdi mdi-table-edit"
+																data-toggle="tooltip"
+																title="Chỉnh sửa"
+																></i>
+															</button>
+															<button
+																type="button"
+																class="btn btn-inverse-info btn-rounded btn-icon"
+																>
+															<i
+																class="mdi mdi-eye"
+																onclick="showForm('view', this)"
+																data-toggle="tooltip"
+																title="Chi tiết"
+																></i>
+															</button>
+														</td>
+													</tr>
+													<tr>
+														<td>3</td>
+														<td>BS125</td>
+														<td>BN458</td>
+														<td>2024-07-03</td>
+														<td>
+															<label class="badge badge-success">Đã cấp</label>
+														</td>
+														<td class="d-flex flex-row" style="gap: 5px">
+															<button
+																type="button"
+																class="btn btn-inverse-danger btn-rounded btn-icon"
+																data-bs-toggle="modal"
+																data-bs-target="#confirm-del-patient"
+																>
+															<i
+																class="mdi mdi-delete"
+																data-toggle="tooltip"
+																title="Xoá"
+																></i>
+															</button>
+															<button
+																type="button"
+																class="btn btn-inverse-primary btn-rounded btn-icon"
+																onclick="showForm('edit', this)"
+																>
+															<i
+																class="mdi mdi-table-edit"
+																data-toggle="tooltip"
+																title="Chỉnh sửa"
+																></i>
+															</button>
+															<button
+																type="button"
+																class="btn btn-inverse-info btn-rounded btn-icon"
+																>
+															<i
+																class="mdi mdi-eye"
+																onclick="showForm('view', this)"
+																data-toggle="tooltip"
+																title="Chi tiết"
+																></i>
+															</button>
+														</td>
+													</tr>
+													<tr>
+														<td>4</td>
+														<td>BS126</td>
+														<td>BN459</td>
+														<td>2024-07-04</td>
+														<td>
+															<label class="badge badge-success">Đã cấp</label>
+														</td>
+														<td class="d-flex flex-row" style="gap: 5px">
+															<button
+																type="button"
+																class="btn btn-inverse-danger btn-rounded btn-icon"
+																data-bs-toggle="modal"
+																data-bs-target="#confirm-del-patient"
+																>
+															<i
+																class="mdi mdi-delete"
+																data-toggle="tooltip"
+																title="Xoá"
+																></i>
+															</button>
+															<button
+																type="button"
+																class="btn btn-inverse-primary btn-rounded btn-icon"
+																onclick="showForm('edit', this)"
+																>
+															<i
+																class="mdi mdi-table-edit"
+																data-toggle="tooltip"
+																title="Chỉnh sửa"
+																></i>
+															</button>
+															<button
+																type="button"
+																class="btn btn-inverse-info btn-rounded btn-icon"
+																>
+															<i
+																class="mdi mdi-eye"
+																onclick="showForm('view', this)"
+																data-toggle="tooltip"
+																title="Chi tiết"
+																></i>
+															</button>
+														</td>
+													</tr>
+													<tr>
+														<td>5</td>
+														<td>BS127</td>
+														<td>BN460</td>
+														<td>2024-07-05</td>
+														<td>
+															<label class="badge badge-danger">Đã hủy</label>
+														</td>
+														<td class="d-flex flex-row" style="gap: 5px">
+															<button
+																type="button"
+																class="btn btn-inverse-danger btn-rounded btn-icon"
+																data-bs-toggle="modal"
+																data-bs-target="#confirm-del-patient"
+																>
+															<i
+																class="mdi mdi-delete"
+																data-toggle="tooltip"
+																title="Xoá"
+																></i>
+															</button>
+															<button
+																type="button"
+																class="btn btn-inverse-primary btn-rounded btn-icon"
+																onclick="showForm('edit', this)"
+																>
+															<i
+																class="mdi mdi-table-edit"
+																data-toggle="tooltip"
+																title="Chỉnh sửa"
+																></i>
+															</button>
+															<button
+																type="button"
+																class="btn btn-inverse-info btn-rounded btn-icon"
+																>
+															<i
+																class="mdi mdi-eye"
+																onclick="showForm('view', this)"
+																data-toggle="tooltip"
+																title="Chi tiết"
+																></i>
+															</button>
+														</td>
+													</tr>
+													<tr>
+														<td>6</td>
+														<td>BS128</td>
+														<td>BN461</td>
+														<td>2024-07-06</td>
+														<td>
+															<label class="badge badge-danger">Đã hủy</label>
+														</td>
+														<td class="d-flex flex-row" style="gap: 5px">
+															<button
+																type="button"
+																class="btn btn-inverse-danger btn-rounded btn-icon"
+																data-bs-toggle="modal"
+																data-bs-target="#confirm-del-patient"
+																>
+															<i
+																class="mdi mdi-delete"
+																data-toggle="tooltip"
+																title="Xoá"
+																></i>
+															</button>
+															<button
+																type="button"
+																class="btn btn-inverse-primary btn-rounded btn-icon"
+																onclick="showForm('edit', this)"
+																>
+															<i
+																class="mdi mdi-table-edit"
+																data-toggle="tooltip"
+																title="Chỉnh sửa"
+																></i>
+															</button>
+															<button
+																type="button"
+																class="btn btn-inverse-info btn-rounded btn-icon"
+																>
+															<i
+																class="mdi mdi-eye"
+																onclick="showForm('view', this)"
+																data-toggle="tooltip"
+																title="Chi tiết"
+																></i>
+															</button>
+														</td>
+													</tr>
+													<tr>
+														<td>7</td>
+														<td>BS129</td>
+														<td>BN462</td>
+														<td>2024-07-07</td>
+														<td>
+															<label class="badge badge-success">Đã cấp</label>
+														</td>
+														<td class="d-flex flex-row" style="gap: 5px">
+															<button
+																type="button"
+																class="btn btn-inverse-danger btn-rounded btn-icon"
+																data-bs-toggle="modal"
+																data-bs-target="#confirm-del-patient"
+																>
+															<i
+																class="mdi mdi-delete"
+																data-toggle="tooltip"
+																title="Xoá"
+																></i>
+															</button>
+															<button
+																type="button"
+																class="btn btn-inverse-primary btn-rounded btn-icon"
+																onclick="showForm('edit', this)"
+																>
+															<i
+																class="mdi mdi-table-edit"
+																data-toggle="tooltip"
+																title="Chỉnh sửa"
+																></i>
+															</button>
+															<button
+																type="button"
+																class="btn btn-inverse-info btn-rounded btn-icon"
+																>
+															<i
+																class="mdi mdi-eye"
+																onclick="showForm('view', this)"
+																data-toggle="tooltip"
+																title="Chi tiết"
+																></i>
+															</button>
+														</td>
+													</tr>
+													<tr>
+														<td>8</td>
+														<td>BS130</td>
+														<td>BN463</td>
+														<td>2024-07-08</td>
+														<td>
+															<label class="badge badge-success">Đã cấp</label>
+														</td>
+														<td class="d-flex flex-row" style="gap: 5px">
+															<button
+																type="button"
+																class="btn btn-inverse-danger btn-rounded btn-icon"
+																data-bs-toggle="modal"
+																data-bs-target="#confirm-del-patient"
+																>
+															<i
+																class="mdi mdi-delete"
+																data-toggle="tooltip"
+																title="Xoá"
+																></i>
+															</button>
+															<button
+																type="button"
+																class="btn btn-inverse-primary btn-rounded btn-icon"
+																onclick="showForm('edit', this)"
+																>
+															<i
+																class="mdi mdi-table-edit"
+																data-toggle="tooltip"
+																title="Chỉnh sửa"
+																></i>
+															</button>
+															<button
+																type="button"
+																class="btn btn-inverse-info btn-rounded btn-icon"
+																>
+															<i
+																class="mdi mdi-eye"
+																onclick="showForm('view', this)"
+																data-toggle="tooltip"
+																title="Chi tiết"
+																></i>
+															</button>
+														</td>
+													</tr>
+													<tr>
+														<td>9</td>
+														<td>BS131</td>
+														<td>BN464</td>
+														<td>2024-07-09</td>
+														<td>
+															<label class="badge badge-danger">Đã hủy</label>
+														</td>
+														<td class="d-flex flex-row" style="gap: 5px">
+															<button
+																type="button"
+																class="btn btn-inverse-danger btn-rounded btn-icon"
+																data-bs-toggle="modal"
+																data-bs-target="#confirm-del-patient"
+																>
+															<i
+																class="mdi mdi-delete"
+																data-toggle="tooltip"
+																title="Xoá"
+																></i>
+															</button>
+															<button
+																type="button"
+																class="btn btn-inverse-primary btn-rounded btn-icon"
+																onclick="showForm('edit', this)"
+																>
+															<i
+																class="mdi mdi-table-edit"
+																data-toggle="tooltip"
+																title="Chỉnh sửa"
+																></i>
+															</button>
+															<button
+																type="button"
+																class="btn btn-inverse-info btn-rounded btn-icon"
+																>
+															<i
+																class="mdi mdi-eye"
+																onclick="showForm('view', this)"
+																data-toggle="tooltip"
+																title="Chi tiết"
+																></i>
+															</button>
+														</td>
+													</tr>
+												</tbody>
+												<div
+													class="modal fade"
+													id="confirm-del-patient"
+													tabindex="-1"
+													aria-labelledby="exampleModalLabel"
+													aria-hidden="true"
+													>
+													<div
+														class="modal-dialog modal-dialog-centered"
+														role="document"
+														>
+														<div class="modal-content border-0">
+															<div class="modal-body p-0">
+																<div
+																	class="card border-0 p-sm-3 p-2 justify-content-center"
+																	>
+																	<div
+																		class="card-header pb-0 bg-white border-0 d-flex flex-column justify-content-center align-items-center"
+																		>
+																		<button
+																			type="button"
+																			class="btn btn-inverse-dark btn-icon mb-3"
+																			>
+																		<i class="mdi mdi-alert text-center"></i>
+																		</button>
+																		<h4
+																			class="font-weight-bold mb-2 text-center"
+																			>
+																			Bạc có chắc chắn muốn xoá đơn thuốc này?
+																		</h4>
+																	</div>
+																	<div class="card-body px-sm-4 mb-2 pt-1 pb-0">
+																		<div
+																			class="row justify-content-end no-gutters"
+																			>
+																			<div class="col-auto">
+																				<button
+																					type="button"
+																					class="btn close btn-light text-muted"
+																					data-bs-dismiss="modal"
+																					>
+																				Cancel
+																				</button>
+																			</div>
+																			<div class="col-auto">
+																				<button
+																					type="button"
+																					class="btn btn-danger px-4"
+																					data-dismiss="modal"
+																					>
+																				Delete
+																				</button>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- main-panel ends -->
+			</div>
+			<!-- page-body-wrapper ends -->
+		</div>
+		<!-- container-scroller -->
+		<!-- base:js -->
+		<div data-include="_script"></div>
+		<script type="text/javascript">
+			$(".rangedatepicker").daterangepicker({
+			  alwaysShowCalendars: true,
+			  locale: {
+			    format: "YYYY/MM/DD",
+			  },
+			  ranges: {
+			    Today: [moment(), moment()],
+			    Yesterday: [
+			      moment().subtract(1, "days"),
+			      moment().subtract(1, "days"),
+			    ],
+			    "Last 7 Days": [moment().subtract(6, "days"), moment()],
+			    "Last 30 Days": [moment().subtract(29, "days"), moment()],
+			    "This Month": [moment().startOf("month"), moment().endOf("month")],
+			    "Last Month": [
+			      moment().subtract(1, "month").startOf("month"),
+			      moment().subtract(1, "month").endOf("month"),
+			    ],
+			  },
+			  startDate: moment().startOf("month"),
+			  endDate: moment().endOf("month"),
+			});
+			
+			$(document).ready(function () {
+			  $('[data-toggle="tooltip"]').tooltip();
+			});
+			function showForm(type, button) {
+			  const overlay = document.getElementById("overlay");
+			  const formTitle = document.getElementById("form-title");
+			  const formDescription = document.getElementById("form-description");
+			
+			  if (type === "edit" || type === "view") {
+			    const row = button.closest("tr");
+			    const cells = row.querySelectorAll("td");
+			
+			    const id = cells[0].innerText.trim();
+			    const doctorID = cells[1].innerText.trim();
+			    const patientID = cells[2].innerText.trim();
+			    const prescriptionDate = cells[3].innerText.trim();
+			
+			    document.getElementById("inputID").value = id;
+			    document.getElementById("inputDoctorID").value = doctorID;
+			    document.getElementById("inputPatientID").value = patientID;
+			    document.getElementById("inputPrescriptionDate").value =
+			      prescriptionDate;
+			
+			    if (type === "edit") {
+			      formTitle.innerText = "Chỉnh sửa";
+			      formDescription.innerText = "Chỉnh sửa thông tin đơn thuốc";
+			    } else if (type === "view") {
+			      formTitle.innerText = "Chi tiết";
+			      formDescription.innerText = "Xem chi tiết thông tin đơn thuốc";
+			    }
+			  } else if (type === "add") {
+			    formTitle.innerText = "Thêm";
+			    formDescription.innerText = "Thêm đơn thuốc";
+			
+			    document.getElementById("inputID").value = "";
+			    document.getElementById("inputDoctorID").value = "";
+			    document.getElementById("inputDoctorName").value = "";
+			    document.getElementById("inputPatientID").value = "";
+			    document.getElementById("inputPatientName").value = "";
+			    document.getElementById("inputPrescriptionDate").value = "";
+			    document.getElementById("inputMedicineID").value = "";
+			    document.getElementById("inputMedicineName").value = "";
+			    document.getElementById("inputMedicineAmount").value = "";
+			    document.getElementById("inputDosage").value = "";
+			    document.getElementById("inputNotes").value = "";
+			  }
+			
+			  overlay.style.display = "flex";
+			}
+			
+			function hideForm() {
+			  const overlay = document.getElementById("overlay");
+			  overlay.style.display = "none";
+			}
+		</script>
+		<script>
+			$(function () {
+			  var includes = $("[data-include]");
+			  $.each(includes, function () {
+			    var container = $(this);
+			    var file = "/partials/" + container.data("include") + ".html";
+			
+			    $.get(file, function (data) {
+			      container.replaceWith(data);
+			    });
+			  });
+			});
+		</script>
+	</body>
 </html>

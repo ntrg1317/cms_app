@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Winsmile</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+   
+    <!-- Favicons -->
+    <link href="/images/favicon.png" rel="icon" />
+    <link href="/images/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="/vendors/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/vendors/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="/vendors/aos/aos.css" rel="stylesheet" />
+    <link
+      href="/vendors/fontawesome-free/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/vendors/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link href="/vendors/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+    <!-- Main CSS File -->
+    <link href="/css/main.css" rel="stylesheet" />
+
+   
+  </head>
+
+  <body class="index-page">
+    <header id="header" class="header sticky-top">
+      <div class="topbar d-flex align-items-center">
+        <div
+          class="container d-flex justify-content-center justify-content-md-between"
+        >
+          <div class="contact-info d-flex align-items-center">
+            <i class="bi bi-envelope d-flex align-items-center"
+              ><a href="mailto:contact@example.com">winsmile@gmail.com</a></i
+            >
+            <i class="bi bi-phone d-flex align-items-center ms-4"
+              ><span>+1 5589 55488 55</span></i
+            >
+          </div>
+          <div class="social-links d-none d-md-flex align-items-center">
+            <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- End Top Bar -->
+
+      <div class="branding d-flex align-items-center">
+        <div
+          class="container position-relative d-flex align-items-center justify-content-between"
+        >
+          <a href="/landing-page/record_patient.html" class="logo d-flex align-items-center me-auto">
+            <!-- Uncomment the line below if you also wish to use an image logo -->
+            <!-- <img src="/images/logo.png" alt=""> -->
+            <h1 class="sitename">Winsmile</h1>
+          </a>
+
+          <nav id="navmenu" class="navmenu">
+            <ul>
+              <li>
+                <a href="overview.html" >Trang chủ<br/></a>
+              </li>
+              <li><a href="overview.html#about">Giới thiệu</a></li>
+              <li><a href="overview.html#services">Dịch vụ</a></li>
+              <li><a href="overview.html#departments">Chi nhánh</a></li>
+              <li><a href="overview.html#doctors">Bác sĩ</a></li>
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+          </nav>
+
+          <a
+            class="btn btn-primary cta-btn d-none d-sm-block"
+            href="overview.html#appointment"
+            >Đặt lịch khám</a
+          >
+          <div class="dropdown ms-3">
+            <a
+              href="#"
+              class="d-flex align-items-center text-decoration-none"
+              id="userDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <!-- <img src="/images/user.png" alt="User" width="32" height="32" class="rounded-circle"> -->
+              <i class="fa-regular fa-user"></i>
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-end"
+              aria-labelledby="userDropdown"
+              style="font-family: 'Roboto', sans-serif; font-size: 14px"
+            >
+              <li><a class="dropdown-item" href="/landing-page/update-info.html">Cập nhật thông tin cá nhân</a></li>
+              <li><a class="dropdown-item" href="/landing-page/change-pw.html">Đổi mật khẩu</a></li>
+              <li><a class="dropdown-item" href="/landing-page/record_patient.html">Lịch sử điều trị</a></li>
+              <li><a class="dropdown-item active" href="/landing-page/payment.html">Lịch sử thanh toán</a></li>
+
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+ 
+    <main class="main">
+        <div class="page-title" data-aos="fade">
+     
+            <nav class="breadcrumbs">
+              <div class="container">
+                <ol>
+                  <li><a href="/landing-page/overview.html">Trang chủ</a></li>
+                  <li class="current">Lịch sử thanh toán</li>
+                </ol>
+              </div>
+            </nav>
+          </div><!-- End Page Title -->
+        <div class="container">
+           
+            <div class="patient-info card mb-4">
+                <div class="card-header">
+                    <h2 class="h5 mb-0">Thông Tin Bệnh Nhân</h2>
+                </div>
+                <div class="card-body">
+                    <p><strong>Họ và Tên:</strong> Nguyễn Văn An</p>
+                    <p><strong>Ngày Sinh:</strong> 15/10/2003</p>
+                    <p><strong>Số Điện Thoại:</strong> 0123456789</p>
+                    <p><strong>Email:</strong> nguyenvana@gmail.com</p>
+                    <p><strong>Địa Chỉ:</strong> 123 Đường Nguyễn Du, Quận Hoàn Kiếm, Thành phố Hà Nội</p>
+                </div>
+            </div>
+    
+           
+            <div class="treatment-history card mb-5">
+                <div class="card-header">
+                    <h2 class="h5 mb-0">Lịch Sử Thanh Toán</h2>
+                </div>
+                <div class="card-body">
+                    <div class="search-filter row">
+                        <div class="col-md-9 mb-3">
+                            <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <select class="form-control">
+                                <option value="all">Tất Cả</option>
+                                <option value="3months">3 Tháng</option>
+                                <option value="6months">6 Tháng</option>
+                                <option value="1year">1 Năm</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered ">
+                            <thead>
+                                <tr>
+                                    <th>Ngày điều trị</th>
+                                    <th>Ngày thanh toán</th>
+                                    
+                                    <th>Loại dịch vụ</th>
+                                    <th>Bác sĩ điều trị</th>
+                                    <th>Chi nhánh</th>
+                                    <th>Chi phí</th>
+                                    <th>Số tiền thanh toán</th>
+                                    <th>Dư nợ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>01/06/2023</td>
+                                    <td>01/06/2023</td>
+                                    <td>Kiểm tra định kỳ</td>
+                                    <td>Dr. Huỳnh Hùng</td>
+                                    <td>Chi nhánh Thái Nguyên</td>
+                                    <td>500,000 VNĐ</td>
+                                    <td>200,000 VNĐ</td>
+                                    <td>300,000 VNĐ</td>
+                                </tr>
+                                <tr>
+                                    <td>01/06/2023</td>
+                                    <td>01/07/2023</td>
+                                    <td>Kiểm tra định kỳ</td>
+                                    <td>Dr. Huỳnh Hùng</td>
+                                    <td>Chi nhánh Thái Nguyên</td>
+                                    <td>500,000 VNĐ</td>
+                                    <td>300,000 VNĐ</td>
+                                    <td>0 VNĐ</td>
+                                </tr>
+                                
+                                
+                                
+                              
+                                    <tr>
+                                        <td>05/10/2023</td>
+                                        <td>05/10/2023</td>
+                                        <td>Hàn răng</td>
+                                        <td>Dr. Nguyễn Thanh Tùng</td>
+                                        <td>Chi nhánh Hà Nội</td>
+                                      
+                                        <td>200,000 VNĐ</td>
+                                        <td>200,000 VNĐ</td>
+                                        <td>0 VNĐ</td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+   
+    <footer id="footer" class="footer light-background">
+      <div class="container footer-top">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6 footer-about">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <span class="sitename">WinSmile</span>
+            </a>
+            <div class="footer-contact pt-3">
+              <p>1 Đại Cồ Việt</p>
+              <p>Hai Bà Trưng, Hà Nội</p>
+              <p class="mt-3">
+                <strong>Phone:</strong> <span>+1 5589 55488 55</span>
+              </p>
+              <p><strong>Email:</strong> <span>winsmile@gmail.com</span></p>
+            </div>
+            <div class="social-links d-flex mt-4">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Links</h4>
+            <ul>
+              <li><a href="#">Trang chủ</a></li>
+              <li><a href="#">Giới thiệu</a></li>
+              <li><a href="#">Dịch vụ</a></li>
+              <li><a href="#">Chi nhánh</a></li>
+              <li><a href="#">Bác sĩ</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Dịch vụ</h4>
+            <ul>
+              <li><a href="#">Trồng răng Implant</a></li>
+              <li><a href="#">Niềng răng</a></li>
+              <li><a href="#">Bọc răng sứ</a></li>
+              <li><a href="#">Nha khoa tổng quát</a></li>
+              <li><a href="#">Nha khoa trẻ em</a></li>
+              <li><a href="#">Nha khoa thẩm mỹ</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Chi nhánh</h4>
+            <ul>
+              <li><a href="#">Chi nhánh Hà Nội</a></li>
+              <li><a href="#">Chi nhánh Thái Bình</a></li>
+              <li><a href="#">Chi nhánh Thái Nguyên</a></li>
+              <li><a href="#">Chi nhánh Hưng Yên</a></li>
+              <li><a href="#">Chi nhánh Quảng Ninh</a></li>
+            </ul>
+          </div>
+
+
+        </div>
+      </div>
+
+    
+    </footer>
+
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendors/php-email-form/validate.js"></script>
+    <script src="/vendors/aos/aos.js"></script>
+    <script src="/vendors/glightbox/js/glightbox.min.js"></script>
+    <script src="/vendors/purecounter/purecounter_vanilla.js"></script>
+    <script src="/vendors/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="/js/main.js"></script>
+    <script src="/js/calender.js"></script>
+  </body>
+</html>
