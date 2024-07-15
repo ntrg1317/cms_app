@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<div data-include="_header"></div>
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+<body>
+<div class="container-scroller d-flex">
+    <!-- partial:./partials/_sidebar.html -->
+    <div data-include="_sidebar"></div>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:./partials/_navbar.html -->
+        <div data-include="_navbar"></div>
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                  <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                                  <li class="breadcrumb-item">Bác sĩ</li>
+                                  <li class="breadcrumb-item active" aria-current="page">Sửa thông tin và cài đặt</li>
+                                </ol>
+                            </nav>
+                        </div>
+                       <div class="col-lg-12">
+                          <div class="card mb-3 border-0 rounded shadow">
+                                <div class="card-body p-0">
+                                    <div class="edit-list">
+                                        <ul class="edit-profile nav nav-pills list-inline mb-0 flex-md-row flex-column p-0 border-bottom-none" role="tablist">
+                                            <li class="col-md-3 p-0">
+                                                <a class="nav-link active" data-bs-toggle="pill" href="#personal-information" aria-selected="true" role="tab">
+                                                Thông tin cá nhân
+                                                </a>
+                                            </li>
+                                            <li class="col-md-3 p-0">
+                                                <a class="nav-link" data-bs-toggle="pill" href="#chang-pwd" aria-selected="false" role="tab" tabindex="-1">
+                                                Đổi mật khẩu
+                                                </a>
+                                            </li>
+                                            <li class="col-md-3 p-0">
+                                                <a class="nav-link" data-bs-toggle="pill" href="#emailandsms" aria-selected="false" tabindex="-1" role="tab">
+                                                Email và SMS
+                                                </a>
+                                            </li>
+                                            <li class="col-md-3 p-0">
+                                                <a class="nav-link" data-bs-toggle="pill" href="#manage-contact" aria-selected="false" tabindex="-1" role="tab">
+                                                Quản lý liên hệ
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="edit-list-data">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade active show" id="personal-information" role="tabpanel">
+                                    <div class="card p-4 border-0 rounded shadow">
+                                        <div class="card-header d-flex justify-content-between" style="background-color: white;">
+                                            <div class="header-title my-2">
+                                                <h4 class="card-title">Thông tin cá nhân</h4>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <form>
+                                                <div class="form-group row align-items-center">
+                                                <div class="col-md-12">
+                                                    <div class="profile-img-edit">
+                                                        <img class="profile-pic" src="/images/faces/face10.jpg" alt="profile-pic">
+                                                        <div class="p-image">
+                                                            <i class="mdi mdi-pencil"></i>
+                                                            <input class="file-upload" type="file" accept="image/*">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class=" row align-items-center">
+                                                <div class="form-group col-sm-6">
+                                                    <label for="fname">Họ và tên:</label>
+                                                    <input type="text" class="form-control my-2" id="fname" value="Nguyễn Thị Trang">
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <label for="lname">Tài khoản:</label>
+                                                    <input type="text" class="form-control my-2" id="lname" value="ntrg1317">
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <label for="dob">Ngày sinh:</label>
+                                                    <input type="date" class="form-control my-2" id="dob" value="2003-03-17">
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <label class="d-block">Giới tính:</label>
+                                                    <div class="form-check form-check-primary">
+                                                        <label class="form-check-label">
+                                                            <input type="radio" class="form-check-input" name="ExampleRadio1" id="ExampleRadio1">
+                                                            Nam
+                                                        <i class="input-helper"></i></label>
+                                                    </div>
+                                                    <div class="form-check form-check-primary">
+                                                        <label class="form-check-label">
+                                                            <input type="radio" class="form-check-input" name="ExampleRadio1" id="ExampleRadio1" checked="">
+                                                            Nữ
+                                                        <i class="input-helper"></i></label>
+                                                      </div>
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <label>Tình trạng hôn nhân:</label>
+                                                    <select class="form-control my-2" id="exampleFormControlSelect1">
+                                                        <option selected="">Độc thân</option>
+                                                        <option>Đã kết hôn</option>
+                                                        <option>Ly dị</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <label>Tuổi:</label>
+                                                    <input type="text" class="form-control my-2" value="22">
+                                                </div>
+                                                <div class="form-group col-sm-12">
+                                                    <label>Địa chỉ:</label>
+                                                    <div class="form-floating overflow-hidden">
+                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                                                        <label for="floatingTextarea2">
+                                                            19 Nguyễn Ngọc Doãn, Đống Đa, việt Nam
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-12">
+                                                    <label>Tiểu sử/Kinh nghiệm:</label>
+                                                    <div class="form-floating overflow-hidden">
+                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                                                        <label for="floatingTextarea2">
+                                                            Năm 2019 – nay: Công tác tại nha khoa Việt Smile
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-12">
+                                                    <label>Trình độ học vấn:</label>
+                                                    <div class="form-floating overflow-hidden">
+                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                                                        <label for="floatingTextarea2">
+                                                            <ol>
+                                                                <li>Bác sĩ chuyên sâu niềng răng</li>
+                                                                <li>Tốt nghiệp chuyên khoa Răng – Hàm – Mặt trường Đại học Y Dược Thái Nguyên</li>
+                                                            </ol>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary me-2">Lưu thay đổi</button>
+                                                <button type="reset" class="btn btn-danger">Huỷ</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="chang-pwd" role="tabpanel">
+                                        <div class="card mb-3 p-4 rounded shadow">
+                                            <div class="card-header d-flex justify-content-between" style="background-color: white;">
+                                                <div class="header-title my-2">
+                                                    <h4 class="card-title">Xác minh</h4>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <form>
+                                                    <div class="form-group">
+                                                    <label for="npass">Nhập mật khẩu để xác minh:</label>
+                                                    <input type="Password" class="form-control my-2" id="npass" value="">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="card border-0 p-4 rounded shadow">
+                                            <div class="card-header d-flex justify-content-between" style="background-color: white;">
+                                                <div class="header-title my-2">
+                                                    <h4 class="card-title">Đổi mật khẩu</h4>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <form>
+                                                    <div class="form-group">
+                                                        <label for="npass">Tài khoản:</label>
+                                                        <input type="text" class="form-control my-2" id="npass" value="ntrg1317">
+                                                    </div>
+                                                    <div class="form-group">
+                                                    <label for="npass">Mật khẩu mới:</label>
+                                                    <input type="Password" class="form-control my-2" id="npass" value="">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary me-2">Lưu thay đổi</button>
+                                                    <button type="reset" class="btn bg-danger">Huỷ</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="emailandsms" role="tabpanel">
+                                    <div class="card border-0 p-4 rounded shadow">
+                                        <div class="card-header d-flex justify-content-between" style="background-color: white;">
+                                            <div class="header-title my-2">
+                                                <h4 class="card-title">Email and SMS</h4>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <form>
+                                                <div class="form-group">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-3">
+                                                        <label for="emailnotification">Thông báo email:</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="custom-control custom-switch">
+                                                            <input type="checkbox" class="form-check-input" id="emailnotification" checked="">
+                                                            <label class="custom-control-label" for="emailnotification"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="form-group">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-3">
+                                                        <label for="smsnotification">Thông báo SMS:</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="custom-control custom-switch">
+                                                            <input type="checkbox" class="form-check-input" id="smsnotification" checked="">
+                                                            <label class="custom-control-label" for="smsnotification"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="form-group">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-3">
+                                                        <label for="npass">Gửi Email khi:</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="form-check-input" id="email01">
+                                                            <label class="custom-control-label" for="email01">Có thông tin mới.</label>
+                                                        </div>
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="form-check-input" id="email02">
+                                                            <label class="custom-control-label" for="email02">Có tin nhắc mới</label>
+                                                        </div>
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="form-check-input" id="email03" checked="">
+                                                            <label class="custom-control-label" for="email03">Có người kết nối</label>
+                                                        </div>
+                                                    </div>
+                                                </div>   
+                                                </div>
+                                                <button type="submit" class="btn btn-primary me-2">Lưu thay đổi</button>
+                                                <button type="reset" class="btn bg-danger">Huỷ</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="manage-contact" role="tabpanel">
+                                    <div class="card border-0 p-4 rounded shadow">
+                                        <div class="card-header d-flex justify-content-between" style="background-color: white;">
+                                            <div class="header-title my-2">
+                                                <h4 class="card-title">Quản lý liên hệ</h4>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <form>
+                                                <div class="form-group">
+                                                <label for="cno">Số điện thoại:</label>
+                                                <input type="text" class="form-control my-2" id="cno" value="0167577891">
+                                                </div>
+                                                <div class="form-group">
+                                                <label for="email">Email:</label>
+                                                <input type="text" class="form-control my-2" id="email" value="nguyentrang@demo.com">
+                                                </div>
+                                                <div class="form-group">
+                                                <label for="url">Facebook:</label>
+                                                <input type="text" class="form-control my-2" id="url" placeholder="url">
+                                                </div>
+                                                <button type="submit" class="btn btn-primary me-2">Lưu thay đổi</button>
+                                                <button type="reset" class="btn btn-danger">Huỷ</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- main-panel ends -->
+<div data-include="_script"></div>
+<script>
+$(function () {
+    var includes = $('[data-include]');
+    $.each(includes, function () {
+        var container = $(this);
+        var file = '/partials/' + container.data('include') + '.html';
+        
+        $.get(file, function(data) {
+            container.replaceWith(data);
+        });
+    });
+});
+</script>
+</body>
+</html>
